@@ -1,0 +1,38 @@
+nav {background-color: black;
+    background-size:contain;}
+
+            @font-face{
+                font-family: LemonMilk;
+                src:url(/Fonts/LemonMilk.otf)
+            }
+            @font-face{
+                font-family: LMBold;
+                src:url(/Fonts/LEMONMILK-Bold.otf)
+            }
+            @font-face{
+                font-family: LemonLight;
+                src:url(/Fonts/LemonMilklight.otf)
+            }
+            @font-face{
+                font-family:HaveHeartone ;
+                src:url(/Fonts/Have\ Heart\ One.otf)
+            }
+
+
+            .x1 {background-color: black; 
+                color: white;
+                font-family: HaveHeartone ;
+                font-size:xx-large;
+            }
+            .x2 {color: white;
+                font-family: LemonMilkBold;
+                font-size: large;
+            }
+
+            .x3 {color:white;
+                font-family: HaveHeartone;
+                font-size: large;
+                font-weight: bolder;
+                background-color: black ;
+            }
+
