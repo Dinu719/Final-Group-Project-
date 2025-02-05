@@ -1,47 +1,68 @@
-            .nav {
-                height:50px;
-                max-width: none;
-                background-image: linear-gradient(to bottom right, rgb(112, 31, 31), rgb(246, 173, 96));
+            nav {
+                background-image: 
+                linear-gradient(to bottom right, rgb(112, 31, 31), rgb(246, 173, 96));
+
 
             }
 
             @font-face{
                 font-family: LemonMilk;
-                src:url(/Fonts/LemonMilk.otf)
+                src:url(../Fonts/LemonMilk.otf)
             }
             @font-face{
                 font-family: LMBold;
-                src:url(/Fonts/LEMONMILK-Bold.otf)
+                src:url(../Fonts/LEMONMILK-Bold.otf)
             }
             @font-face{
                 font-family: LemonLight;
-                src:url(/Fonts/LemonMilklight.otf)
+                src:url(../Fonts/LemonMilklight.otf)
             }
             @font-face{
                 font-family:HaveHeartone ;
-                src:url(/Fonts/Have\ Heart\ One.otf)
+                src:url(../Fonts/Have\ Heart\ One.otf)
             }
 
-
-            .x1 {background-color: black; 
-                color: white;
-                font-family: HaveHeartone ;
-                font-size:xx-large;
-            }
-            .x2 {color: white;
-                font-family: LemonMilkBold;
-                font-size: large;
-            }
 
             .x3 {color:white;
-                font-family: HaveHeartone;
+                font-family:LemonLight ;
                 font-size: large;
                 font-weight: bolder;
-                background-color: black ;
             }
 
-           
-            .x4 {
-                height: ;
-                width: 100px;;
+            .x4{
+                height: 60px;
+                max-width: 60px;
+                
+            }
+
+            .x5{
+                height: 80px;
+                max-width: 80px;
+                
+            }
+
+            .body{
+                background-color: black;
+            }
+            
+
+            .images{
+                border-radius: 30px;
+                border-color: red;
+                box-shadow: white;
+                border: 5px solid red;
+                height:auto;
+                width:30%;
+            }
+
+            .images1{
+                border-radius: 30px;
+                border-color: red;
+                box-shadow: white;
+                border: 5px solid red;
+                height:auto;
+                width:40%;
+                float: left;
+
+                
             }
