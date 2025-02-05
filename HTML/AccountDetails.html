@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Account Details</title>
+</head>
+<body>
+<header>
+<h1>Craftify</h1>
+</header>
+<hr/>
+<main>
+<h2>Account Details</h2>
+<hr/>
+<form action="/update-account" method="post">
+<label for="fullName">Full Name</label><br />
+<input type="text" id="fullName" name="fullName" value="John Doe" placeholder="Enter your Full Name" required><br />
+<label for="emailAddress">Email Address</label><br />
+<input type="text" id="emailAddress" name="emailAddress" value="johndoe@email.com" placeholder="Enter your Email Address" required><br />
+<label for="DOB">DOB</label><br />
+<input type="date" id="DOB" name="DOB" value="2000-01-01"><br />
+<label for="phoneNumber">Phone Number</label><br />
+<input type="tel" id="phoneNumber" name="phoneNumber" value="123-456-7890" placeholder="Enter your Phone Number" required><br />
+<label for="password">Password</label><br />
+<input type="password" id="password" name="password" value="QWer12#$" placeholder="Enter your Password" required><br />
+<button type="submit" class="btn">Save Changes</button>
+</form>
+</main>
+</body>
+</html>
