@@ -1,9 +1,9 @@
-const express = require("express"); // creating object express from express module
+const express = require("express"); //creating object express from express module
 const bodyParser = require('body-parser');
-const routes = require("./routes/routes"); // import the routes file
+const routes = require("./routes/routes"); //import the routes file
 const app = express(); //create app object that has the express methods
 
-app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); //parse URL-encoded bodies
 
 
 require("dotenv").config();
