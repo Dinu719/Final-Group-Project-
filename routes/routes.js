@@ -8,5 +8,8 @@ router.get("/", (req, res) => {
 router.get("/signin", (req, res) => {
     res.render('SignIn');
 });
+router.get("/Item", (req, res) => {
+    res.render('Item');
+});
 
 module.exports = router;
