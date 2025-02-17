@@ -21,6 +21,10 @@ router.get("/details", (req, res) => {
     res.render('AccountDetails');
 });
 
+router.get("/Profile", (req, res) => {
+    res.render('Profile');
+});
+
 router.get("/Item", (req, res) => {
     res.render('Item');
 });
