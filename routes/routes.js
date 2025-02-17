@@ -33,4 +33,8 @@ router.get("/Item", (req, res) => {
     res.render('Item');
 });
 
+router.get("/CS", (req, res) => {
+    res.render('CustomerService');
+});
+
 module.exports = router;
