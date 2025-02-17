@@ -155,4 +155,13 @@
    .navimg {
         align-items: ;
     }
+
+    li a{
+        text-decoration: none;
+        font-family: lemonMilk;
+        color:white;
+    }
+    li {
+        list-style: none;
+    }
     
