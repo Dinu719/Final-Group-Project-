@@ -1,7 +1,9 @@
-            header {
+           
+           header {
                 background: linear-gradient(to bottom right, rgb(112, 31, 31), rgb(246, 173, 96));
-              
                 width: 100%;
+                padding:0px;
+                margin: 0px;
             }
 
             @font-face{
@@ -21,57 +23,136 @@
                 src:url(../Fonts/Have\ Heart\ One.otf)
             }
 
+            @font-face{
+                font-family: Muli;
+                src:url(../Fonts/Muli-Light.ttf)
+            }
+
             .x3 {
                 color:white;
                 font-family:LemonLight ;
                 font-size: large;
                 font-weight: bolder;
+                text-align: center;
             }
 
-            .x4{
-                height: 60px;
-                max-width: 60px;
-                
+            .customer {
+                width: 80px;
+                height:auto;
+                border-radius: 50%;
+                box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+
             }
 
-            .x5{
-                height: 80px;
-                max-width: 80px;
-                
-            }
 
             .body{
                 background: linear-gradient( rgb(0, 0, 0), rgb(255, 0, 0));
-                position: relative;
-                overflow: hidden;
+                position: sticky;
             }
             
             .images{
-
                 border-radius: 30px;
-                
                 box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
                 border: 5px solid rgb(255, 255, 255);
                 height:auto;
-                width:30%;
-            }
-
-            .images1{
-                border-radius: 30px;
-                border-color: red;
-                box-shadow: white;
-                border: 5px solid red;
-                height:auto;
-                width:40%;
-                float: left;
+                width:70%;
+                justify-content: center;
+                align-items: center;
             }
 
                 .container {
                     display: flex;
                     width: 45%;
                     padding: 5px;
+                    
 
                 }
-        
-            
 
+            .divimg {
+                width:70px;
+                height:auto;
+                padding-left: 1px;
+                padding-right: px;
+                margin: 0px;  
+                padding-top: 15px;
+                justify-content: space-between;
+            }
+        
+        .navdiv {
+            display: inline-flex;
+            justify-content:space-between;
+            align-items: center;
+            width:100%;
+            margin
+
+        }
+
+        .maindiv {
+            display:flex;
+            justify-content:space-between;
+            align-items: center;
+        
+        }
+
+        main {
+            padding-top: 15px;
+            align-content: center;
+        }
+
+        html, html{
+            height: 100%;
+            margin:0;
+        }
+
+        .bg {
+            background-image: url("../Icons/body.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+    .divfooter{
+        text-align: justify;
+        color: white;
+        font-family:Muli ;
+    }
+
+    .figcaption1 {
+        text-align: center;
+        color:white;
+        font-family: lemonMilk;
+        box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+        padding:none;
+        margin-top: 0;
+        width: 25%;
+        border-radius: 5%;
+        text-shadow: 1px 1px 1px black;
+        align-content: ;
+
+    }
+
+    .figcaption2 {
+        text-align: center;
+        color:white;
+        font-family: lemonMilk;
+        box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+        padding:none;
+        margin-top: 0;
+        width: 30%;
+        border-radius: 2%;
+        text-shadow: 1px 1px 1px black;
+    }
+
+    figure {
+        margin-bottom: 10px;
+    }
+
+    .fdiv{
+        display: flex;
+    }
+
+   .navimg {
+        align-items: ;
+    }
+    
