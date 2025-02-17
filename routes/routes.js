@@ -25,6 +25,10 @@ router.get("/Profile", (req, res) => {
     res.render('Profile');
 });
 
+router.get("/Order", (req, res) => {
+    res.render('Order');
+});
+
 router.get("/Item", (req, res) => {
     res.render('Item');
 });
