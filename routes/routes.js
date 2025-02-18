@@ -45,4 +45,12 @@ router.get("/Tech", (req, res) => {
     res.render('Tech');
 });
 
+router.get("/Cart", (req, res) => {
+    res.render('Cart');
+});
+
+router.get("/Checkout", (req, res) => {
+    res.render('Checkout');
+});
+
 module.exports = router;
