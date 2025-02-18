@@ -37,4 +37,12 @@ router.get("/CS", (req, res) => {
     res.render('CustomerService');
 });
 
+router.get("/Clothing", (req, res) => {
+    res.render('Clothing');
+});
+
+router.get("/Tech", (req, res) => {
+    res.render('Tech');
+});
+
 module.exports = router;
