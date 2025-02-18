@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head> 
+    <meta charset="UTF-8">
+    <meta name = "viewpoint" content = "width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ShippingCart.css"/>
+    <title>Shipping Cart</title>
+    </head>
+    
+    <body>
+    <header>
+      <h3> Craftify</h3>
+      <div class = "cart-icon">
+      <span id = "cart-count"> 2 </span>
+    </div>
+    </header>
+
+Shipping website 
+  <main> 
+    <div class = "cart-container">
+       <h2> Shipping Cart </h2>
+<!-- The shrits pic item-->
+    <div class = "cart-item">
+      <img src = "Icons/Shirts.png" 
+      alt = "T-Shrit">
+      <div class = "item-details">
+        <h3> T-shrit </h3>
+        <p>  Black T Shirt, Small- 2 Pairs</p>
+        <p><strong> &29.99 </strong></p>
+        <label>Qty: <input type = "number" 
+          class = "quantity" value = "1" min = "1"> </label>
+        <button> Remove </button>
+        <button> Save </button>
+      </div>
+    </div>
+ 
+<!-- The Tec pic item-->
+      <div class = "cart-item" data-price = "19.99"> 
+        <img src = "Icons/Cases.png" 
+        alt = "phone case">
+        <div class = "item-details">
+          <h3> Phone Case </h3>
+          <p>Protective Case</p>
+          <p class = "price"> $19.99 </p>
+          <label>Qty: 
+          <input type = "number" class = "quantity" value = "1" min = "1"> </label>
+          <button> Remove </button>
+          <button> Save </button>
+      </div>
+
+<div class = "summary">
+  <p> Subtotal: <span id = "subtotal" > $49.98</span></p>
+  <p> ShippingCart: <span id = "shipping"> $9.00 </span></p>
+  <p> Tax: <span id = "tax"> $5.00 </span></p>
+  <h3> Total: <span id = "total" > $63.98 </span></h3>
+  <button id = "checkout-btn"> Checkout </button>
+</div>
+
+<hr>
+
+<footer>
+    <p> copyright 2025 </p>
+    <p><em> 
+        created in IT Capstone II
+    </em></p>
+
+</footer>
+  </main>
+  </body>
+</html>
