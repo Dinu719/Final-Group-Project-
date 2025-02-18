@@ -1,0 +1,82 @@
+/* Center the form elements and align the inputs */
+main {
+background-color: white;
+color: black;
+padding: 30px;
+border-radius: 10px;
+width: 300px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+margin: 0 auto; /* Center the form horizontally */
+text-align: center; /* Center text inside the form */
+}
+
+/* Style the form labels */
+label {
+font-weight: bold;
+display: block;
+margin-top: 10px;
+text-align: left;
+}
+
+/* Style input fields */
+input[type="text"], input[type="email"], input[type="date"], input[type="tel"], input[type="password"] {
+width: 80%; /* Set width to 80% of the form to make them more centered */
+padding: 10px;
+margin-top: 5px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 15px;
+display: inline-block; /* Ensure the inputs behave like inline-block elements */
+text-align: center; /* Center text inside the input boxes */
+}
+
+/* Adjust spacing between input fields */
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"] {
+margin-bottom: 20px; /* Space between each input field */
+}
+
+/* Style the "Sign Up" button */
+button.btn {
+background-color: gray;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 5px;
+width: 80%; /* Match width with the input fields */
+font-size: 16px;
+}
+
+button.btn:hover {
+background-color: darkgray;
+}
+
+/* Style the "Forgot Password?" link */
+main a {
+color: lightblue;
+text-decoration: none;
+font-size: 16px;
+display: block;
+margin-top: 15px;
+}
+
+main a:hover {
+text-decoration: underline;
+color: deepskyblue;
+}
+
+/* Style the "Returning User?" button */
+a[href="/signin"] button {
+background-color: orange;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 5px;
+font-size: 16px;
+width: 80%; /* Match width with the input fields */
+}
+
+a[href="/signin"] button:hover {
+background-color: darkorange;
+}  
