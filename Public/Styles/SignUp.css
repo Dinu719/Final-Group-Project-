@@ -1,4 +1,26 @@
-/* Center the form elements and align the inputs */
+.bg {
+background-color: black;
+background-color: black;
+color: white;
+font-family: Arial, sans-serif;
+height: 100vh;
+margin: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+
+header a {
+text-decoration: none;
+}
+
+header img {
+max-width: 200px;
+margin-bottom: 20px;
+}
+
 main {
 background-color: white;
 color: black;
@@ -6,36 +28,35 @@ padding: 30px;
 border-radius: 10px;
 width: 300px;
 box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-margin: 0 auto; /* Center the form horizontally */
-text-align: center; /* Center text inside the form */
+margin-bottom: 20px;
+text-align: center;
 }
 
-/* Style the form labels */
+h2 {
+font-size: 1.5rem;
+margin-bottom: 20px;
+}
+
 label {
 font-weight: bold;
 display: block;
-margin-top: 10px;
+margin-top: 5px;
 text-align: left;
 }
 
-/* Style input fields */
 input[type="text"], input[type="email"], input[type="date"], input[type="tel"], input[type="password"] {
-width: 80%; /* Set width to 80% of the form to make them more centered */
+width: 90%;
 padding: 10px;
-margin-top: 5px;
 border: 1px solid #ccc;
 border-radius: 5px;
-margin-bottom: 15px;
-display: inline-block; /* Ensure the inputs behave like inline-block elements */
-text-align: center; /* Center text inside the input boxes */
+margin-bottom: 20px;
+display: inline-block;
 }
 
-/* Adjust spacing between input fields */
 input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"] {
-margin-bottom: 20px; /* Space between each input field */
+margin-bottom: 15px;
 }
 
-/* Style the "Sign Up" button */
 button.btn {
 background-color: gray;
 color: white;
@@ -43,7 +64,7 @@ border: none;
 padding: 10px 20px;
 cursor: pointer;
 border-radius: 5px;
-width: 80%; /* Match width with the input fields */
+width: 100%;
 font-size: 16px;
 }
 
@@ -51,21 +72,37 @@ button.btn:hover {
 background-color: darkgray;
 }
 
-/* Style the "Forgot Password?" link */
+footer {
+text-align: center;
+margin-top: 20px;
+}
+
+footer .fdiv {
+display: flex;
+justify-content: center;
+}
+
+footer .divfooter {
+font-size: 14px;
+margin-top: 10px;
+}
+
 main a {
-color: lightblue;
-text-decoration: none;
-font-size: 16px;
+font-size: 14px;
 display: block;
 margin-top: 15px;
 }
 
-main a:hover {
-text-decoration: underline;
-color: deepskyblue;
+footer a {
+color: white;
+text-decoration: none;
+font-size: 14px;
 }
 
-/* Style the "Returning User?" button */
+footer a:hover, main a:hover {
+text-decoration: underline;
+}
+
 a[href="/signin"] button {
 background-color: orange;
 color: white;
@@ -74,9 +111,9 @@ padding: 10px 20px;
 cursor: pointer;
 border-radius: 5px;
 font-size: 16px;
-width: 80%; /* Match width with the input fields */
+width: 100%;
 }
 
 a[href="/signin"] button:hover {
 background-color: darkorange;
-}  
+}
