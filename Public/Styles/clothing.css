@@ -1,0 +1,54 @@
+body {
+background-color: #333;
+color: white;
+font-family: Arial, sans-serif;
+text-align: center;
+}
+
+.container {
+width: 80%;
+margin: auto;
+display: flex;
+justify-content: center;
+gap: 20px;
+}
+
+.product {
+background: #444;
+padding: 20px;
+border-radius: 10px;
+}
+
+.product img {
+width: 150px;
+height: 150px;
+background: lightgray;
+}
+
+select, button {
+margin-top: 10px;
+padding: 5px;
+}
+
+.cart-btn {
+background: orange;
+border: none;
+padding: 10px;
+cursor: pointer;
+box-shadow: 2px 2px 5px black;
+}
+
+.like-btn {
+background: orange;
+border: none;
+padding: 10px;
+cursor: pointer;
+box-shadow: 2px 2px 5px black;
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+padding: 10px;
+background: gray;
+}
