@@ -22,25 +22,24 @@ margin-bottom: 20px;
 }
 
 .btn-container {
-display: grid;                /* Use grid layout for the buttons */
-grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
-grid-gap: 20px;               /* Space between the buttons */
-max-width: 600px;             /* Limit the width of the button grid */
-margin: 0 auto;               /* Center the button grid */
-padding: 20px;                /* Padding inside the grid */
+display: grid;                
+grid-template-columns: repeat(2, 1fr); 
+grid-gap: 20px;               
+max-width: 600px;             
+margin: 0 auto;               
+padding: 20px;                
 }
 
-/* Button Styling */
 .btn {
-background-color: orange;    /* Orange background for the buttons */
-color: white;                 /* White text */
-padding: 20px;                /* Medium padding */
-font-size: 18px;              /* Font size for the button text */
-border: none;                 /* No border */
-border-radius: 10px;          /* Rounded corners */
-cursor: pointer;             /* Pointer cursor on hover */
-text-align: center;           /* Center text in the button */
-transition: background-color 0.3s ease; /* Smooth background change on hover */
+background-color: orange;    
+color: white;                 
+padding: 20px;                
+font-size: 20px;              
+border: none;                 
+border-radius: 10px;          
+cursor: pointer;             
+text-align: center;           
+transition: background-color 0.3s ease;
 }
 
 .btn:hover {

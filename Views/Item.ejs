@@ -3,46 +3,88 @@
   <head> 
     <meta charset="UTF-8">
     <meta name = "viewpoint" content = "width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/ShoppingCart.css"/>
+    <link rel="stylesheet" href="../Styles/LikedItems.css"/>
     <title>Liked Items</title>
-    </head>
-<body>
-<div class = "like- items-container">
-  <h1><a href="/">Craftify</a></h1>
-  <hr/>
-  <h2>Liked Items</h2>
-  <p>🡠 <a href="/profile">Profile</a></p>
-  <hr/>
-  <section class = "container">
-      <div class = "item1 fix">
-        <button class = "remove-btn">X </button>
-        <img src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Public/Icons/Shirts.png" alt = "Item1">
-        <p> $20.00 </p>
-        <img clas = "cart-icon" src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Cart.png" alt = "Item">
-      </div>
-      <div class = "item2 fix">
-        <button class = "remove-btn">X </button>
-        <img src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Pic of cothes .png" alt = "Item3">
-        <p> $15.00 </p>
-        <img clas = "cart-icon" src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Cart.png" alt = "Item">
-      </div>
-      <div class = "item4 fix">
-        <button class = "remove-btn">X </button>
-        <img src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Pic of cothes .png" alt = "Item  fix">
-        <p> $25.00 </p>
-        <img clas = "cart-icon" src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Cart.png" alt = "Item">
-      </div>
-      <div class = "item5 fix">
-        <button class = "remove-btn">X </button>
-        <img src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Pic of cothes .png" alt = "Item">
-        <p> $10.00 </p>
-        <img clas = "cart-icon" src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Cart.png" alt = "Item">
-      </div>
-      <div class = "item6 fix">
-        <button class = "remove-btn">X </button>
-        <img src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Pic of cothes .png" alt = "Item">
-        <p> $30.00 </p>
-        <img clas = "cart-icon" src = "/Users/dianasultan/Desktop/Cources/Web/Capston Project/GROUP2/Icons/Cart.png" alt = "Item">
-      </div>
-      </section>
+  </head>
+  <header>
+    <div class="navbar">
+    <div class="navdiv"> 
+        <a href="/"><img src="../Icons/Craftify.png" alt ="Logo"></a>
+            <nav >
+                <div class="navdiv">
+                        <div >
+                            <a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
+                        </div>
+
+                        <div>
+                            <img src="../Icons/Profile.png" class="divimg">
+                        </div>
+                </div>
+
+                <div>
+                    <ul>
+                        <li><a href="/signin">Sign In/Up</a></li>
+                        <li><a href="/profile">Account</a></li>
+                    </ul>
+                </div>
+            
+            </nav>
     </div>
+    </div>
+</header>
+<body>
+<main>
+  <h1>Liked Items</h1>
+  <p>🡠 <a href="/profile">Profile</a></p>
+  <section class = "container">
+      <div class = "item1">
+        <button class = "remove-btn">X</button>
+        <img class="images" src = "../Icons/Hoodie.webp" alt = "Item1">
+        <p> $20.00 </p>
+        <img class = "cart-icon" src = "../Icons/Cart.png" alt = "Cart">
+      </div>
+      <div class = "item2">
+        <button class = "remove-btn">X</button>
+        <img class="images" src = "../Icons/T-Shirt.jpeg" alt = "Item2">
+        <p> $10.00 </p>
+        <img class = "cart-icon" src = "../Icons/Cart.png" alt = "Cart">
+      </div>
+      <div class = "item3">
+        <button class = "remove-btn">X</button>
+        <img class="images" src = "../Icons/LaptopCase.webp" alt = "Item3">
+        <p> $15.00 </p>
+        <img class = "cart-icon" src = "../Icons/Cart.png" alt = "Cart">
+      </div>
+      <div class = "item4">
+        <button class = "remove-btn">X</button>
+        <img class="images" src = "../Icons/RedHoodie.webp" alt = "Item4">
+        <p> $20.00 </p>
+        <img class = "cart-icon" src = "../Icons/Cart.png" alt = "Cart">
+      </div>
+      <div class = "item5">
+        <button class = "remove-btn">X</button>
+        <img class="images" src = "../Icons/iPhoneCase.jpg" alt = "Item5">
+        <p> $5.00 </p>
+        <img class = "cart-icon" src = "../Icons/Cart.png" alt = "Cart">
+      </div>
+      <div class = "item6">
+        <button class = "remove-btn">X</button>
+        <img class="images" src = "../Icons/CleariPhone16Case.jpg" alt = "Item6">
+        <p> $5.00 </p>
+        <img class = "cart-icon" src = "../Icons/Cart.png" alt = "Cart">
+      </div>
+  </section>
+</main>
+  <footer>
+      <div class="fdiv">
+          <div >
+              <p class="divfooter"> Copyright © 2025 Craftify </p>
+          </div>
+  
+          <div>
+              <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
+          </div>  
+      </div>
+  </footer>
+</body>
+</html>

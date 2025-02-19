@@ -1,0 +1,74 @@
+html{
+  box-sizing: border-box;
+}
+body{margin: 0;}
+*, *::before, *::after{
+  box-sizing:inherit;
+  margin: 0;
+  padding: 0;
+}
+/**/
+header{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #7a5d5d;
+  color: white;
+}
+/* the cart icon is inside the header */
+.cart-icon{
+  font-size: 20px;
+}
+/* the main page of the website*/
+main{
+  width: 80px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+/* the cart item*/
+.cart-item{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+/* the shrit pic */
+.cart-item img{
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+.item-details{
+  flex-grow: 1;
+}
+/* the price page */
+.price {
+  font-weight: bold;
+}
+.quantity{
+  width: 50px;
+}
+/* the remove and save button */
+.remove-btn{
+  background: red;
+  color: white;
+  border:none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+/* the summary page of the website*/
+.summary{
+  margin-top:20px;
+  text-align: right;
+}
+/* the check out button of the website*/
+#checkout-btn{
+background-color: orange;
+border: none;
+padding: 10px 15px;
+cursor: pointer;
+}
