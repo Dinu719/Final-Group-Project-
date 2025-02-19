@@ -1,0 +1,103 @@
+body {
+background-color: #333;
+font-family: Arial, sans-serif;
+color: white;
+text-align: center;
+}
+
+.profile-box {
+background-color: black;      
+color: white;                 
+padding: 20px 20px;           
+text-align: center;           
+margin: 20px auto;            
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+width: 20%;                   
+border-radius: 10px;          
+}
+
+.profile-box h1 {
+font-size: 50px;              
+margin-bottom: 20px;          
+}
+
+.btn-container {
+display: grid;                /* Use grid layout for the buttons */
+grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
+grid-gap: 20px;               /* Space between the buttons */
+max-width: 600px;             /* Limit the width of the button grid */
+margin: 0 auto;               /* Center the button grid */
+padding: 20px;                /* Padding inside the grid */
+}
+
+/* Button Styling */
+.btn {
+background-color: orange;    /* Orange background for the buttons */
+color: white;                 /* White text */
+padding: 20px;                /* Medium padding */
+font-size: 18px;              /* Font size for the button text */
+border: none;                 /* No border */
+border-radius: 10px;          /* Rounded corners */
+cursor: pointer;             /* Pointer cursor on hover */
+text-align: center;           /* Center text in the button */
+transition: background-color 0.3s ease; /* Smooth background change on hover */
+}
+
+.btn:hover {
+background-color: darkorange;    
+}
+
+.navdiv {
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+width:100%;
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+padding: 10px;
+background: gray;
+}
+
+.divimg {
+width:70px;
+height:auto;
+padding-left: 1px;
+padding-right: px;
+margin: 0px;  
+padding-top: 15px;
+justify-content: space-between;
+}
+
+header {
+width: 100%;
+padding:0px;
+margin: 0px;
+}
+
+a {
+text-decoration: none;
+color:white;
+}
+
+li {
+list-style: none;
+}
+
+.fdiv {
+display: flex;
+}
+
+.divfooter {
+text-align: justify;
+color: white;
+}
+
+.customer {
+width: 80px;
+height:auto;
+border-radius: 50%;
+box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+}
