@@ -112,7 +112,6 @@
 
         .bg {
             background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -122,15 +121,21 @@
     
     .figcaption1 {
         text-align: center;
+        font-size: 70px;
         color:white;
-        font-family: lemonMilk;
-        box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+        font-family: HaveHearttwo;
+        box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.292);
         flex-basis: auto;
-        border-radius: 5%;
-        text-shadow: 1px 1px 1px black;
-        
-        
-    }
+        border-radius: 30px;
+        text-shadow: 0px 0px 5px rgb(34, 34, 34);
+        position: relative;
+        bottom: 90px;
+        padding:2px;
+        margin: 0%;
+        margin-left: 50%;
+        right: 25%;
+        background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100% );
+                }
 
     .figcaption2 {
         text-align: center;
@@ -216,6 +221,9 @@
     border-radius: 40px;
     box-shadow: 0px 0px 5px rgb(39, 39, 39);
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    position: relative;
+    top: 20px;
+
   }
 
   .search-container {
@@ -233,3 +241,7 @@
     border-radius: 25px;
     outline: none;
 }
+
+
+
+

@@ -45,4 +45,8 @@ router.get("/Tech", (req, res) => {
     res.render('Tech');
 });
 
+router.get("/CO", (req, res) => {
+    res.render('Checkout');
+});
+
 module.exports = router;
