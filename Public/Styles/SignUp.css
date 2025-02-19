@@ -1,0 +1,119 @@
+.bg {
+background-color: black;
+background-color: black;
+color: white;
+font-family: Arial, sans-serif;
+height: 100vh;
+margin: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+
+header a {
+text-decoration: none;
+}
+
+header img {
+max-width: 200px;
+margin-bottom: 20px;
+}
+
+main {
+background-color: white;
+color: black;
+padding: 30px;
+border-radius: 10px;
+width: 300px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+margin-bottom: 20px;
+text-align: center;
+}
+
+h2 {
+font-size: 1.5rem;
+margin-bottom: 20px;
+}
+
+label {
+font-weight: bold;
+display: block;
+margin-top: 5px;
+text-align: left;
+}
+
+input[type="text"], input[type="email"], input[type="date"], input[type="tel"], input[type="password"] {
+width: 90%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 20px;
+display: inline-block;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"] {
+margin-bottom: 15px;
+}
+
+button.btn {
+background-color: gray;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 5px;
+width: 100%;
+font-size: 16px;
+}
+
+button.btn:hover {
+background-color: darkgray;
+}
+
+footer {
+text-align: center;
+margin-top: 20px;
+}
+
+footer .fdiv {
+display: flex;
+justify-content: center;
+}
+
+footer .divfooter {
+font-size: 14px;
+margin-top: 10px;
+}
+
+main a {
+font-size: 14px;
+display: block;
+margin-top: 15px;
+}
+
+footer a {
+color: white;
+text-decoration: none;
+font-size: 14px;
+}
+
+footer a:hover, main a:hover {
+text-decoration: underline;
+}
+
+a[href="/signin"] button {
+background-color: orange;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 5px;
+font-size: 16px;
+width: 100%;
+}
+
+a[href="/signin"] button:hover {
+background-color: darkorange;
+}

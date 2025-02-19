@@ -45,7 +45,15 @@ router.get("/Tech", (req, res) => {
     res.render('Tech');
 });
 
+<<<<<<< HEAD
 router.get("/CO", (req, res) => {
+=======
+router.get("/Cart", (req, res) => {
+    res.render('Cart');
+});
+
+router.get("/Checkout", (req, res) => {
+>>>>>>> 3f97eb146b420784875977dac0264ef0c067bd45
     res.render('Checkout');
 });
 

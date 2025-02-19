@@ -1,0 +1,123 @@
+body {
+background-color: black;
+font-family: Arial, sans-serif;
+color: white;
+margin: 0;
+box-sizing: border-box;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+flex-direction: column;
+padding: 20px;
+text-align: center;
+}
+
+h4 {
+color: black;
+margin-bottom: 10px;
+text-align: center;
+}
+
+hr {
+margin: 20px 0;
+border: 1px solid #ccc;
+}
+
+.white-box {
+background-color: white;
+padding: 20px;
+margin: 10px 0;
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+width: 95%;
+max-width: 450px;
+text-align: left;
+}
+
+form {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+}
+
+label {
+font-weight: bold;
+margin-top: 6px;
+text-align: left;
+color: black;
+width: 100%;
+}
+
+input[type="text"],
+input[type="password"] {
+width: 95%;
+padding: 12px;
+margin: 8px 0;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 1rem;
+background-color: #f9f9f9;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+outline: none;
+border-color: black;
+}
+
+button.btn {
+background-color: orange;
+color: white;
+border: none;
+padding: 12px 20px;
+margin: 10px 0;
+border-radius: 5px;
+font-size: 1rem;
+cursor: pointer;
+width: 100%;
+transition: background-color 0.3s;
+}
+
+button.btn:hover {
+background-color: darkorange;
+}
+
+a {
+text-decoration: none;
+}
+
+a button.btn {
+background-color: gray;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 5px;
+font-size: 16px;
+width: 100%;
+}
+
+a button.btn:hover {
+background-color: darkgray;
+}
+
+.white-box + .white-box {
+margin-top: 20px;
+}
+
+footer {
+text-align: center;
+width: 100%;
+}
+
+footer .fdiv {
+display: flex;
+justify-content: center;
+}
+
+footer .divfooter {
+font-size: 14px;
+margin-top: 10px;
+}
