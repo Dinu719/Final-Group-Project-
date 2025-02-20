@@ -1,50 +1,14 @@
 body {
-background-color: #333;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
 font-family: Arial, sans-serif;
 color: white;
 text-align: center;
+height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
 }
 
-.profile-box {
-background-color: black;      
-color: white;                 
-padding: 20px 20px;           
-text-align: center;           
-margin: 20px auto;            
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-width: 20%;                   
-border-radius: 10px;          
-}
-
-.profile-box h1 {
-font-size: 50px;              
-margin-bottom: 20px;          
-}
-
-.btn-container {
-display: grid;                
-grid-template-columns: repeat(2, 1fr); 
-grid-gap: 20px;               
-max-width: 600px;             
-margin: 0 auto;               
-padding: 20px;                
-}
-
-.btn {
-background-color: orange;    
-color: white;                 
-padding: 20px;                
-font-size: 20px;              
-border: none;                 
-border-radius: 10px;          
-cursor: pointer;             
-text-align: center;           
-transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-background-color: darkorange;    
-}
 
 .navdiv {
 display: inline-flex;
@@ -70,12 +34,6 @@ padding-top: 15px;
 justify-content: space-between;
 }
 
-header {
-width: 100%;
-padding:0px;
-margin: 0px;
-}
-
 a {
 text-decoration: none;
 color:white;
@@ -85,18 +43,175 @@ li {
 list-style: none;
 }
 
-.fdiv {
-display: flex;
-}
-
-.divfooter {
-text-align: justify;
-color: white;
-}
 
 .customer {
-width: 80px;
-height:auto;
-border-radius: 50%;
-box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+    width: 90px;
+    height:auto;
+    border-radius: 50%;
+    box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+    justify-content: space-between;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+header {
+    margin-top: 20px;
+    width: 100%;
+    padding:0px;
+    margin: 0px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgb(17, 17, 17);
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);            }
+
+@font-face{
+    font-family: LemonMilk;
+    src:url(../Fonts/LemonMilk.otf)
+}
+@font-face{
+    font-family: LMBold;
+    src:url(../Fonts/LEMONMILK-Bold.otf)
+}
+@font-face{
+    font-family: LemonLight;
+    src:url(../Fonts/LemonMilklight.otf)
+}
+@font-face{
+    font-family:HaveHeartone ;
+    src:url(../Fonts/Have\ Heart\ One.otf)
+}
+
+@font-face{
+    font-family: Muli;
+    src:url(../Fonts/Muli-Light.ttf)
+}
+
+@font-face{
+    font-family: HaveHearttwo;
+    src:url(../Fonts/Have\ Heart\ Two.otf)
+}
+
+.navimg {
+    width:30%;
+    height: auto;
+    margin-right: 80%;
+
+}
+
+.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%)}
+
+    .btn-grad {
+       margin: 5px;
+       padding: 9px 20px;
+       text-align: center;
+       text-transform: uppercase;
+       transition: 0.5s;
+       background-size: 200% auto;
+       color: white;            
+       box-shadow: 0 0 20px #eee;
+       border-radius: 30px;
+       display: block;
+     }
+
+     .btn-grad:hover {
+       background-position: right center; 
+       color: #fff;
+       text-decoration: none;
+     }
+
+     nav div ul li a {
+        text-decoration: none;
+        font-family: lemonMilk;
+        color:rgb(60, 59, 59);
+        margin-right: 15px;        
+        margin-left: 10px;
+        text-align: center;
+        padding: 2px;
+        margin:5px;
+        text-align: center;
+     }
+
+     .ftext {
+        color:rgb(255, 234, 0);
+        font-family: lemonMilk;
+        text-align: center;
+        text-shadow: 0px 0px 2px rgb(0, 0, 0);
+        font-size:20px ;
+        position:relative;
+        bottom: 0%;
+        left: 0;
+        width: 100%;
+    }
+
+
+
+  footer {
+    position: relative;
+    top: 20px;
+
+  }
+  
+
+  
+  .outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+
+.inner-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color:black;
+    font-family: LemonLight;
+
+}
+
+.profile-container {
+    background: white;
+    padding: 90px;
+    border-radius: 15px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+.profile-container h2 {
+    margin-bottom: 30px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+    padding: 0dvh;
+}
+
+.button-grid a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d3d3d3; 
+    color: black;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.button-grid a:hover {
+    background: #b0b0b0; 
+}
+
+h2 {
+    color:black;
+    font-family: LemonLight;
+    font-size: 45px;
+    
 }

@@ -181,7 +181,7 @@ footer {
   }
 
   .customer {
-    width: 80px;
+    width: 90px;
     height:auto;
     border-radius: 50%;
     box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
@@ -189,7 +189,6 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-
 }
 
 .search-container {

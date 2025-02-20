@@ -1,5 +1,6 @@
 .bg {
-background-color: black;
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+
 color: white;
 font-family: Arial, sans-serif;
 height: 100vh;
@@ -11,13 +12,15 @@ justify-content: center;
 text-align: center;
 }
 
+
+
 header a {
 text-decoration: none;
+
 }
 
 header img {
-max-width: 200px;
-margin-bottom: 20px;
+width: 60%;
 }
 
 main {
@@ -111,4 +114,9 @@ width: 100%;
 
 a[href="/signup"] button:hover {
 background-color: darkorange;
+}
+
+
+.logo {
+width: 300px;
 }
