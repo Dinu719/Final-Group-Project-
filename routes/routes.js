@@ -13,8 +13,12 @@ router.get("/signup", (req, res) => {
     res.render('SignUp');
 });
 
-router.get("/password", (req, res) => {
-    res.render('ForgotPassword');
+router.get("/password1", (req, res) => {
+    res.render('ForgotPassword1');
+});
+
+router.get("/password2", (req, res) => {
+    res.render('ForgotPassword2');
 });
 
 router.get("/details", (req, res) => {
