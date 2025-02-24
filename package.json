@@ -16,7 +16,7 @@
     "url": "https://github.com/isaiiah01/GROUP2/issues"
   },
   "homepage": "https://github.com/isaiiah01/GROUP2#readme",
-  "description": "Api to perform crud operations in connectiondb",
+  "description": "API to Perform CRUD Operations in ConnectionDB",
   "dependencies": {
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
