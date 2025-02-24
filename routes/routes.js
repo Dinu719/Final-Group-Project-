@@ -25,11 +25,11 @@ router.get("/Profile", (req, res) => {
     res.render('Profile');
 });
 
-router.get("/Order", (req, res) => {
+router.get("/Pastorders", (req, res) => {
     res.render('Order');
 });
 
-router.get("/Item", (req, res) => {
+router.get("/Likeditem", (req, res) => {
     res.render('Item');
 });
 
@@ -52,5 +52,7 @@ router.get("/Cart", (req, res) => {
 router.get("/Checkout", (req, res) => {
     res.render('Checkout');
 });
+
+
 
 module.exports = router;
