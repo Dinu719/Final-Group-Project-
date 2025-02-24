@@ -1,5 +1,5 @@
 {
-  "name": "group2-2",
+  "name": "connectiondb",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -16,11 +16,12 @@
     "url": "https://github.com/isaiiah01/GROUP2/issues"
   },
   "homepage": "https://github.com/isaiiah01/GROUP2#readme",
-  "description": "",
+  "description": "Api to perform crud operations in connectiondb",
   "dependencies": {
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "mongodb": "^6.13.1",
     "mysql": "^2.18.1",
     "nodemon": "^3.1.9"
   }
