@@ -1,6 +1,6 @@
 const{Mongoclient} = require('mongodb');
 
-const client = new MongoClient("mongodb://localhost:27017",{
+const client = new MongoClient("mongodb://localhost",{
     useNewUrlParser: true
   });
 
