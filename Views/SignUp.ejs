@@ -4,12 +4,40 @@
 <title>Sign Up</title>
 <link rel="stylesheet" href="../Styles/SignUp.css"/>
 </head>
+
+
 <body class="bg">
-<header>
-    <a href="/"><img src="../Icons/Craftify.png" alt ="Logo"></a>
+
+
+    <header>
+        
+        <div class="navdiv"> 
+                 <a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
+             <nav >
+                 <div class="navdiv">
+ 
+                     <div> 
+                         <ul>
+                             <li><button class="btn-grad"> <a href="/signin">Sign In/Up</a></button></li>
+                             <li><button class="btn-grad" > <a href="/profile">Account</a> </button></li>
+                         </ul>
+                     </div>
+                         <div >
+                             <a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
+                         </div>
+ 
+                         <div>
+                             <img src="../Icons/Profile.png" class="divimg">
+                         </div>
+                 </div>
+             </nav>
+     </div>
 </header>
+
+
 <main>
 <h2>Create Account</h2>
+
 <form action="/create" method="post">
 <label for="fullName">Full Name</label><br />
 <input type="text" id="fullName" name="fullName" placeholder="Enter your Full Name" required><br />
@@ -27,7 +55,12 @@
 </form>
 <a href="/password1">Forgot Password?</a>
 </main>
+
+
+
 <a href="/signin"><button class = "btn"> Returning User? </button></a>
+
+
 <footer>
     <div class="fdiv">
         <div >
@@ -35,5 +68,7 @@
         </div>  
     </div>
 </footer>
+
+
 </body>
 </html>

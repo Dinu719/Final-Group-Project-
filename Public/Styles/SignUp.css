@@ -1,6 +1,5 @@
 .bg {
 background-color: black;
-background-color: black;
 color: white;
 font-family: Arial, sans-serif;
 height: 100vh;
@@ -12,14 +11,6 @@ justify-content: center;
 text-align: center;
 }
 
-header a {
-text-decoration: none;
-}
-
-header img {
-max-width: 200px;
-margin-bottom: 20px;
-}
 
 main {
 background-color: white;
