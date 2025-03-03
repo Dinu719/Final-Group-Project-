@@ -1,4 +1,4 @@
-// controllers.js
+// controller.js
 const { getTables } = require("../models/queries");  // Import the query from queries file
 // Function to get tables and log them to the terminal
 const showTables = async () => {
