@@ -125,13 +125,11 @@ header {
     align-items: center;
 }
 
-/* Logo Section */
 .logo img {
     height: 50px;
     width: auto;
 }
 
-/* Right-side buttons & icons */
 .nav-items {
     display: flex;
     align-items: center;
@@ -154,7 +152,6 @@ header {
     background: #b0b0b0;
 }
 
-/* Dropdown Menu */
 .dropdown {
     position: relative;
 }
@@ -186,12 +183,10 @@ header {
     background: #f0f0f0;
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* Icons (Cart & Profile) */
 .nav-items img {
     width: 30px;
     height: auto;
@@ -205,4 +200,37 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+h1 {
+    font-family: LemonMilk;
+    color:white;
+    text-shadow: 0px 0px 5px rgb(59, 59, 59);
+}
+
+@font-face{
+    font-family: LemonMilk;
+    src:url(../Fonts/LemonMilk.otf)
+}
+@font-face{
+    font-family: LMBold;
+    src:url(../Fonts/LEMONMILK-Bold.otf)
+}
+@font-face{
+    font-family: LemonLight;
+    src:url(../Fonts/LemonMilklight.otf)
+}
+@font-face{
+    font-family:HaveHeartone ;
+    src:url(../Fonts/Have\ Heart\ One.otf)
+}
+
+@font-face{
+    font-family: Muli;
+    src:url(../Fonts/Muli-Light.ttf)
+}
+
+@font-face{
+    font-family: HaveHearttwo;
+    src:url(../Fonts/Have\ Heart\ Two.otf)
 }
