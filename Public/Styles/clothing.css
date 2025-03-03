@@ -125,13 +125,11 @@ header {
     align-items: center;
 }
 
-/* Logo Section */
 .logo img {
     height: 50px;
     width: auto;
 }
 
-/* Right-side buttons & icons */
 .nav-items {
     display: flex;
     align-items: center;
@@ -154,7 +152,6 @@ header {
     background: #b0b0b0;
 }
 
-/* Dropdown Menu */
 .dropdown {
     position: relative;
 }
@@ -186,12 +183,10 @@ header {
     background: #f0f0f0;
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* Icons (Cart & Profile) */
 .nav-items img {
     width: 30px;
     height: auto;

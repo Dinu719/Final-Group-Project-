@@ -71,10 +71,12 @@
                 }
 
             .divimg {
-                width:80px;
+               height:50px;
+                width:auto;
                 justify-content: space-between;
                 margin-right: 15px;
             }
+            
         .navdiv {
             display: flex;
             justify-content:space-between;
