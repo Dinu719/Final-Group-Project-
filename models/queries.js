@@ -4,12 +4,11 @@
 
 const pool = require('./connectionDB');
 
-
 async function userData() {
     let connection;
     try {
         connection = await pool.getConnection();
-        const [results] = await connection.query("SELECT * FROM university");
+        const [results] = await connection.query("SELECT * FROM group2");
        
        return results;
     } catch (error) {
@@ -37,8 +36,6 @@ async function insertUser(name, email) {
         }
     }
 }
-
-
 
 
 module.exports = {userData, insertUser};

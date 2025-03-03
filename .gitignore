@@ -1,2 +1,6 @@
 .env
 node_modules
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=xxxxMySql01
+DB_NAME=group2
