@@ -1,6 +1,8 @@
 // controller.js
-const { getTables } = require("../models/queries");  // Import the query from queries file
+const { getTables, insertUser } = require("../models/queries");  // Import the query from queries file
 // Function to get tables and log them to the terminal
+
+
 const showTables = async () => {
  try {
    const tableNames = await getTables();  // Call the query to get tables
@@ -10,4 +12,9 @@ const showTables = async () => {
    console.error('Error:', err);
  }
 };
-module.exports = { showTables };  // Export the function to use elsewhere if needed
+module.exports = { showTables }; 
+
+// Export the function to use elsewhere if needed
+
+
+const {insertUser} = require ("/");

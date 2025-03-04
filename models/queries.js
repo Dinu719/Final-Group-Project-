@@ -10,4 +10,41 @@ const getTables = async () => {
    throw err;
  }
 };
-module.exports = { getTables };  // Export query function for use in other files
+module.exports = { getTables }; 
+
+async function insertUser(fullName, email, phoneN, password){
+  const connection=await pool.getConnection();
+
+  try {
+    let sql, values;
+    
+      sql = `INSERT INTO buyer (fullName, email, phoneN, password)
+      VALUES (?, ?, ?, ?)`;
+
+        values  = [fullName, email, phoneN, password];
+
+        console.log ("Running:", sql);
+        console.log ("With Values:", values);
+
+        const[result] = await connection.query(sql, values);
+
+        console.log("insert result", result);
+    }
+
+    catch(error) {
+      console.error (`error inserting data:`, error);
+      throw error;
+    }
+
+    finally{
+      if(connection){
+        connection.release();
+      }
+    }
+
+  }
+
+
+
+module.exports = {insertUser};
+// Export query function for use in other files
