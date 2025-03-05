@@ -15,6 +15,5 @@ app.use('/', routes);
 app.use(express.static("public")); //define the path of the folder that allows you to serve static files from the server, from the "public" folder
 
 
-
 app.listen(5001);
 
