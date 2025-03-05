@@ -44,7 +44,5 @@ async function insertUser(fullName, email, phoneN, password){
 
   }
 
-
-
 module.exports = {insertUser};
 // Export query function for use in other files
