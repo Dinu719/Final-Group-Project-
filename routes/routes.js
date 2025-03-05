@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {processBD, addBuyer} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
     res.render('index');
@@ -57,6 +58,16 @@ router.get("/Checkout", (req, res) => {
     res.render('Checkout');
 });
 
-
+router.post("/create", async (req, res) => {
+const {fName, emailAddress, birthday, phoneNumber, password} = req.body;
+try {
+    await addBuyer(fName, emailAddress, birthday, phoneNumber, password);
+    res.redirect("/");
+} 
+catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('Error');
+}
+});
 
 module.exports = router;
