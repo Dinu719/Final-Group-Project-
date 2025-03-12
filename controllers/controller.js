@@ -1,4 +1,4 @@
-const {buyerData, insertBuyer, getTables} = require("../models/queries");
+const {buyerData, insertBuyer, getBuyer, getTables} = require("../models/queries");
 
 async function processBD() {
   try {
@@ -19,6 +19,16 @@ async function addBuyer(fName, emailAddress, birthday, phoneNumber, password) {
   }
 }
 
+async function getBuyerByEmail(email) {
+  try {
+      const user = await getBuyer(email);
+      return user;
+  } catch (error) {
+      console.error('Error:', error);
+      throw error;
+  }
+}
+
 const showTables = async () => {
  try {
    const tableNames = await getTables();  // Call the query to get tables
@@ -29,4 +39,4 @@ const showTables = async () => {
  }
 };
 
-module.exports = {processBD, addBuyer, showTables};  // Export the function to use elsewhere if needed
+module.exports = {processBD, addBuyer, getBuyerByEmail, showTables};  // Export the function to use elsewhere if needed

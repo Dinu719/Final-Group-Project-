@@ -37,6 +37,22 @@ async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password)
   }
 }
 
+async function getBuyer(email) {
+  const connection = await pool.getConnection();
+  try {
+    const query = "SELECT * FROM buyer WHERE email = ?";
+    const [rows] = await connection.query(query, [email]);
+    return rows;
+  } catch (error) {
+      console.error('Error:', error);
+      throw error;
+  } finally {
+      if (connection) {
+          connection.release();
+      }
+  }
+}
+
 const getTables = async () => {
  try {
    const [tables] = await pool.query('SHOW TABLES');  // Run the 'SHOW TABLES' query
@@ -47,4 +63,4 @@ const getTables = async () => {
  }
 };
 
-module.exports = {buyerData, insertBuyer, getTables};  // Export query function for use in other files
+module.exports = {buyerData, insertBuyer, getBuyer, getTables};  // Export query function for use in other files
