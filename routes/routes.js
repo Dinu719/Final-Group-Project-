@@ -73,25 +73,40 @@ res.status(500).send('Error');
 router.post("/login", async (req, res) => {
 const {email, password} = req.body;
 if (!email || !password) {
-return res.render('SignIn', {message: 'Provide Both Your Email & Password'});
+return res.status(401).send('Please Provide Both Email & Password');
 }
 try {
 const user = await getBuyerByEmail(email);
 console.log('User Data:', user);
 if (!user || user.length === 0) {
-return res.render('SignIn', {message: 'User Not Found'});
+console.log('User Not Found');
+return res.status(401).send('Invalid Email or Password');
 }
 if (password === user[0].password) {
 return res.redirect('/');
 } 
 else {
-return res.render('SignIn', {message: 'Password is Incorrect'});
+console.log('Password is Incorrect');
+return res.status(401).send('Invalid Email or Password');
 }
 } 
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
 }  
+});
+
+router.get("/logoff", (req, res) => {
+console.log('Logging Off:', req.session.userId);
+req.session.destroy((err) => {
+if (err) {
+console.error('Error:', err);
+res.status(500).send('Error');
+}
+res.clearCookie('connect.sid');
+console.log('Logged Off');
+res.redirect('/');
+});
 });
 
 module.exports = router;
