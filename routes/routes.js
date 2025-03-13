@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {processBD, addBuyer, getBuyerByEmail} = require('../controllers/controller');
+const {processBD, addBuyer, getBuyerByEmail, updateDetails} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
 res.render('index');
@@ -22,8 +22,31 @@ router.get("/password2", (req, res) => {
 res.render('ForgotPassword2');
 });
 
-router.get("/details", (req, res) => {
-res.render('AccountDetails');
+router.get("/details", async (req, res) => {
+const email = req.session.userEmail;
+if (!email) {
+return res.status(401).send('User Not Found');
+}
+try {
+const buyer = await getBuyerByEmail(email);
+if (!buyer || buyer.length === 0) {
+return res.status(401).send('Buyer Not Found');
+}
+return res.render('AccountDetails', {
+fullName: buyer[0].fullName,
+emailAddress: buyer[0].email,
+DOB: buyer[0].dob,
+phoneNumber: buyer[0].phoneN,
+password: buyer[0].password,
+});
+} 
+catch (error) {
+console.error('Error:', error);
+return res.status(500).send('Error');
+}
+});
+
+router.post("/update", async (req, res) => {  
 });
 
 router.get("/Profile", (req, res) => {
@@ -84,7 +107,8 @@ return res.status(401).send('Invalid Email or Password');
 }
 if (password === user[0].password) {
 req.session.userEmail = user[0].email;
-console.log('Logged In:', req.session.userEmail);
+req.session.userID = user[0].bID;
+console.log('Logged In:', req.session.userEmail, req.session.userID);
 return res.redirect('/');
 } 
 else {
@@ -99,7 +123,7 @@ res.status(500).send('Error');
 });
 
 router.get("/logoff", (req, res) => {
-console.log('Logging Off:', req.session.userEmail);
+console.log('Logging Off:', req.session.userEmail, req.session.userID);
 req.session.destroy((err) => {
 if (err) {
 console.error('Error:', err);

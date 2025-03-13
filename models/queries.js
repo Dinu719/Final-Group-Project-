@@ -53,6 +53,26 @@ async function getBuyer(email) {
   }
 }
 
+async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, password) {
+  const connection = await pool.getConnection();
+  try {
+      const query = `
+        UPDATE buyer
+        SET fullName = ?, email = ?, dob = ?, phoneN = ?, password = ?
+        WHERE bID = ?;
+      `;
+      await connection.query(query, [fullName, emailAddress, DOB, phoneNumber, password, bID]);
+      return true;
+  } catch (error) {
+      console.error('Error:', error);
+      throw error;
+  } finally {
+      if (connection) {
+          connection.release();
+      }
+  }
+}
+
 const getTables = async () => {
  try {
    const [tables] = await pool.query('SHOW TABLES');  // Run the 'SHOW TABLES' query
@@ -63,4 +83,4 @@ const getTables = async () => {
  }
 };
 
-module.exports = {buyerData, insertBuyer, getBuyer, getTables};  // Export query function for use in other files
+module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, getTables};  // Export query function for use in other files
