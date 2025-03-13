@@ -41,22 +41,22 @@
 
 
 <h1>Account Details</h1>
-<p class="p"> <a href="/profile">Profile</a></p>
+<p class="p"><a href="/profile">Profile</a></p>
 <section class="container">
 <form action="/update-account" method="post">
 <label for="fullName">Full Name</label><br />
-<input type="text" id="fullName" name="fullName" value="John Doe" placeholder="Enter your Full Name" required><br />
+<input type="text" id="fullName" name="fullName" value="<%= fullName %>" placeholder="Enter your Full Name" required><br />
 <label for="emailAddress">Email Address</label><br />
-<input type="text" id="emailAddress" name="emailAddress" value="johndoe@email.com" placeholder="Enter your Email Address" required><br />
+<input type="text" id="emailAddress" name="emailAddress" value="<%= emailAddress %>" placeholder="Enter your Email Address" required><br />
 <label for="DOB">DOB</label><br />
-<input type="date" id="DOB" name="DOB" value="2000-01-01"><br />
+<input type="date" id="DOB" name="DOB" value="<%= DOB %>"><br />
 <label for="phoneNumber">Phone Number</label><br />
-<input type="tel" id="phoneNumber" name="phoneNumber" value="123-456-7890" placeholder="Enter your Phone Number" required><br />
+<input type="tel" id="phoneNumber" name="phoneNumber" value="<%= phoneNumber %>" placeholder="Enter your Phone Number" required><br />
 <label for="password">Password</label><br />
-<input type="password" id="password" name="password" value="QWer12#$" placeholder="Enter your Password" required><br />
+<input type="password" id="password" name="password" value="<%= password %>" placeholder="Enter your Password" required><br />
+<button type="submit" class="btn">Save Changes</button>
 </form>
 </section>
-<button type="submit" class="btn">Save Changes</button>
 
 
 </main>

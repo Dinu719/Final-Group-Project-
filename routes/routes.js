@@ -83,6 +83,8 @@ console.log('User Not Found');
 return res.status(401).send('Invalid Email or Password');
 }
 if (password === user[0].password) {
+req.session.userEmail = user[0].email;
+console.log('Logged In:', req.session.userEmail);
 return res.redirect('/');
 } 
 else {
@@ -97,7 +99,7 @@ res.status(500).send('Error');
 });
 
 router.get("/logoff", (req, res) => {
-console.log('Logging Off:', req.session.userId);
+console.log('Logging Off:', req.session.userEmail);
 req.session.destroy((err) => {
 if (err) {
 console.error('Error:', err);
