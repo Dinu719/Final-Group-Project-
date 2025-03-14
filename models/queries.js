@@ -20,7 +20,7 @@ async function buyerData() {
       }
   }
 }
-
+// Sign in / sign out 
 async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password) {
   const connection = await pool.getConnection();
   try {
@@ -36,7 +36,7 @@ async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password)
       }
   }
 }
-
+// Login page 
 async function getBuyer(email) {
   const connection = await pool.getConnection();
   try {
@@ -52,7 +52,7 @@ async function getBuyer(email) {
       }
   }
 }
-
+// Accounting page 
 async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, password) {
   const connection = await pool.getConnection();
   try {
