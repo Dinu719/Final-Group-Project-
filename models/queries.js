@@ -21,8 +21,7 @@ async function buyerData() {
       }
   }
 }
-
-
+// Sign in / sign out 
 async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password) {
   const connection = await pool.getConnection();
   try {
@@ -32,6 +31,42 @@ async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password)
   } catch (error) {
       console.error('Error:', error);
       throw error; // Propagate the error
+  } finally {
+      if (connection) {
+          connection.release();
+      }
+  }
+}
+// Login page 
+async function getBuyer(email) {
+  const connection = await pool.getConnection();
+  try {
+    const query = "SELECT * FROM buyer WHERE email = ?";
+    const [rows] = await connection.query(query, [email]);
+    return rows;
+  } catch (error) {
+      console.error('Error:', error);
+      throw error;
+  } finally {
+      if (connection) {
+          connection.release();
+      }
+  }
+}
+// Accounting page 
+async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, password) {
+  const connection = await pool.getConnection();
+  try {
+      const query = `
+        UPDATE buyer
+        SET fullName = ?, email = ?, dob = ?, phoneN = ?, password = ?
+        WHERE bID = ?;
+      `;
+      await connection.query(query, [fullName, emailAddress, DOB, phoneNumber, password, bID]);
+      return true;
+  } catch (error) {
+      console.error('Error:', error);
+      throw error;
   } finally {
       if (connection) {
           connection.release();
@@ -49,5 +84,4 @@ const getTables = async () => {
  }
 };
 
-
-module.exports = {buyerData, insertBuyer, getTables};  // Export query function for use in other files
+module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, getTables};  // Export query function for use in other files

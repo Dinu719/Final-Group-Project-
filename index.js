@@ -1,10 +1,17 @@
 const express = require("express"); //creating object express from express module
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const routes = require("./routes/routes"); //import the routes file
 const app = express(); //create app object that has the express methods
 
 app.use(bodyParser.urlencoded({ extended: true })); //parse URL-encoded bodies
 
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 require("dotenv").config();
 
@@ -16,4 +23,3 @@ app.use(express.static("public")); //define the path of the folder that allows y
 
 
 app.listen(5001);
-
