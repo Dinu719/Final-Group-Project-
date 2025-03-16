@@ -47,6 +47,22 @@ return res.status(500).send('Error');
 });
 
 router.post("/update", async (req, res) => {  
+const {fullName, emailAddress, DOB, phoneNumber, password} = req.body;
+const bID = req.session.userID;
+try {
+const result = await updateDetails(bID, fullName, emailAddress, DOB, phoneNumber, password);
+if (result) {
+console.log('Details Changed');
+res.redirect('/details');
+}
+else {
+res.status(400).render('/update', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});
+}
+}
+catch (error) {
+console.error('Error:', error);
+res.status(500).send('Error');
+}
 });
 
 router.get("/Profile", (req, res) => {
@@ -96,7 +112,7 @@ res.status(500).send('Error');
 router.post("/login", async (req, res) => {
 const {email, password} = req.body;
 if (!email || !password) {
-return res.status(401).send('Please Provide Both Email & Password');
+return res.status(400).send('Please Provide Both Email & Password');
 }
 try {
 const user = await getBuyerByEmail(email);

@@ -21,7 +21,7 @@ async function buyerData() {
       }
   }
 }
-// Sign in / sign out 
+// Create Account
 async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password) {
   const connection = await pool.getConnection();
   try {
@@ -37,7 +37,7 @@ async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password)
       }
   }
 }
-// Login page 
+// Sign In
 async function getBuyer(email) {
   const connection = await pool.getConnection();
   try {
@@ -53,24 +53,47 @@ async function getBuyer(email) {
       }
   }
 }
-// Accounting page 
+// Change Details
 async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, password) {
   const connection = await pool.getConnection();
   try {
-      const query = `
-        UPDATE buyer
-        SET fullName = ?, email = ?, dob = ?, phoneN = ?, password = ?
-        WHERE bID = ?;
-      `;
-      await connection.query(query, [fullName, emailAddress, DOB, phoneNumber, password, bID]);
-      return true;
+    let query = 'UPDATE buyer SET ';
+    const fields = [];
+    const values = [];
+    if (fullName !== undefined) {
+      fields.push('fullName = ?');
+      values.push(fullName);
+    }
+    if (emailAddress !== undefined) {
+      fields.push('email = ?');
+      values.push(emailAddress);
+    }
+    if (DOB !== undefined) {
+      fields.push('dob = ?');
+      values.push(DOB);
+    }
+    if (phoneNumber !== undefined) {
+      fields.push('phoneN = ?');
+      values.push(phoneNumber);
+    }
+    if (password !== undefined) {
+      fields.push('password = ?');
+      values.push(password);
+    }
+    if (fields.length === 0) {
+      throw new Error('No Fields to Update');
+    }
+    query += fields.join(', ') + ' WHERE bID = ?';
+    values.push(bID);
+    await connection.query(query, values);
+    return true;
   } catch (error) {
-      console.error('Error:', error);
-      throw error;
+    console.error('Error:', error);
+    throw error;
   } finally {
-      if (connection) {
-          connection.release();
-      }
+    if (connection) {
+      connection.release();
+    }
   }
 }
 
