@@ -2,6 +2,7 @@
 //then export the function
 //the call these function in the controller depends on send or recieve get or post
 
+
 const pool = require('./connectionDB');
 
 async function buyerData() {
@@ -20,6 +21,7 @@ async function buyerData() {
       }
   }
 }
+
 
 async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password) {
   const connection = await pool.getConnection();
@@ -46,5 +48,6 @@ const getTables = async () => {
    throw err;
  }
 };
+
 
 module.exports = {buyerData, insertBuyer, getTables};  // Export query function for use in other files
