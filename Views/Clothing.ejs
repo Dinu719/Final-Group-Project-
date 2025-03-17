@@ -112,3 +112,35 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    var cart = []
+    try{
+        cart = JSON.parse(localStorage["cart"])
+    }
+    catch{
+        cart = []
+    }
+    const selectedcolor= document.getElementById("color")
+    const selectedlogo= document.getElementById("logo")
+    const selectedsize= document.getElementById("size")
+    const selectedquantity= document.getElementById("quantity")
+    const selectedcolor2= document.getElementById("color2")
+    const selectedlogo2= document.getElementById("logo2")
+    const selectedsize2= document.getElementById("size2")
+    const selectedquantity2= document.getElementById("quantity2")
+
+
+
+
+    const cart1 = document.getElementById("cart1")
+    const cart2 = document.getElementById("cart2")
+    cart1.onclick = (() => {
+        cart.push({"name":"Hoodie", "quantity":selectedquantity.value, "size":selectedsize.value, "color":selectedcolor.value, "logo":selectedlogo.value})
+        localStorage["cart"]= JSON.stringify(cart)
+    })
+    cart2.onclick = (() => {
+        cart.push({"name":"T-Shirt", "quantity":selectedquantity2.value, "size":selectedsize2.value, "color":selectedcolor2.value, "logo":selectedlogo2.value})
+        localStorage["cart"]=JSON.stringify(cart)
+    })
+</script>

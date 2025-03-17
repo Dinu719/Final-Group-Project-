@@ -37,6 +37,7 @@ async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password)
       }
   }
 }
+
 // Sign In
 async function getBuyer(email) {
   const connection = await pool.getConnection();
@@ -53,6 +54,7 @@ async function getBuyer(email) {
       }
   }
 }
+
 // Change Details
 async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, password) {
   const connection = await pool.getConnection();
