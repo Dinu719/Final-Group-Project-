@@ -1,118 +1,192 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Technology</title>
-
-<link rel="stylesheet" href="../Styles/tech.css"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology</title>
+  <link rel="stylesheet" href="../Styles/tech.css" />
 </head>
+
 <body>
 
 <header>
-    <nav class="navbar">
-      <div class="logo">
-          <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
+    </div>
+
+    <div class="nav-items">
+      <div class="dropdown">
+        <a href="#" class="account"> Account </a>
+        <div class="dropdown-menu">
+          <a href="/details" class="account">Account Details</a>
+          <a href="/Pastorders" class="account">Past Orders</a>
+          <a href="/Likeditem" class="account">Liked Items</a>
+          <a href="#" class="account">Log Out</a>
+        </div>
       </div>
-
-      <div class="nav-items">
-
-          <div class="dropdown">
-              <a href="#" class="account"> Account </a>
-              <div class="dropdown-menu">
-                  <a href="/details" class="account">Account Details</a>
-                  <a href="/Pastorders" class="account">Past Orders</a>
-                  <a href="/Likeditem" class="account">Liked Items</a>
-                  <a href="#" class="account">Log Out</a>
-              </div>
-          </div>
-
-          <img src="/Icons/Cart.png" alt="Cart">
-          <img src="/Icons/Profile.png" alt="Profile">
-      </div>
+      <a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
+      <img src="/Icons/Profile.png" alt="Profile">
+    </div>
   </nav>
-  </header>
-
-
+</header>
 
 <main>
+  <h1>Technology</h1>
 
-<h1>Technology</h1>
+  <div class="container">
 
-<div class="container">
+    <div class="products">
 
-<div class="products">
+      <!-- Laptop Case Product -->
+      <div class="product-item">
+        <p>Laptop Case</p>
+        <img class="images" src="../Icons/LaptopCase.webp" alt="Laptop Case">
+        <p>Price: $15</p>
+        <p>Quantity: <select id="quantity">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select></p>
 
-<div class="product-item">
+        <p>Size: <select id="size">
+            <option>11-12 in.</option>
+            <option>13-14 in.</option>
+            <option>15-16 in.</option>
+            <option>17-18 in.</option>
+          </select></p>
 
-<p>Laptop Case</p>
+        <p>Color: <select id="color">
+            <option>Black</option>
+            <option>Gray</option>
+            <option>Blue</option>
+            <option>Red</option>
+          </select></p>
 
-<img class="images" src="../Icons/LaptopCase.webp" alt="Laptop Case">
+        <p>Logo: <select id="logo">
+            <option>Blank</option>
+            <option>Flames</option>
+            <option>Clouds</option>
+            <option>Floret</option>
+            <option>Cross</option>
+          </select></p>
 
-<p>Price: $15</p>
+        <div class="buttons">
+          <button id="cart1">Add to Cart</button>
+          <button>Like</button>
+        </div>
+      </div>
 
-<p>Quantity: <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></p>
+      <!-- iPhone Case Product -->
+      <div class="product-item">
+        <p>iPhone Case</p>
+        <img class="images" src="../Icons/iPhoneCase.jpg" alt="iPhone Case"> <!-- Make sure this path is correct -->
+        <p>Price: $5</p>
+        <p>Quantity: <select id="quantity1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+          </select></p>
 
-<p>Size: <select><option>11-12 in.</option><option>13-14 in.</option><option>15-16 in.</option><option>17-18 in.</option></select></p>
+        <p>Model: <select id="model1">
+            <option>iPhone 16</option>
+            <option>iPhone 16 Plus</option>
+            <option>iPhone 16 Pro</option>
+            <option>iPhone 16 Pro Max</option>
+          </select></p>
 
-<p>Color: <select><option>Black</option><option>Gray</option><option>Blue</option><option>Red</option></select></p>
+        <p>Color: <select id="color1">
+            <option>Black</option>
+            <option>Blue</option>
+            <option>Red</option>
+            <option>Clear</option>
+          </select></p>
 
-<p>Logo: <select><option>Blank</option><option>Flames</option><option>Clouds</option><option>Floret</option><option>Cross</option></select></p>
+        <p>Logo: <select id="logo1">
+            <option>Blank</option>
+            <option>Flames</option>
+            <option>Clouds</option>
+            <option>Floret</option>
+            <option>Cross</option>
+          </select></p>
 
-<div class="buttons">
+        <div class="buttons">
+          <button id="cart2">Add to Cart</button>
+          <button>Like</button>
+        </div>
+      </div>
 
-<button>Add to Cart</button>
+    </div>
 
-<button>Like</button>
-
-</div>
-
-</div>
-
-<div class="product-item">
-
-<p>iPhone Case</p>
-
-<img class="images" src="../Icons/iPhoneCase.jpg" alt="iPhone Case">
-
-<p>Price: $5</p>
-
-<p>Quantity: <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></p>
-
-<p>Model: <select><option>iPhone 16</option><option>iPhone 16 Plus</option><option>iPhone 16 Pro</option><option>iPhone 16 Pro Max</option></select></p>
-
-<p>Color: <select><option>Black</option><option>Blue</option><option>Red</option><option>Clear</option></select></p>
-
-<p>Logo: <select><option>Blank</option><option>Flames</option><option>Clouds</option><option>Floret</option><option>Cross</option></select></p>
-
-<div class="buttons">
-
-<button>Add to Cart</button>
-
-<button>Like</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </main>
 
 <footer>
-        <p class="divfooter"> Copyright © 2025 Craftify </p>
-        <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
-        
+  <p class="divfooter"> Copyright © 2025 Craftify </p>
+  <a href="/CS"> <img src="../Icons/CustomerService.png" alt="CustomerService" class="customer"> </a>
 </footer>
+
+<script type="text/javascript">
+  var cart = [];
+  try {
+    cart = JSON.parse(localStorage["cart"]);
+  } catch {
+    cart = [];
+  }
+
+  // Select elements for Laptop Case
+  const selectedcolor = document.getElementById("color");
+  const selectedlogo = document.getElementById("logo");
+  const selectedsize = document.getElementById("size");
+  const selectedquantity = document.getElementById("quantity");
+
+  // Select elements for iPhone Case
+  const selectedcolor1 = document.getElementById("color1");
+  const selectedlogo1 = document.getElementById("logo1");
+  const selectedmodel1 = document.getElementById("model1");
+  const selectedquantity1 = document.getElementById("quantity1");
+
+  // Cart buttons
+  const cart1 = document.getElementById("cart1");
+  const cart2 = document.getElementById("cart2");
+
+  // Add Laptop Case to cart
+  cart1.onclick = (() => {
+    cart.push({
+      "name": "Laptop Case",
+      "quantity": selectedquantity.value,
+      "size": selectedsize.value,
+      "color": selectedcolor.value,
+      "logo": selectedlogo.value,
+      "price": "$15"
+    });
+    localStorage["cart"] = JSON.stringify(cart);
+    console.log(cart); // Log to check cart content
+  });
+
+  // Add iPhone Case to cart
+  cart2.onclick = (() => {
+    cart.push({
+      "name": "iPhone Case",
+      "quantity": selectedquantity1.value,
+      "model": selectedmodel1.value,
+      "color": selectedcolor1.value,
+      "logo": selectedlogo1.value,
+      "price": "$5"
+    });
+    localStorage["cart"] = JSON.stringify(cart);
+    console.log(cart); // Log to check cart content
+  });
+</script>
 
 </body>
 
 </html>
+
