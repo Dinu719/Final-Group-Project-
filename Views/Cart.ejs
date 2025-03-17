@@ -1,177 +1,184 @@
 <!DOCTYPE html>
 <html lang = "en">
-  <head> 
-    <meta charset="UTF-8">
-    <meta name = "viewpoint" content = "width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/cart.css"/>
-    <title>Cart</title>
-  </head>
-  <body class="bg">
-      <header>
-        <nav class="navbar">
+<head>
+  <meta charset="UTF-8">
+  <meta name = "viewpoint" content = "width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Styles/cart.css"/>
+  <title>Cart</title>
+</head>
+<body class="bg">
+    <header>
+      <nav class="navbar">
 
-          <div class="logo">
-              <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
-          </div>
-  
-          <div class="nav-items">
-  
-              <div class="dropdown">
-                  <a href="#" class="account"> Account </a>
-                  <div class="dropdown-menu">
-                      <a href="/details" class="account">Account Details</a>
-                      <a href="/Pastorders" class="account">Past Orders</a>
-                      <a href="/Likeditem" class="account">Liked Items</a>
-                      <a href="#" class="account">Log Out</a>
-                  </div>
-              </div>
-  
-              <img src="/Icons/Cart.png" alt="Cart">
-              <img src="/Icons/Profile.png" alt="Profile">
-          </div>
-      </nav>
-      </header>
+
+
+
+        <div class="logo">
+            <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
+        </div>
+         <div class="nav-items">
+             <div class="dropdown">
+                <a href="#" class="account"> Account </a>
+                <div class="dropdown-menu">
+                    <a href="/details" class="account">Account Details</a>
+                    <a href="/Pastorders" class="account">Past Orders</a>
+                    <a href="/Likeditem" class="account">Liked Items</a>
+                    <a href="#" class="account">Log Out</a>
+                </div>
+            </div>
+             <img src="/Icons/Cart.png" alt="Cart">
+            <img src="/Icons/Profile.png" alt="Profile">
+        </div>
+    </nav>
+    </header>
+
+
+
 
 <main>
-    <h1 > Shopping Cart </h1>
-    <div class = "cart-container">
+  <h1 > Shopping Cart </h1>
+  <div id ="products"class = "cart-container">
+    <div class = "cart-item">
+      <img src = "../Icons/T-Shirt.jpeg" alt = "T-Shirt">
+      <div class = "item-details">
+      <h4> T-Shirt </h4>
+      <p>Small, Black, Blank</p>
+      <p><strong> $20 </strong></p>
+      <label>Qty: <input type = "number" class = "quantity" value = "2" min = "1"> </label>
+      <button> Remove </button>
+      <button> Like </button>
+    </div>
+  </div>
+     <div class = "cart-item">
+      <img src = "../Icons/CleariPhone16Case.jpg" alt = "iPhone Case">
+      <div class = "item-details">
+      <h4> iPhone Case </h4>
+      <p>iPhone 16, Clear, Blank</p>
+      <p><strong> $5 </strong></p>
+      <label>Qty: <input type = "number" class = "quantity" value = "1" min = "1"> </label>
+      <button> Remove </button>
+      <button> Save </button>
+    </div>
+  </div>
 
-      <div class = "cart-item">
-        <img src = "../Icons/T-Shirt.jpeg" alt = "T-Shirt">
-        <div class = "item-details">
-        <h4> T-Shirt </h4>
-        <p>Small, Black, Blank</p>
-        <p><strong> $20 </strong></p>
-        <label>Qty: <input type = "number" class = "quantity" value = "2" min = "1"> </label>
-        <button> Remove </button>
-        <button> Like </button>
-      </div>
-    </div>
-    
-      <div class = "cart-item"> 
-        <img src = "../Icons/CleariPhone16Case.jpg" alt = "iPhone Case">
-        <div class = "item-details">
-        <h4> iPhone Case </h4>
-        <p>iPhone 16, Clear, Blank</p>
-        <p><strong> $5 </strong></p>
-        <label>Qty: <input type = "number" class = "quantity" value = "1" min = "1"> </label>
-        <button> Remove </button>
-        <button> Save </button>
-      </div>
-    </div>
 
-    </div>
+
+
+  </div>
 <div class = "summary">
-  <p> Subtotal: <span id = "subtotal" > $25 </span></p>
-  <p> Shipping: <span id = "shipping"> $5 </span></p>
-  <p> Tax: <span id = "tax"> $5 </span></p>
-  <p><strong> Total: <span id = "total" > $35 </span></strong></p>
-  <a href="/checkout"><button id = "checkout-btn"> Checkout </button></a>
+<p> Subtotal: <span id = "subtotal" > $25 </span></p>
+<p> Shipping: <span id = "shipping"> $5 </span></p>
+<p> Tax: <span id = "tax"> $5 </span></p>
+<p><strong> Total: <span id = "total" > $35 </span></strong></p>
+<a href="/checkout"><button id = "checkout-btn"> Checkout </button></a>
 </div>
+
+
+
 
 </main>
 <footer>
-  <div class="fdiv">
-      <div >
-          <p class="divfooter"> Copyright © 2025 Craftify </p>
-      </div>
+<div class="fdiv">
+    <div >
+        <p class="divfooter"> Copyright © 2025 Craftify </p>
+    </div>
 
-      <div>
-          <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
-      </div>  
+
+
+
+    <div>
+        <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
+    </div>
   </div>
 </footer>
 </body>
 </html>
-
 <script type="text/javascript">
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const products = document.getElementById("products");
-  const subtotalElem = document.getElementById("subtotal");
-  const totalElem = document.getElementById("total");
-  const shippingCost = 5; // Flat shipping cost
-  const taxRate = 0.2; // 20% tax
-  function renderCart() {
-     products.innerHTML = ""; // Clear the cart display
-     let subtotal = 0;
- 
-     cart.forEach((item, index) => {
-         let imagePath = "../Icons/T-Shirt.jpeg"; // Default image
-         let price = 10; // Default price
- 
-         // Assign correct images and prices based on product name
-         if (item.name.toLowerCase().includes("hoodie")) {
-             imagePath = "../Icons/Hoodie.webp";
-             price = 20;
-         } else if (item.name.toLowerCase().includes("t-shirt")) {
-             imagePath = "../Icons/T-Shirt.jpeg";
-             price = 10;
-         } else if (item.name.toLowerCase().includes("laptop case")) {
-             imagePath = "../Icons/LaptopCase.webp"; // Correct image for Laptop Case
-             price = 15; // Correct price for Laptop Case
-         } else if (item.name.toLowerCase().includes("iphone case")) {
-             imagePath = "../Icons/iPhoneCase.jpg"; // Correct image for iPhone Case
-             price = 5; // Correct price for iPhone Case
-         }
- 
-         let itemTotal = price * item.quantity;
-         subtotal += itemTotal;
- 
-         let details = `
-             <p>${item.size ? "Size: " + item.size : item.model ? "Model: " + item.model : ""}</p>
-             <p>Color: ${item.color}</p>
-             <p>Logo: ${item.logo ? item.logo : "None"}</p>
-         `;
- 
-         let html = `
-             <div class="cart-item" data-index="${index}">
-                 <img src="${imagePath}" alt="${item.name}">
-                 <div class="item-details">
-                     <h4>${item.name}</h4>
-                     ${details}
-                     <p><strong> $${price} </strong></p>
-                     <label>Qty: <input type="number" class="quantity" value="${item.quantity}" min="1" data-index="${index}"></label>
-                     <button class="remove-btn" data-index="${index}"> Remove </button>
-                     <button class="like-btn"> Like </button>
-                 </div>
-             </div>`;
- 
-         products.insertAdjacentHTML("beforeend", html);
-     });
- 
-     updateTotals(subtotal);
-     addEventListeners();
+ let cart = JSON.parse(localStorage.getItem("cart")) || [];
+ const products = document.getElementById("products");
+ const subtotalElem = document.getElementById("subtotal");
+ const totalElem = document.getElementById("total");
+ const shippingCost = 5; // Flat shipping cost
+ const taxRate = 0.2; // 20% tax
+ function renderCart() {
+    products.innerHTML = ""; // Clear the cart display
+    let subtotal = 0;
+
+    cart.forEach((item, index) => {
+        let imagePath = "../Icons/T-Shirt.jpeg"; // Default image
+        let price = 10; // Default price
+
+        // Assign correct images and prices based on product name
+        if (item.name.toLowerCase().includes("hoodie")) {
+            imagePath = "../Icons/Hoodie.webp";
+            price = 20;
+        } else if (item.name.toLowerCase().includes("t-shirt")) {
+            imagePath = "../Icons/T-Shirt.jpeg";
+            price = 10;
+        } else if (item.name.toLowerCase().includes("laptop case")) {
+            imagePath = "../Icons/LaptopCase.webp"; // Correct image for Laptop Case
+            price = 15; // Correct price for Laptop Case
+        } else if (item.name.toLowerCase().includes("iphone case")) {
+            imagePath = "../Icons/iPhoneCase.jpg"; // Correct image for iPhone Case
+            price = 5; // Correct price for iPhone Case
+        }
+
+        let itemTotal = price * item.quantity;
+        subtotal += itemTotal;
+
+        let details = `
+            <p>${item.size ? "Size: " + item.size : item.model ? "Model: " + item.model : ""}</p>
+            <p>Color: ${item.color}</p>
+            <p>Logo: ${item.logo ? item.logo : "None"}</p>
+        `;
+
+        let html = `
+            <div class="cart-item" data-index="${index}">
+                <img src="${imagePath}" alt="${item.name}">
+                <div class="item-details">
+                    <h4>${item.name}</h4>
+                    ${details}
+                    <p><strong> $${price} </strong></p>
+                    <label>Qty: <input type="number" class="quantity" value="${item.quantity}" min="1" data-index="${index}"></label>
+                    <button class="remove-btn" data-index="${index}"> Remove </button>
+                    <button class="like-btn"> Like </button>
+                </div>
+            </div>`;
+
+        products.insertAdjacentHTML("beforeend", html);
+    });
+
+    updateTotals(subtotal);
+    addEventListeners();
+}
+
+
+  function updateTotals(subtotal) {
+   const tax = subtotal * taxRate;
+   const total = subtotal + tax + shippingCost;
+  
+   subtotalElem.textContent = `$${subtotal.toFixed(2)}`;
+   document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
+   totalElem.textContent = `$${total.toFixed(2)}`;
  }
- 
- 
-   function updateTotals(subtotal) {
-    const tax = subtotal * taxRate;
-    const total = subtotal + tax + shippingCost;
-   
-    subtotalElem.textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
-    totalElem.textContent = `$${total.toFixed(2)}`;
-  }
-   function addEventListeners() {
-    document.querySelectorAll(".remove-btn").forEach(button => {
-      button.addEventListener("click", (event) => {
-        const index = event.target.dataset.index;
-        cart.splice(index, 1);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        renderCart();
-      });
-    });
-   
-    document.querySelectorAll(".quantity").forEach(input => {
-      input.addEventListener("change", (event) => {
-        const index = event.target.dataset.index;
-        cart[index].quantity = parseInt(event.target.value) || 1;
-        localStorage.setItem("cart", JSON.stringify(cart));
-        renderCart();
-      });
-    });
-  }
-   renderCart();
- </script>
- 
- 
+  function addEventListeners() {
+   document.querySelectorAll(".remove-btn").forEach(button => {
+     button.addEventListener("click", (event) => {
+       const index = event.target.dataset.index;
+       cart.splice(index, 1);
+       localStorage.setItem("cart", JSON.stringify(cart));
+       renderCart();
+     });
+   });
+  
+   document.querySelectorAll(".quantity").forEach(input => {
+     input.addEventListener("change", (event) => {
+       const index = event.target.dataset.index;
+       cart[index].quantity = parseInt(event.target.value) || 1;
+       localStorage.setItem("cart", JSON.stringify(cart));
+       renderCart();
+     });
+   });
+ }
+  renderCart();
+</script>
