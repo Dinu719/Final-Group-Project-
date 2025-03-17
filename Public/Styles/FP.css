@@ -1,6 +1,5 @@
 .bg {
-background-color: black;
-background-color: black;
+background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB 100%);
 color: white;
 font-family: Arial, sans-serif;
 height: 100vh;
@@ -17,8 +16,7 @@ text-decoration: none;
 }
 
 header img {
-max-width: 200px;
-margin-bottom: 20px;
+width: 60%;
 }
 
 main {
@@ -33,7 +31,7 @@ text-align: center;
 }
 
 h4 {
-margin-top: 10px;
+font-size: 1.5rem;
 margin-bottom: 20px;
 }
 
@@ -44,32 +42,13 @@ margin-top: 5px;
 text-align: left;
 }
 
-input[type="text"], input[type="email"], input[type="date"], input[type="tel"], input[type="password"] {
+input[type="text"], input[type="password"] {
 width: 90%;
 padding: 10px;
 border: 1px solid #ccc;
 border-radius: 5px;
 margin-bottom: 20px;
 display: inline-block;
-}
-
-input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"] {
-margin-bottom: 15px;
-}
-
-button.btn1 {
-background-color: gray;
-color: white;
-border: none;
-padding: 10px 20px;
-cursor: pointer;
-border-radius: 5px;
-width: 100%;
-font-size: 16px;
-}
-
-button.btn1:hover {
-background-color: darkgray;
 }
 
 footer {
@@ -103,7 +82,22 @@ footer a:hover, main a:hover {
 text-decoration: underline;
 }
 
-button.btn2  {
+button.btn1 {
+background-color: gray;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 5px;
+width: 100%;
+font-size: 16px;
+}
+
+button.btn1:hover {
+background-color: darkgray;
+}
+
+button.btn2 {
 background-color: orange;
 color: white;
 border: none;

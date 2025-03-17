@@ -1,268 +1,265 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+
 body {
-background-color: #333;
-font-family: Arial, sans-serif;
-color: white;
-text-align: center;
+background: lightpink;
 }
 
-.chat-window {
-position: absolute;
-bottom: 10px;
-right: 10px;
-width: 300px;
-background-color: white;
-color: black;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.chat-header {
-padding: 10px;
-background-color: #f0f0f0;
-border-bottom: 1px solid #ccc;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-.chat-header span {
-font-weight: bold;
-}
-
-.chat-body {
-padding: 10px;
-}
-
-.chat-footer {
-padding: 10px;
-border-top: 1px solid #ccc;
-display: flex;
-align-items: center;
-}
-
-.chat-footer input {
-flex: 1;
-height: 30px;
-border: 1px solid #ccc;
-border-radius: 4px;
-padding: 5px;
-}
-
-.chat-footer button {
-margin-left: 5px;
-background-color: #007bff;
-color: white;
+/* Chatbot Toggle Button */
+.chatbot-toggler {
+position: fixed;
+bottom: 30px;
+right: 35px;
+outline: none;
 border: none;
-border-radius: 4px;
-padding: 5px 10px;
-cursor: pointer;
-}
-
-.navdiv {
-display: inline-flex;
-justify-content: space-between;
-align-items: center;
-width:100%;
-}
-
-.navbar {
+height: 50px;
+width: 50px;
 display: flex;
-justify-content: space-between;
-padding: 10px;
-background: gray;
+cursor: pointer;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background: lightcoral; /* Purple */
+transition: all 0.2s ease;
 }
 
-.divimg {
-width:70px;
-height:auto;
-padding-left: 1px;
-padding-right: px;
-margin: 0px;  
-padding-top: 15px;
-justify-content: space-between;
+body.show-chatbot .chatbot-toggler {
+transform: rotate(90deg);
 }
 
-header {
-width: 100%;
-padding:0px;
-margin: 0px;
+.chatbot-toggler span {
+color: #fff;
+position: absolute;
 }
 
-li a {
-text-decoration: none;
-color:white;
+.chatbot-toggler span:last-child,
+body.show-chatbot .chatbot-toggler span:first-child {
+opacity: 0;
 }
 
-li {
+body.show-chatbot .chatbot-toggler span:last-child {
+opacity: 1;
+}
+
+/* Chatbot Styling */
+.chatbot {
+position: fixed;
+right: 35px;
+bottom: 90px;
+width: 420px;
+background: linear-gradient(135deg, #9b59b6, #e74c3c); /* Purple to Red Gradient */
+border-radius: 15px;
+overflow: hidden;
+opacity: 0;
+pointer-events: none;
+transform: scale(0.5);
+transform-origin: bottom right;
+box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+0 32px 64px -48px rgba(0, 0, 0, 0.5);
+transition: all 0.1s ease;
+}
+
+body.show-chatbot .chatbot {
+opacity: 1;
+pointer-events: auto;
+transform: scale(1);
+}
+
+/* Chatbot Header */
+.chatbot header {
+padding: 16px 0;
+position: relative;
+text-align: center;
+color: #fff;
+background: red; 
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot header span {
+position: absolute;
+right: 15px;
+top: 50%;
+display: none;
+cursor: pointer;
+transform: translateY(-50%);
+}
+
+header h2 {
+font-size: 1.4rem;
+}
+
+/* Chatbox */
+.chatbot .chatbox {
+overflow-y: auto;
+height: 510px;
+padding: 30px 20px 100px;
+}
+
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
+width: 6px;
+}
+
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-track {
+background: #fff;
+border-radius: 25px;
+}
+
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-thumb {
+background: #ccc;
+border-radius: 25px;
+}
+
+/* Chat Messages */
+.chatbox .chat {
+display: flex;
 list-style: none;
 }
 
-.fdiv {
+.chatbox .outgoing {
+margin: 20px 0;
+justify-content: flex-end;
+}
+
+.chatbox .incoming span {
+width: 32px;
+height: 32px;
+color: #fff;
+cursor: default;
+text-align: center;
+line-height: 32px;
+align-self: flex-end;
+background: red; /* Purple */
+border-radius: 4px;
+margin: 0 10px 7px 0;
+}
+
+.chatbox .chat p {
+white-space: pre-wrap;
+padding: 12px 16px;
+border-radius: 10px 10px 0 10px;
+max-width: 75%;
+color: #fff;
+font-size: 0.95rem;
+background: red; /* Purple */
+}
+
+.chatbox .incoming p {
+border-radius: 10px 10px 10px 0;
+}
+
+.chatbox .chat p.error {
+color: #721c24;
+background: #f8d7da;
+}
+
+.chatbox .incoming p {
+color: #000;
+background: #f2f2f2;
+}
+
+/* Chat Input Section */
+.chatbot .chat-input {
 display: flex;
-justify-content: flex-start;
-align-items: center;
-}
-
-.divfooter {
-margin: 0;
-padding-left: 10px;
-color: white;
-}
-
-footer {
-position: fixed;
+gap: 5px;
+position: absolute;
 bottom: 0;
-left: 0;
 width: 100%;
-padding: 10px;
-text-align: left;
+background: #fff;
+padding: 3px 20px;
+border-top: 1px solid #ddd;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+.chat-input textarea {
+height: 55px;
+width: 100%;
+border: none;
+outline: none;
+resize: none;
+max-height: 180px;
+padding: 15px 15px 15px 0;
+font-size: 0.95rem;
 }
 
-header {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #f4f4f4;
+/* Send Button */
+.chat-input span {
+align-self: flex-end;
+color: red; /* Purple */
+cursor: pointer;
+height: 55px;
+display: flex;
+align-items: center;
+visibility: hidden;
+font-size: 1.35rem;
 }
 
-.navbar {
-    width: 100%;
-    max-width: 1100px;
-    background: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.chat-input textarea:valid~span {
+visibility: visible;
 }
 
-.logo img {
-    height: 50px;
-    width: auto;
+/* Predefined Question Buttons */
+.buttons-container {
+display: flex;
+justify-content: space-around;
+margin-top: 15px;
 }
 
-.nav-items {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    position: relative;
+.buttons-container button {
+background: #ffffff;
+color: red; /* Purple */
+border: 2px solid red;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.3s ease;
+width: 45%; /* Make buttons evenly spaced */
+margin: 5px;
 }
 
-.nav-items a {
-    text-decoration: none;
-    background: #d3d3d3;
-    color: black;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: background 0.3s;
-    position: relative;
+.buttons-container button:hover {
+background: red; /* Purple */
+color: #fff;
+border: 2px solid red;
 }
 
-.nav-items a:hover {
-    background: #b0b0b0;
+.buttons-container button:focus {
+outline: none;
 }
 
-.dropdown {
-    position: relative;
+/* Mobile View */
+@media (max-width: 490px) {
+.chatbot-toggler {
+right: 20px;
+bottom: 20px;
 }
 
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 180px;
-    overflow: hidden;
-    z-index: 10;
+.chatbot {
+right: 0;
+bottom: 0;
+height: 100%;
+border-radius: 0;
+width: 100%;
 }
 
-.dropdown-menu a {
-    display: block;
-    padding: 12px 15px;
-    text-align: left;
-    background: white;
-    color: black;
-    font-size: 14px;
-    transition: background 0.3s;
+.chatbot .chatbox {
+height: 90%;
+padding: 25px 15px 100px;
 }
 
-.dropdown-menu a:hover {
-    background: #f0f0f0;
+.chatbot .chat-input {
+padding: 5px 15px;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.chatbot header span {
+display: block;
+}
 }
 
-.nav-items img {
-    width: 30px;
-    height: auto;
-    cursor: pointer;
-}
-
-.bg {
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-    
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-h1 {
-    font-family: LemonMilk;
-    color:white;
-    text-shadow: 0px 0px 5px rgb(59, 59, 59);
-}
-
-@font-face{
-    font-family: LemonMilk;
-    src:url(../Fonts/LemonMilk.otf)
-}
-@font-face{
-    font-family: LMBold;
-    src:url(../Fonts/LEMONMILK-Bold.otf)
-}
-@font-face{
-    font-family: LemonLight;
-    src:url(../Fonts/LemonMilklight.otf)
-}
-@font-face{
-    font-family:HaveHeartone ;
-    src:url(../Fonts/Have\ Heart\ One.otf)
-}
-
-@font-face{
-    font-family: Muli;
-    src:url(../Fonts/Muli-Light.ttf)
-}
-
-@font-face{
-    font-family: HaveHearttwo;
-    src:url(../Fonts/Have\ Heart\ Two.otf)
-}
-
-a {
-    font-family: lemonLight;
-    color:black;
-}
-
-.bg {
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
