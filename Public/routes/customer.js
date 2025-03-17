@@ -9,7 +9,7 @@ const inputInitHeight = chatInput.scrollHeight;
 
 // Predefined responses
 const predefinedResponse = {
-  "what's the most popular item?": "The Black T-Shirt.",
+  "what's the most popular item?": "The Black T-shirt.",
   "how long can it take for a refund?": "Refunds usually take 5-7 business days to process, depending on your payment method."
 };
 
@@ -18,7 +18,7 @@ const createChatLi = (message, className) => {
   const chatLi = document.createElement("li");
   chatLi.classList.add("chat", `${className}`);
   
-  // Add the "Robot" icon for incoming messages
+  // Add the robot icon for incoming messages
   let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
   
   chatLi.innerHTML = chatContent;
@@ -100,7 +100,7 @@ const handleChat = () => {
   }, 600);
 };
 
-// Event listener for the "Send" button
+// Event listener for the Send button
 sendChatBtn.addEventListener("click", handleChat);
 
 // Event listener to close the chatbot
@@ -129,7 +129,7 @@ chatInput.addEventListener("input", () => {
   chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 
-// Event listener for "Enter" key to send chat (only for wide screens)
+// Event listener for Enter key to send chat (only for wide screens)
 chatInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
     e.preventDefault();
