@@ -44,7 +44,14 @@ padding: 10px;
 margin: 5px;
 cursor: pointer;
 }
-
+/* the hover for the Add the cart */
+#cart2:hover{
+    background-color: #d3d3d3;
+}
+/* Like item to be hover*/
+button:not(#cart2):hover{
+    background-color: #d3d3d3;
+}
 .navdiv {
 display: inline-flex;
 justify-content: space-between;
