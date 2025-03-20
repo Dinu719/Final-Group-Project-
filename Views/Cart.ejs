@@ -6,12 +6,11 @@
   <link rel="stylesheet" href="../Styles/cart.css"/>
   <title>Cart</title>
 </head>
+
+
 <body class="bg">
     <header>
       <nav class="navbar">
-
-
-
 
         <div class="logo">
             <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
@@ -32,39 +31,24 @@
     </nav>
     </header>
 
-
-
-
 <main>
   <h1 > Shopping Cart </h1>
-  <div id ="products"class = "cart-container">
-    <div class = "cart-item">
-      <img src = "../Icons/T-Shirt.jpeg" alt = "T-Shirt">
-      <div class = "item-details">
-      <h4> T-Shirt </h4>
-      <p>Small, Black, Blank</p>
-      <p><strong> $20 </strong></p>
-      <label>Qty: <input type = "number" class = "quantity" value = "2" min = "1"> </label>
-      <button> Remove </button>
-      <button> Like </button>
+    <div id ="products"class = "cart-container">
+      <div class = "cart-item">
+          <img src = "../Icons/T-Shirt.jpeg" alt = "T-Shirt">
+            <div class = "item-details">
+              <h4> T-Shirt </h4>
+              <p>Small, Black, Blank</p>
+              <p><strong> $20 </strong></p>
+              <label>Qty: <input type = "number" class = "quantity" value = "2" min = "1"> </label>
+              <button> Remove </button>
+              <button> Like </button>
+            </div>
+        </div>
     </div>
-  </div>
-     <div class = "cart-item">
-      <img src = "../Icons/CleariPhone16Case.jpg" alt = "iPhone Case">
-      <div class = "item-details">
-      <h4> iPhone Case </h4>
-      <p>iPhone 16, Clear, Blank</p>
-      <p><strong> $5 </strong></p>
-      <label>Qty: <input type = "number" class = "quantity" value = "1" min = "1"> </label>
-      <button> Remove </button>
-      <button> Save </button>
-    </div>
-  </div>
 
+      
 
-
-
-  </div>
 <div class = "summary">
 <p> Subtotal: <span id = "subtotal" > $25 </span></p>
 <p> Shipping: <span id = "shipping"> $5 </span></p>
@@ -73,26 +57,20 @@
 <a href="/checkout"><button id = "checkout-btn"> Checkout </button></a>
 </div>
 
-
-
-
 </main>
+
+
 <footer>
-<div class="fdiv">
-    <div >
-        <p class="divfooter"> Copyright © 2025 Craftify </p>
-    </div>
-
-
-
-
-    <div>
-        <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
-    </div>
-  </div>
+  <p class="ftext"> Copyright © 2025 Craftify </p>
+  <div>
+      <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
+  </div>  
 </footer>
 </body>
 </html>
+
+
+
 <script type="text/javascript">
  let cart = JSON.parse(localStorage.getItem("cart")) || [];
  const products = document.getElementById("products");

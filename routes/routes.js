@@ -22,6 +22,10 @@ router.get("/password2", (req, res) => {
 res.render('ForgotPassword2');
 });
 
+router.get("/purchase", (req, res) => {
+    res.render('purchase');
+    });
+
 router.get("/details", async (req, res) => {
 const email = req.session.userEmail;
 if (!email) {
