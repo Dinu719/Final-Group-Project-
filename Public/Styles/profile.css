@@ -79,12 +79,10 @@ header {
     font-family:HaveHeartone ;
     src:url(../Fonts/Have\ Heart\ One.otf)
 }
-
 @font-face{
     font-family: Muli;
     src:url(../Fonts/Muli-Light.ttf)
 }
-
 @font-face{
     font-family: HaveHearttwo;
     src:url(../Fonts/Have\ Heart\ Two.otf)
@@ -109,13 +107,13 @@ header {
        box-shadow: 0 0 20px #eee;
        border-radius: 30px;
        display: block;
-     }
+    }
 
      .btn-grad:hover {
        background-position: right center; 
        color: #fff;
        text-decoration: none;
-     }
+    }
 
      nav div ul li a {
         text-decoration: none;
@@ -127,26 +125,25 @@ header {
         padding: 2px;
         margin:5px;
         text-align: center;
-     }
+    }
 
      .ftext {
         color: white;
         font-family: lemonMilk;
         text-align: center;
-        text-shadow: 0px 0px 2px rgb(0, 0, 0);
         font-size:20px ;
         position:relative;
-        bottom: 0%;
+        bottom: 2px;
         left: 0;
         width: 100%;
     }
 
-  footer {
+footer {
     position: relative;
     top: 20px;
-  }
+}
   
-  .outer-container {
+.outer-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,7 +158,6 @@ header {
     text-align: center;
     color:black;
     font-family: LemonLight;
-
 }
 
 .profile-container {

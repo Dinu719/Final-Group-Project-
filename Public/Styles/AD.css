@@ -117,14 +117,17 @@ background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 font-family: LemonMilk;
 src:url(../Fonts/LemonMilk.otf)
 }
+
 @font-face{
 font-family: LMBold;
 src:url(../Fonts/LEMONMILK-Bold.otf)
 }
+
 @font-face{
 font-family: LemonLight;
 src:url(../Fonts/LemonMilklight.otf)
 }
+
 @font-face{
 font-family:HaveHeartone ;
 src:url(../Fonts/Have\ Heart\ One.otf)
