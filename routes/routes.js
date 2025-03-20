@@ -23,8 +23,8 @@ res.render('ForgotPassword2');
 });
 
 router.get("/purchase", (req, res) => {
-    res.render('purchase');
-    });
+res.render('purchase');
+});
 
 router.get("/details", async (req, res) => {
 const email = req.session.userEmail;
@@ -36,10 +36,11 @@ const buyer = await getBuyerByEmail(email);
 if (!buyer || buyer.length === 0) {
 return res.status(401).send('Buyer Not Found');
 }
+const dob = new Date(buyer[0].dob).toISOString().split('T')[0];
 return res.render('AccountDetails', {
 fullName: buyer[0].fullName,
 emailAddress: buyer[0].email,
-DOB: buyer[0].dob,
+DOB: dob,
 phoneNumber: buyer[0].phoneN,
 password: buyer[0].password,
 });

@@ -1,9 +1,12 @@
 body {
-color: white;
+background-image: linear-gradient(to bottom, #DA4453 0%, #89216B 100%);
 font-family: Arial, sans-serif;
+color: white;
 text-align: center;
-background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
-background-blend-mode: multiply,multiply;
+height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
 }
 
 .container {
@@ -38,7 +41,7 @@ box-sizing: border-box;
 }
 
 .btn {
-background-color: orange;  
+background-color: black;  
 color: white;               
 padding: 8px 16px;          
 border: none;               
@@ -49,7 +52,7 @@ box-sizing: border-box;
 }
 
 .btn:hover {
-background-color: darkorange;  
+background-color: gray;  
 }
 
 .navdiv {
@@ -63,7 +66,7 @@ width:100%;
 width:70px;
 height:auto;
 padding-left: 1px;
-padding-right: px;
+padding-right: 1px;
 margin: 0px;  
 padding-top: 15px;
 justify-content: space-between;
@@ -100,7 +103,6 @@ bottom: 30px;
 right: 30px;
 }
 
-
 header {
 margin-top: 20px;
 width: 100%;
@@ -108,7 +110,8 @@ padding:0px;
 margin: 0px;
 border-radius: 30px;
 box-shadow: 0px 0px 10px rgb(17, 17, 17);
-background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);            }
+background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);            
+}
 
 @font-face{
 font-family: LemonMilk;
@@ -150,7 +153,7 @@ align-items: center;
 width:100%;
 }
 
-.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%)}
+.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF 50%, #ECE9E6 100%)}
 
 .btn-grad {
 margin: 5px;
@@ -182,7 +185,7 @@ left: 0;
 width: 100%;
 }
 
-.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%)}
+.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  50%, #ECE9E6  100%)}
 
 .btn-grad {
 margin: 5px;
@@ -217,12 +220,6 @@ text-align: center;
 
 h1 {
 font-family: LemonMilk;
-color:white;
-text-shadow: 0px 0px 5px rgb(59, 59, 59);
-}
-
-.p {
-font-family: LemonLight;
 color:white;
 text-shadow: 0px 0px 5px rgb(59, 59, 59);
 }
