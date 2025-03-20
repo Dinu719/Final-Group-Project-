@@ -73,10 +73,6 @@ router.get("/Pastorders", (req, res) => {
 res.render('Order');
 });
 
-router.get("/Likeditem", (req, res) => {
-res.render('Item');
-});
-
 router.get("/CS", (req, res) => {
 res.render('CustomerService');
 });
