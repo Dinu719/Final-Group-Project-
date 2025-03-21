@@ -149,27 +149,6 @@ margin-bottom: 10px;
 display: flex;
 }
 
-.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  50%, #ECE9E6  100%)}
-
-.btn-grad {
-margin: 5px;
-padding: 10px 20px;
-text-align: center;
-text-transform: uppercase;
-transition: 0.5s;
-background-size: 200% auto;
-color: white;            
-box-shadow: 0 0 20px #eee;
-border-radius: 30px;
-display: block;
-}
-
-.btn-grad:hover {
-background-position: right center; 
-color: white;
-text-decoration: none;
-}
-
 li a {
 text-decoration: none;
 font-family: lemonMilk;

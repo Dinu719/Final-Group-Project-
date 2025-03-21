@@ -6,6 +6,16 @@ router.get("/", (req, res) => {
 res.render('index');
 });
 
+router.get("/account", (req, res) => {
+const email = req.session.userEmail;
+if (email) {
+return res.redirect('/Profile');
+} 
+else {
+return res.redirect('/signin');
+}
+});
+
 router.get("/signin", (req, res) => {
 res.render('SignIn');
 });
