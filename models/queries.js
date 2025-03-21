@@ -99,6 +99,22 @@ async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, passwo
   }
 }
 
+// Update Password
+const updatePassword = async (email, newPassword) => {
+  try {
+    const db = 'UPDATE buyer SET password = ? WHERE email = ?';
+    const [result] = await pool.query(db, [newPassword, email]);
+    if (result.affectedRows > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
 const getTables = async () => {
  try {
    const [tables] = await pool.query('SHOW TABLES');  // Run the 'SHOW TABLES' query
@@ -109,4 +125,4 @@ const getTables = async () => {
  }
 };
 
-module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, getTables};  // Export query function for use in other files
+module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getTables};  // Export query function for use in other files

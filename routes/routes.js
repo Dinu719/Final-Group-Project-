@@ -1,6 +1,8 @@
 const express = require('express');
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 const router = express.Router();
-const {processBD, addBuyer, getBuyerByEmail, updateDetails} = require('../controllers/controller');
+const {processBD, addBuyer, getBuyerByEmail, updatePasswordByEmail, updateDetails} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
 res.render('index');
@@ -28,9 +30,73 @@ router.get("/password1", (req, res) => {
 res.render('ForgotPassword1');
 });
 
-router.get("/password2", (req, res) => {
-res.render('ForgotPassword2');
+router.post('/forgot', async (req, res) => {
+const {email} = req.body;
+const token = crypto.randomBytes(20).toString('hex');
+req.session.resetToken = token;
+req.session.resetEmail = email;
+try {
+const transporter = nodemailer.createTransport({
+service: 'gmail',
+auth: {
+user: process.env.EMAIL_USER,
+pass: process.env.EMAIL_PASS,
+},
+tls: {
+rejectUnauthorized: false,
+}
 });
+const mailOptions = {
+from: process.env.EMAIL_USER,
+to: email,
+subject: 'A Password Reset Request',
+text: `Click the following link to reset your password: 
+http://localhost:5001/password2/${token}`,
+};
+await transporter.sendMail(mailOptions);
+console.log('Password Reset Email Sent.');
+res.send('A link has been sent to your email.');
+} 
+catch (error) {
+console.error('Error:', error);
+return res.status(500).send('Error');
+}
+});
+
+router.get('/password2/:token', (req, res) => {
+const {token} = req.params;
+const {resetToken} = req.session;
+if (token === resetToken) {
+res.render('ForgotPassword2', {token});
+} 
+else {
+res.status(400).send('Invalid or Expired Token.');
+}
+});
+
+router.post('/reset', async (req, res) => {
+const {token, newPassword} = req.body;
+const {resetToken, resetEmail} = req.session;
+if (token !== resetToken) {
+return res.status(400).send('Invalid or Expired Token.');
+}
+try {
+const result = await updatePasswordByEmail(resetEmail, newPassword);
+if (result) {
+console.log('Your password has been reset successfully.');
+res.redirect('/signin');
+} 
+else {
+res.status(400).send('Failed to Reset Password.');
+}
+} 
+catch (error) {
+console.error('Error:', error);
+return res.status(500).send('Error');
+}
+req.session.resetToken = null;
+req.session.resetEmail = null;
+});  
 
 router.get("/purchase", (req, res) => {
 res.render('purchase');
@@ -68,7 +134,7 @@ try {
 const result = await updateDetails(bID, fullName, emailAddress, DOB, phoneNumber, password);
 if (result) {
 console.log('Details Changed');
-res.redirect('/details');
+res.redirect('/Profile');
 }
 else {
 res.status(400).render('/update', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});
@@ -112,7 +178,7 @@ router.post("/create", async (req, res) => {
 const {fName, emailAddress, birthday, phoneNumber, password} = req.body;
 try {
 await addBuyer(fName, emailAddress, birthday, phoneNumber, password);
-res.redirect("/");
+res.redirect("/signin");
 } 
 catch (error) {
 console.error('Error:', error);
