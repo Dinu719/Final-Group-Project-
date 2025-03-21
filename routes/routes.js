@@ -6,6 +6,16 @@ router.get("/", (req, res) => {
 res.render('index');
 });
 
+router.get("/account", (req, res) => {
+const email = req.session.userEmail;
+if (email) {
+return res.redirect('/Profile');
+} 
+else {
+return res.redirect('/signin');
+}
+});
+
 router.get("/signin", (req, res) => {
 res.render('SignIn');
 });
@@ -23,8 +33,8 @@ res.render('ForgotPassword2');
 });
 
 router.get("/purchase", (req, res) => {
-    res.render('purchase');
-    });
+res.render('purchase');
+});
 
 router.get("/details", async (req, res) => {
 const email = req.session.userEmail;
@@ -36,10 +46,11 @@ const buyer = await getBuyerByEmail(email);
 if (!buyer || buyer.length === 0) {
 return res.status(401).send('Buyer Not Found');
 }
+const dob = new Date(buyer[0].dob).toISOString().split('T')[0];
 return res.render('AccountDetails', {
 fullName: buyer[0].fullName,
 emailAddress: buyer[0].email,
-DOB: buyer[0].dob,
+DOB: dob,
 phoneNumber: buyer[0].phoneN,
 password: buyer[0].password,
 });
@@ -73,12 +84,8 @@ router.get("/Profile", (req, res) => {
 res.render('Profile');
 });
 
-router.get("/Pastorders", (req, res) => {
+router.get("/PastOrders", (req, res) => {
 res.render('Order');
-});
-
-router.get("/Likeditem", (req, res) => {
-res.render('Item');
 });
 
 router.get("/CS", (req, res) => {

@@ -213,3 +213,27 @@ footer {
     height: auto;
 }
 
+.checkout-section {
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    background-color: #f9f9f9;
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: rgb(56, 56, 56);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.confirm-btn:hover {
+    background-color: rgb(254, 255, 190);
+}
