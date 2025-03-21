@@ -156,27 +156,6 @@ align-items: center;
 width:100%;
 }
 
-.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF 50%, #ECE9E6 100%)}
-
-.btn-grad {
-margin: 5px;
-padding: 9px 20px;
-text-align: center;
-text-transform: uppercase;
-transition: 0.5s;
-background-size: 200% auto;
-color: white;            
-box-shadow: 0 0 20px #eee;
-border-radius: 30px;
-display: block;
-}
-
-.btn-grad:hover {
-background-position: right center; 
-color: #fff;
-text-decoration: none;
-}
-
 .ftext {
 color:rgb(0, 0, 0);
 font-family: lemonMilk;
@@ -186,27 +165,6 @@ position:absolute;
 bottom: 2px;
 left: 0;
 width: 100%;
-}
-
-.btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  50%, #ECE9E6  100%)}
-
-.btn-grad {
-margin: 5px;
-padding: 9px 20px;
-text-align: center;
-text-transform: uppercase;
-transition: 0.5s;
-background-size: 200% auto;
-color: white;            
-box-shadow: 0 0 20px #eee;
-border-radius: 30px;
-display: block;
-}
-
-.btn-grad:hover {
-background-position: right center; 
-color: #fff;
-text-decoration: none;
 }
 
 nav div ul li a {
