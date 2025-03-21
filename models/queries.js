@@ -9,7 +9,6 @@ async function buyerData() {
   try {
       connection = await pool.getConnection();
       const [results] = await connection.query("SELECT * FROM buyer");
-     
      return results;
   } catch (error) {
       console.error('Error:', error);
