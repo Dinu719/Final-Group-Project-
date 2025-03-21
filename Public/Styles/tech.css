@@ -1,8 +1,9 @@
 body {
-background-color: #333;
+background-image: linear-gradient(to top, #d783ad 0%, #e2ebf0 100%);
 color: white;
 font-family: Arial, sans-serif;
 text-align: center;
+background-attachment: fixed;
 }
 
 .container {
