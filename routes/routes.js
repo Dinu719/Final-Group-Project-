@@ -84,7 +84,7 @@ router.get("/Profile", (req, res) => {
 res.render('Profile');
 });
 
-router.get("/Pastorders", (req, res) => {
+router.get("/PastOrders", (req, res) => {
 res.render('Order');
 });
 
