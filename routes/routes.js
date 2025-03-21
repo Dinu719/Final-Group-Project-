@@ -2,7 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const router = express.Router();
-const {processBD, addBuyer, getBuyerByEmail, updatePasswordByEmail, updateDetails} = require('../controllers/controller');
+const {addBuyer, getBuyerByEmail, updatePasswordByEmail, updateDetails} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
 res.render('index');
@@ -134,7 +134,10 @@ try {
 const result = await updateDetails(bID, fullName, emailAddress, DOB, phoneNumber, password);
 if (result) {
 console.log('Details Changed');
-res.redirect('/Profile');
+if (emailAddress !== req.session.userEmail) {
+req.session.userEmail = emailAddress;
+}
+res.redirect('/details');
 }
 else {
 res.status(400).render('/update', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});

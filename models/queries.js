@@ -24,11 +24,6 @@ async function buyerData() {
 async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password) {
   const connection = await pool.getConnection();
   try {
-    //validate the data format (YYYY-MM-DD)
-    const dataPattern = /^\d{4}-\d{2}-\d{2}$/;
-    if(!dataPattern.test(birthday)){
-      throw new Error('Invalid data format for birthday. Please use YYYY-MM-DD format.');
-    }
       const query = "INSERT INTO buyer (fullName, email, dob, phoneN, password) VALUES (?, ?, ?, ?, ?)";
       await connection.query(query, [fName, emailAddress, birthday, phoneNumber, password]);
       return true; // Return true if insertion is successful
