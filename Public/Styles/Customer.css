@@ -8,6 +8,16 @@ box-sizing: border-box;
 font-family: "Poppins", sans-serif;
 }
 
+.div1{
+    display: flex;
+    justify-content: center;
+}
+
+.logoclass{
+    width:500px;
+    height: auto;
+}
+
 body {
 background: lightpink;
 }
@@ -15,12 +25,12 @@ background: lightpink;
 /* Chatbot Toggle Button */
 .chatbot-toggler {
 position: fixed;
-bottom: 30px;
-right: 35px;
+bottom: 200px;
+right: 200px;
 outline: none;
 border: none;
-height: 50px;
-width: 50px;
+height: 70px;
+width: 70px;
 display: flex;
 cursor: pointer;
 align-items: center;
