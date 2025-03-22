@@ -124,4 +124,6 @@ const getTables = async () => {
  }
 };
 
-module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getTables};  // Export query function for use in other files
+
+
+module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getTables,};  // Export query function for use in other files

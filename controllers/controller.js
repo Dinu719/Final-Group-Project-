@@ -1,4 +1,4 @@
-const {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getTables} = require("../models/queries");
+const {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getTables,insertPayment} = require("../models/queries");
 
 async function processBD() {
   try {
@@ -59,4 +59,7 @@ const showTables = async () => {
  }
 };
 
-module.exports = {processBD, addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, showTables};  // Export the function to use elsewhere if needed
+
+
+
+module.exports = {processBD, addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, showTables,};  // Export the function to use elsewhere if needed
