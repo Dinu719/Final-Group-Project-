@@ -79,6 +79,7 @@
  const totalElem = document.getElementById("total");
  const shippingCost = 5; // Flat shipping cost
  const taxRate = 0.2; // 20% tax
+
  function renderCart() {
     products.innerHTML = ""; // Clear the cart display
     let subtotal = 0;
@@ -139,7 +140,13 @@
    subtotalElem.textContent = `$${subtotal.toFixed(2)}`;
    document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
    totalElem.textContent = `$${total.toFixed(2)}`;
+
+
+   localStorage.setItem("cartTotal", total.toFixed(2));
  }
+
+
+
   function addEventListeners() {
    document.querySelectorAll(".remove-btn").forEach(button => {
      button.addEventListener("click", (event) => {
