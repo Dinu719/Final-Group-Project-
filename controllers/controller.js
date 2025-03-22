@@ -1,4 +1,4 @@
-const {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getTables} = require("../models/queries");
+const {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, getTables} = require("../models/queries");
 
 async function processBD() {
   try {
@@ -49,6 +49,28 @@ const updatePasswordByEmail = async (email, newPassword) => {
   }
 };
 
+async function getTech() {
+  try {
+    const {laptopCases, logos: laptopLogos} = await getLaptopCases();
+    const {iPhoneCases, logos: iPhoneLogos} = await getiPhoneCases();
+    return {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos};
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+async function getClothing() {
+  try {
+    const {hoodies, logos: hoodieLogos} = await getHoodies();
+    const {tShirts, logos: tShirtLogos} = await getTShirts();
+    return {hoodies, tShirts, hoodieLogos, tShirtLogos};
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
 const showTables = async () => {
  try {
    const tableNames = await getTables();  // Call the query to get tables
@@ -59,4 +81,4 @@ const showTables = async () => {
  }
 };
 
-module.exports = {processBD, addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, showTables};  // Export the function to use elsewhere if needed
+module.exports = {processBD, addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing, showTables};  // Export the function to use elsewhere if needed

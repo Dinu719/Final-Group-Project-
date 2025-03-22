@@ -1,155 +1,3 @@
-body {
-color: white;
-font-family: Arial, sans-serif;
-text-align: center;
-
-display: flex;
-flex-direction: column;
-
-height: 100vh;
-background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-background-image: url(../Icons/techbg.png);
-
-}
-
-main{
-    flex: 1;
-}
-
-.container {
-width: 60%;
-margin: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-
-}
-
-.products {
-display: flex;
-justify-content: center;
-gap: 60px;
-margin-top: 40px;
-width:90%;
-
-}
-
-.product-item {
-background: #ffffff4c;
-padding: 40px;
-border-radius: 30px;
-text-align: center;
-width: 500px;
-
-}
-
-.product-item img {
-    width: 250px;
-    height: 250px;
-    background: lightgray;
-    border-radius: 30px;
-    box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
-    border: 5px solid rgb(255, 255, 255);
-    object-fit: cover;
-}
-
-.buttons {
-margin-top: 10px;
-}
-
-.buttons button {
-background-color: orange;
-border: none;
-padding: 10px;
-margin: 5px;
-cursor: pointer;
-}
-/* the hover for the Add the cart */
-#cart2:hover{
-    background-color: #d3d3d3;
-}
-/* Like item to be hover*/
-button:not(#cart2):hover{
-    background-color: #d3d3d3;
-}
-.navdiv {
-display: inline-flex;
-justify-content: space-between;
-align-items: center;
-width:100%;
-}
-
-.navbar {
-display: flex;
-justify-content: space-between;
-padding: 10px;
-background: gray;
-}
-
-.divimg {
-width:70px;
-height:auto;
-padding-left: 1px;
-padding-right: px;
-margin: 0px;  
-padding-top: 15px;
-justify-content: space-between;
-}
-
-header {
-width: 100%;
-padding:0px;
-margin: 0px;
-}
-
-li a {
-text-decoration: none;
-color:white;
-}
-
-li {
-list-style: none;
-}
-
-
-
-.images {
-border-radius: 30px;
-box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
-border: 5px solid rgb(255, 255, 255);
-width:100%;
-height:100%;
-}
-
-@font-face{
-    font-family: LemonMilk;
-    src:url(../Fonts/LemonMilk.otf)
-}
-@font-face{
-    font-family: LMBold;
-    src:url(../Fonts/LEMONMILK-Bold.otf)
-}
-@font-face{
-    font-family: LemonLight;
-    src:url(../Fonts/LemonMilklight.otf)
-}
-@font-face{
-    font-family:HaveHeartone ;
-    src:url(../Fonts/Have\ Heart\ One.otf)
-}
-
-@font-face{
-    font-family: Muli;
-    src:url(../Fonts/Muli-Light.ttf)
-}
-
-@font-face{
-    font-family: HaveHearttwo;
-    src:url(../Fonts/Have\ Heart\ Two.otf)
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -157,104 +5,96 @@ height:100%;
     font-family: Arial, sans-serif;
 }
 
-header {
+body {
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
     display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #f4f4f4;
+    flex-direction: column;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../Icons/techbg.png);
 }
 
-.navbar {
-    width: 100%;
-    max-width: 1100px;
-    background: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+main {
+    flex: 1;
+}
+
+.container {
+    width: 60%;
+    margin: auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 }
 
-.logo img {
-    height: 50px;
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 40px;
+    width: 90%;
+}
+
+.product-item {
+    background: #ffffff4c;
+    padding: 20px;
+    border-radius: 30px;
+    text-align: center;
     width: auto;
 }
 
-.nav-items {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    position: relative;
+.product-item img {
+    width: 150px;
+    height: 150px;
+    background: lightgray;
+    border-radius: 30px;
+    box-shadow: 1px 1px 12px 6px rgba(0, 0, 0, 0.292);
+    border: 5px solid rgb(255, 255, 255);
+    object-fit: cover;
 }
 
-.nav-items a {
-    text-decoration: none;
-    background: #d3d3d3;
-    color: black;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: background 0.3s;
-    position: relative;
+.buttons {
+    margin-top: 10px;
 }
 
-.nav-items a:hover {
-    background: #b0b0b0;
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 180px;
-    overflow: hidden;
-    z-index: 10;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 12px 15px;
-    text-align: left;
-    background: white;
-    color: black;
-    font-size: 14px;
-    transition: background 0.3s;
-}
-
-.dropdown-menu a:hover {
-    background: #f0f0f0;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.nav-items img {
-    width: 30px;
-    height: auto;
+.buttons button {
+    background-color: orange;
+    border: none;
+    padding: 10px;
+    margin: 5px;
     cursor: pointer;
 }
 
-
-
-.account {
-    font-family: LemonLight;
-    color: black;
+.buttons button:hover {
+    background-color: #ff8c00;
+    transform: scale(1.1);
 }
 
-h1 {
-    font-family: LemonMilk;
-    color:white;
-    text-shadow: 0px 0px 5px rgb(48, 48, 48);
+header {
+    margin-top: 20px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgb(17, 17, 17);
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
+
+.navdiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.divimg {
+    height: 50px;
+    width: auto;
+    justify-content: space-between;
+    margin-right: 15px;
 }
 
 footer {
@@ -265,7 +105,7 @@ footer {
     width: 100%;
     position: relative;
     box-sizing: border-box;
-  }
+}
 
 .ftext {
     color: rgb(255, 255, 255);
@@ -273,8 +113,7 @@ footer {
     font-size: 20px;
     text-align: center;
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.611);
-    flex:1;
-    text-align: center;
+    flex: 1;
 }
 
 .customer {
@@ -282,9 +121,56 @@ footer {
     height: auto;
     border-radius: 50%;
     box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
-    position: absolute; 
-    right: 40px; 
+    position: absolute;
+    right: 40px;
     bottom: 15px;
     object-fit: cover;
+}
 
+@font-face {
+    font-family: LemonMilk;
+    src: url(../Fonts/LemonMilk.otf);
+}
+
+@font-face {
+    font-family: LMBold;
+    src: url(../Fonts/LEMONMILK-Bold.otf);
+}
+
+@font-face {
+    font-family: LemonLight;
+    src: url(../Fonts/LemonMilklight.otf);
+}
+
+@font-face {
+    font-family: Muli;
+    src: url(../Fonts/Muli-Light.ttf);
+}
+
+.images {
+    border-radius: 30px;
+    box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
+    border: 5px solid rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-family: LemonMilk;
+    color: white;
+    text-shadow: 0px 0px 5px rgb(48, 48, 48);
+}
+
+.navimg {
+    width: 200px;
+    height: auto;
+}
+
+h2 {
+    background-color: #888;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    margin: auto;
 }

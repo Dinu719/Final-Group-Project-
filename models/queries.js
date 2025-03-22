@@ -114,6 +114,114 @@ const updatePassword = async (email, newPassword) => {
   }
 };
 
+// Laptop Cases
+async function getLaptopCases() {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const laptopCasesQuery = `
+      SELECT p.prID, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS name
+      FROM products p
+      JOIN category ca ON p.caID = ca.caID
+      JOIN color c ON p.coID = c.coID
+      JOIN name n ON p.nID = n.nID
+      WHERE ca.caName = 'Tech Products' AND n.prName = 'Laptop Case'
+    `;
+    const [laptopCases] = await connection.query(laptopCasesQuery);
+    const logosQuery = 'SELECT loID, loName FROM logo';
+    const [logos] = await connection.query(logosQuery);
+    return {laptopCases, logos};
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+}
+
+// iPhone Cases
+async function getiPhoneCases() {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const iPhoneCasesQuery = `
+      SELECT p.prID, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS name
+      FROM products p
+      JOIN category ca ON p.caID = ca.caID
+      JOIN color c ON p.coID = c.coID
+      JOIN name n ON p.nID = n.nID
+      WHERE ca.caName = 'Tech Products' AND n.prName = 'iPhone Case'
+    `;
+    const [iPhoneCases] = await connection.query(iPhoneCasesQuery);
+    const logosQuery = 'SELECT loID, loName FROM logo';
+    const [logos] = await connection.query(logosQuery);
+    return {iPhoneCases, logos};
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+}
+
+// Hoodies
+async function getHoodies() {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const hoodiesQuery = `
+      SELECT p.prID, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS name
+      FROM products p
+      JOIN category ca ON p.caID = ca.caID
+      JOIN color c ON p.coID = c.coID
+      JOIN name n ON p.nID = n.nID
+      WHERE ca.caName = 'Clothing Products' AND n.prName = 'Hoodie'
+    `;
+    const [hoodies] = await connection.query(hoodiesQuery);
+    const logosQuery = 'SELECT loID, loName FROM logo';
+    const [logos] = await connection.query(logosQuery);
+    return {hoodies, logos};
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+}
+
+// T-Shirts
+async function getTShirts() {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const tShirtsQuery = `
+      SELECT p.prID, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS name
+      FROM products p
+      JOIN category ca ON p.caID = ca.caID
+      JOIN color c ON p.coID = c.coID
+      JOIN name n ON p.nID = n.nID
+      WHERE ca.caName = 'Clothing Products' AND n.prName = 'T-Shirt'
+    `;
+    const [tShirts] = await connection.query(tShirtsQuery);
+    const logosQuery = 'SELECT loID, loName FROM logo';
+    const [logos] = await connection.query(logosQuery);
+    return {tShirts, logos};
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+}
+
 const getTables = async () => {
  try {
    const [tables] = await pool.query('SHOW TABLES');  // Run the 'SHOW TABLES' query
@@ -124,4 +232,4 @@ const getTables = async () => {
  }
 };
 
-module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getTables};  // Export query function for use in other files
+module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, getTables};  // Export query function for use in other files
