@@ -1,140 +1,119 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Clothing</title>
-
-<link rel="stylesheet" href="../Styles/clothing.css"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing</title>
+  <link rel="stylesheet" href="../Styles/clothing.css" />
 </head>
 
-<body class="bg">
+<body>
 
-<header>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
+  <header>
+    <div class="navdiv">
+      <a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
+      <nav>
+        <div class="navdiv">
+          <div>
+            <a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
+          </div>
+
+          <div>
+            <a href="/account">
+              <img src="../Icons/Profile.png" class="divimg" alt="Profile">
+            </a>
+          </div>
         </div>
+      </nav>
+    </div>
+  </header>
 
-        <div class="nav-items">
+  <main>
+    <br>
 
-            <div class="dropdown">
-                <a href="#">Account </a>
-                <div class="dropdown-menu">
-                    <a href="/details">Account Details</a>
-                    <a href="/Pastorders">Past Orders</a>
-                    
-                    <a href="#">Log Out</a>
-                </div>
+    <h1>Clothing</h1>
+
+    <div class="container">
+      <div class="products">
+        <h2>Hoodies</h2>
+        <% hoodies.forEach(product => { %>
+          <div class="product-item">
+            <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
+            <p>Price: $<%= product.Price %></p>
+            <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
+
+            <p>Size: 
+              <select id="size">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>X-Large</option>
+              </select>
+            </p>
+
+            <p>Color: <%= product.color %></p>
+
+            <p>Logo: 
+              <select id="logo">
+                <% hoodieLogos.forEach(logo => { %>
+                  <option value="<%= logo.loID %>"><%= logo.loName %></option>
+                <% }); %>
+              </select>
+            </p>
+
+            <div class="buttons">
+              <button id="cart">Add to Cart</button>
             </div>
-            <a href="/Cart"> <img src="../Icons/Cart.png" class="divimg"> </a>
-        </div>
-    </nav>
+          </div>
+        <% }); %>
+      </div>
 
-</header>
+      <div class="products">
+        <h2>T-Shirts</h2>
+        <% tShirts.forEach(product => { %>
+          <div class="product-item">
+            <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
+            <p>Price: $<%= product.Price %></p>
+            <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
 
+            <p>Size: 
+              <select id="size1">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>X-Large</option>
+              </select>
+            </p>
 
+            <p>Color: <%= product.color %></p>
 
-<main>
+            <p>Logo: 
+              <select id="logo1">
+                <% tShirtLogos.forEach(logo => { %>
+                  <option value="<%= logo.loID %>"><%= logo.loName %></option>
+                <% }); %>
+              </select>
+            </p>
 
-<h1 >Clothing</h1>
+            <div class="buttons">
+              <button id="cart1">Add to Cart</button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
 
-<div class="container">
+    </div>
 
-<div class="product">
+  </main>
 
-<h2>Hoodie</h2>
-
-<img class="images" src="../Icons/Hoodie.webp" alt="Hoodie">
-
-<p>Price: $20</p>
-
-<p>Quantity: <select id ="quantity"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></p>
-
-<p>Size: <select id ="size"><option>Small</option><option>Medium</option><option>Large</option><option>X-Large</option></select></p>
-
-<p>Color: <select id ="color"><option>Black</option><option>Gray</option><option>Blue</option><option>Red</option></select></p>
-
-<p>Logo: <select id ="logo"><option>Blank</option><option>Flames</option><option>Clouds</option><option>Floret</option><option>Cross</option></select></p>
-
-<button id ="cart1"class="cart-btn">Add to Cart</button>
-
-<button class="like-btn">Like</button>
-
-</div>
-
-<div class="product">
-
-<h2>T-Shirt</h2>
-
-<img class="images" src="../Icons/T-Shirt.jpeg" alt="T-Shirt">
-
-<p>Price: $10</p>
-
-<p>Quantity: <select id ="quantity2"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></p>
-
-<p>Size: <select id ="size2"><option>Small</option><option>Medium</option><option>Large</option><option>X-Large</option></select></p>
-
-<p>Color: <select id ="color2"><option>Black</option><option>Gray</option><option>Blue</option><option>Red</option></select></p>
-
-<p>Logo: <select id ="logo2"><option>Blank</option><option>Flames</option><option>Clouds</option><option>Floret</option><option>Cross</option></select></p>
-
-<button id ="cart2"class="cart-btn">Add to Cart</button>
-
-<button class="like-btn">Like</button>
-
-</div>
-
-</div>
-
-</main>
-
-<footer>
+  <footer>
     <p class="ftext"> Copyright © 2025 Craftify </p>
     <div>
-        <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
-    </div>  
-  
+      <a href="/CS"> <img src="../Icons/CustomerService.png" alt="CustomerService" class="customer"> </a>
+    </div>
   </footer>
 
 </body>
 
 </html>
-
-<script type="text/javascript">
-    var cart = []
-    try{
-        cart = JSON.parse(localStorage["cart"])
-    }
-    catch{
-        cart = []
-    }
-    const selectedcolor= document.getElementById("color")
-    const selectedlogo= document.getElementById("logo")
-    const selectedsize= document.getElementById("size")
-    const selectedquantity= document.getElementById("quantity")
-    const selectedcolor2= document.getElementById("color2")
-    const selectedlogo2= document.getElementById("logo2")
-    const selectedsize2= document.getElementById("size2")
-    const selectedquantity2= document.getElementById("quantity2")
-
-
-
-
-    const cart1 = document.getElementById("cart1")
-    const cart2 = document.getElementById("cart2")
-    cart1.onclick = (() => {
-        cart.push({"name":"Hoodie", "quantity":selectedquantity.value, "size":selectedsize.value, "color":selectedcolor.value, "logo":selectedlogo.value})
-        localStorage["cart"]= JSON.stringify(cart)
-    })
-    cart2.onclick = (() => {
-        cart.push({"name":"T-Shirt", "quantity":selectedquantity2.value, "size":selectedsize2.value, "color":selectedcolor2.value, "logo":selectedlogo2.value})
-        localStorage["cart"]=JSON.stringify(cart)
-    })
-</script>

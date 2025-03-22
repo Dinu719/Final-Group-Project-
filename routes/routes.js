@@ -2,7 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const router = express.Router();
-const {addBuyer, getBuyerByEmail, updatePasswordByEmail, updateDetails} = require('../controllers/controller');
+const {addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
 res.render('index');
@@ -161,13 +161,28 @@ router.get("/CS", (req, res) => {
 res.render('CustomerService');
 });
 
-router.get("/Clothing", (req, res) => {
-res.render('Clothing');
+router.get("/clothing", async (req, res) => {
+try {
+const {hoodies, tShirts, hoodieLogos, tShirtLogos} = await getClothing();
+res.render("Clothing", { hoodies, tShirts, hoodieLogos, tShirtLogos });
+} 
+catch (error) {
+console.error('Error:', error);
+res.status(500).send('Error');
+}
 });
 
-router.get("/Tech", (req, res) => {
-res.render('Tech');
-});
+
+router.get("/tech", async (req, res) => {
+try {
+const {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos} = await getTech();
+res.render("Tech", {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos});
+} 
+catch (error) {
+console.error('Error:', error);
+res.status(500).send('Error');
+}
+});    
 
 router.get("/Cart", (req, res) => {
 res.render('Cart');
