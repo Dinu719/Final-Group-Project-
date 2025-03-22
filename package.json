@@ -18,6 +18,7 @@
   "homepage": "https://github.com/isaiiah01/GROUP2#readme",
   "description": "API to Perform CRUD Operations in ConnectionDB",
   "dependencies": {
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
