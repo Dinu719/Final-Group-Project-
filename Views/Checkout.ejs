@@ -149,22 +149,35 @@
         
     </footer>
 
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // Retrieve the total from localStorage
+            const total = parseFloat(localStorage.getItem("cartTotal")) || 0;
+            
+            const shipping = 5; // flat shipping fee
+            const taxRate = 1.5; // 20% tax rate
+        
+            // Calculate subtotal (just the cart total)
+            const subtotal = total;
+    
+            // Calculate tax based on the subtotal
+            const tax = subtotal * taxRate;
+    
+            // Final total is subtotal + shipping + tax
+            const totalPrice = subtotal + shipping + tax;
+    
+            // Update the values on the page
+            document.getElementById("checkout-subtotal").textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById("checkout-shipping").textContent = `$${shipping.toFixed(2)}`;
+            document.getElementById("checkout-tax").textContent = `$${tax.toFixed(2)}`;
+            document.getElementById("checkout-total").textContent = `$${totalPrice.toFixed(2)}`;
+        });
+    </script>
+    
+    
+    
+
 </body>
 
 </html>
 
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const total = parseFloat(localStorage.getItem("cartTotal")) || 0;
-      const shipping = 5; // flat shipping
-      const taxRate = 0.2;
-      const subtotal = ((total - shipping) / (1 + taxRate)).toFixed(2);
-      const tax = (subtotal * taxRate).toFixed(2);
-    
-      document.getElementById("checkout-subtotal").textContent = `$${subtotal}`;
-      document.getElementById("checkout-shipping").textContent = `$${shipping.toFixed(2)}`;
-      document.getElementById("checkout-tax").textContent = `$${tax}`;
-      document.getElementById("checkout-total").textContent = `$${total.toFixed(2)}`;
-    });
-    </script>
-    
