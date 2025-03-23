@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../Styles/cart.css"/>
   <title>Cart</title>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+    let cartTotal = 0;
+    
+    // Loop through each item in the cart to calculate the total
+    document.querySelectorAll('.cart-item').forEach(item => {
+    const price = parseFloat(item.querySelector('.item-details p strong').textContent.replace('$', ''));
+    const quantity = parseInt(item.querySelector('.quantity').value);
+    cartTotal += price * quantity;
+    });
+    
+    // Store the total amount in localStorage
+    localStorage.setItem("cartTotal", cartTotal.toFixed(2));
+    
+    // Optionally, you can display the total in the cart page as well
+    document.getElementById("cart-total").textContent = `$${cartTotal.toFixed(2)}`;
+    });
+  </script>
 </head>
 
 <body class="bg">
@@ -63,7 +81,7 @@
     <% }); %>
 
     <% if (cart.length === 0) { %>
-      <p>The Cart is empty</p>
+      <p>Empty Cart</p>
     <% } %>
   </div>
 
@@ -84,29 +102,5 @@
   </div>  
 </footer>
 
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-      let cartTotal = 0;
-
-      // Loop through each item in the cart to calculate the total
-      document.querySelectorAll('.cart-item').forEach(item => {
-          const price = parseFloat(item.querySelector('.item-details p strong').textContent.replace('$', ''));
-          const quantity = parseInt(item.querySelector('.quantity').value);
-          cartTotal += price * quantity;
-      });
-
-      // Store the total amount in localStorage
-      localStorage.setItem("cartTotal", cartTotal.toFixed(2));
-
-      // Optionally, you can display the total in the cart page as well
-      document.getElementById("cart-total").textContent = `$${cartTotal.toFixed(2)}`;
-  });
-</script>
-
-
-
-
-
 </body>
 </html>
-

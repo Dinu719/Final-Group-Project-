@@ -2,114 +2,130 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clothing</title>
-  <link rel="stylesheet" href="../Styles/clothing.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clothing</title>
+<link rel="stylesheet" href="../Styles/clothing.css" />
 </head>
 
 <body>
 
-  <header>
-    <div class="navdiv">
-      <a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
-      <nav>
-        <div class="navdiv">
-          <div>
-            <a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
-          </div>
+<header>
+<div class="navdiv">
+<a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
+<nav>
+<div class="navdiv">
+<div>
+<a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
+</div>
 
-          <div>
-            <a href="/account">
-              <img src="../Icons/Profile.png" class="divimg" alt="Profile">
-            </a>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+<div>
+<a href="/account">
+<img src="../Icons/Profile.png" class="divimg" alt="Profile">
+</a>
+</div>
+</div>
+</nav>
+</div>
+</header>
 
-  <main>
-    <br>
+<main>
+<br>
 
-    <h1>Clothing</h1>
+<h1>Clothing</h1>
 
-    <div class="container">
+<div class="container">
+<div class="products">
+<h2>Hoodies</h2>
+<% hoodies.forEach(product => { %>
+<form action="/cart/add" method="POST">
+<div class="product-item">
+<img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
+<p>Price: $<%= product.Price %></p>
+<p>Quantity: <input type="number" name="quantity" min="1" max="<%= product.Stock %>" value="1" /></p>
 
-      <div class="product-category">
-        <h2>Hoodies</h2>
-        <div class="products">
-          <% hoodies.forEach(product => { %>
-            <div class="product-item">
-              <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
-              <p>Price: $<%= product.Price %></p>
-              <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
-              <p>Size: 
-                <select>
-                  <option>Small</option>
-                  <option>Medium</option>
-                  <option>Large</option>
-                  <option>X-Large</option>
-                </select>
-              </p>
-              <p>Color: <%= product.color %></p>
-              <p>Logo: 
-                <select>
-                  <% hoodieLogos.forEach(logo => { %>
-                    <option value="<%= logo.loID %>. <%= logo.loName %>"><%= logo.loID %>. <%= logo.loName %></option>
-                  <% }); %>
-                </select>
-              </p>
-              <div class="buttons">
-                <button>Add to Cart</button>
-              </div>
-            </div>
-          <% }); %>
-        </div>
-      </div>
-    
-      <div class="product-category">
-        <h2>T-Shirts</h2>
-        <div class="products">
-          <% tShirts.forEach(product => { %>
-            <div class="product-item">
-              <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
-              <p>Price: $<%= product.Price %></p>
-              <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
-              <p>Size: 
-                <select>
-                  <option>Small</option>
-                  <option>Medium</option>
-                  <option>Large</option>
-                  <option>X-Large</option>
-                </select>
-              </p>
-              <p>Color: <%= product.color %></p>
-              <p>Logo: 
-                <select>
-                  <% tShirtLogos.forEach(logo => { %>
-                    <option value="<%= logo.loID %>. <%= logo.loName %>"><%= logo.loID %>. <%= logo.loName %></option>
-                  <% }); %>
-                </select>
-              </p>
-              <div class="buttons">
-                <button>Add to Cart</button>
-              </div>
-            </div>
-          <% }); %>
-        </div>
-      </div>
-    
-    </div>
-    
-  </main>
+<p>Size:
+<select name="size">
+<option>Small</option>
+<option>Medium</option>
+<option>Large</option>
+<option>X-Large</option>
+</select>
+</p>
 
-  <footer>
-    <p class="ftext"> Copyright © 2025 Craftify </p>
-    <div>
-      <a href="/CS"> <img src="../Icons/CustomerService.png" alt="CustomerService" class="customer"> </a>
-    </div>
-  </footer>
+<p>Color: <%= product.color %></p>
+
+<p>Logo:
+<select name="logo">
+<% hoodieLogos.forEach(logo => { %>
+<option value="<%= logo.loID %>. <%= logo.loName %>"><%= logo.loID %>. <%= logo.loName %></option>
+<% }); %>
+</select>
+</p>
+
+<input type="hidden" name="productID" value="<%= product.prID %>" />
+<input type="hidden" name="productName" value="<%= product.prDescription %>" />
+<input type="hidden" name="price" value="<%= product.Price %>" />
+<input type="hidden" name="category" value="Clothing" />
+
+<div class="buttons">
+<button type="submit">Add to Cart</button>
+</div>
+</div>
+</form>
+<% }); %>
+</div>
+
+<div class="products">
+<h2>T-Shirts</h2>
+<% tShirts.forEach(product => { %>
+<form action="/cart/add" method="POST">
+<div class="product-item">
+<img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
+<p>Price: $<%= product.Price %></p>
+<p>Quantity: <input type="number" name="quantity" min="1" max="<%= product.Stock %>" value="1" /></p>
+
+<p>Size:
+<select name="size">
+<option>Small</option>
+<option>Medium</option>
+<option>Large</option>
+<option>X-Large</option>
+</select>
+</p>
+
+<p>Color: <%= product.color %></p>
+
+<p>Logo:
+<select name="logo">
+<% tShirtLogos.forEach(logo => { %>
+<option value="<%= logo.loID %>. <%= logo.loName %>"><%= logo.loID %>. <%= logo.loName %></option>
+<% }); %>
+</select>
+</p>
+
+<input type="hidden" name="productID" value="<%= product.prID %>" />
+<input type="hidden" name="productName" value="<%= product.prDescription %>" />
+<input type="hidden" name="price" value="<%= product.Price %>" />
+<input type="hidden" name="category" value="Clothing" />
+
+<div class="buttons">
+<button type="submit">Add to Cart</button>
+</div>
+</div>
+</form>
+<% }); %>
+</div>
+
+</div>
+</main>
+
+<footer>
+<p class="ftext"> Copyright © 2025 Craftify </p>
+<div>
+<a href="/CS"> <img src="../Icons/CustomerService.png" alt="CustomerService" class="customer"> </a>
+</div>
+</footer>
 
 </body>
 

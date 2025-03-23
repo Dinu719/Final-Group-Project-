@@ -12,7 +12,7 @@ router.get("/account", (req, res) => {
 const email = req.session.userEmail;
 if (email) {
 return res.redirect('/Profile');
-} 
+}
 else {
 return res.redirect('/signin');
 }
@@ -50,13 +50,13 @@ const mailOptions = {
 from: process.env.EMAIL_USER,
 to: email,
 subject: 'A Password Reset Request',
-text: `Click the following link to reset your password: 
+text: `Click the following link to reset your password:
 http://localhost:5001/password2/${token}`,
 };
 await transporter.sendMail(mailOptions);
 console.log('Password Reset Email Sent.');
 res.send('A link has been sent to your email.');
-} 
+}
 catch (error) {
 console.error('Error:', error);
 return res.status(500).send('Error');
@@ -68,7 +68,7 @@ const {token} = req.params;
 const {resetToken} = req.session;
 if (token === resetToken) {
 res.render('ForgotPassword2', {token});
-} 
+}
 else {
 res.status(400).send('Invalid or Expired Token.');
 }
@@ -85,18 +85,18 @@ const result = await updatePasswordByEmail(resetEmail, newPassword);
 if (result) {
 console.log('Your password has been reset successfully.');
 res.redirect('/signin');
-} 
+}
 else {
 res.status(400).send('Failed to Reset Password.');
 }
-} 
+}
 catch (error) {
 console.error('Error:', error);
 return res.status(500).send('Error');
 }
 req.session.resetToken = null;
 req.session.resetEmail = null;
-});  
+});
 
 router.get("/purchase", (req, res) => {
 res.render('purchase');
@@ -120,14 +120,14 @@ DOB: dob,
 phoneNumber: buyer[0].phoneN,
 password: buyer[0].password,
 });
-} 
+}
 catch (error) {
 console.error('Error:', error);
 return res.status(500).send('Error');
 }
 });
 
-router.post("/update", async (req, res) => {  
+router.post("/update", async (req, res) => {
 const {fullName, emailAddress, DOB, phoneNumber, password} = req.body;
 const bID = req.session.userID;
 try {
@@ -165,7 +165,7 @@ router.get("/clothing", async (req, res) => {
 try {
 const {hoodies, tShirts, hoodieLogos, tShirtLogos} = await getClothing();
 res.render("Clothing", {hoodies, tShirts, hoodieLogos, tShirtLogos});
-} 
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
@@ -176,7 +176,7 @@ router.get("/tech", async (req, res) => {
 try {
 const {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos} = await getTech();
 res.render("Tech", {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos});
-} 
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
@@ -191,7 +191,7 @@ req.session.cart = [];
 const existingIndex = req.session.cart.findIndex(item => item.productID === productID);
 if (existingIndex !== -1) {
 req.session.cart[existingIndex].quantity += parseInt(quantity);
-} 
+}
 else {
 req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size});
 }
@@ -220,7 +220,7 @@ req.session.cart[index].quantity = parseInt(quantity);
 }
 console.log('Item Updated');
 res.redirect('/Cart');
-});  
+});
 
 router.post("/cart/remove", (req, res) => {
 const {index} = req.body;
@@ -229,7 +229,7 @@ req.session.cart.splice(index, 1);
 }
 console.log('Item Removed');
 res.redirect('/Cart');
-});  
+});
 
 router.get("/Checkout", (req, res) => {
 res.render('Checkout');
@@ -240,7 +240,7 @@ const {fName, emailAddress, birthday, phoneNumber, password} = req.body;
 try {
 await addBuyer(fName, emailAddress, birthday, phoneNumber, password);
 res.redirect("/signin");
-} 
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
@@ -264,16 +264,16 @@ req.session.userEmail = user[0].email;
 req.session.userID = user[0].bID;
 console.log('Logged In:', req.session.userEmail, req.session.userID);
 return res.redirect('/');
-} 
+}
 else {
 console.log('Password is Incorrect');
 return res.status(401).send('Invalid Email or Password');
 }
-} 
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
-}  
+}
 });
 
 router.get("/logoff", (req, res) => {
