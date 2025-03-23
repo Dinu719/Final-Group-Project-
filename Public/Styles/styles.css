@@ -114,33 +114,6 @@ background-size: cover;
 }
 
 
-.figcaption1 {
-text-align: center;
-font-size: 70px;
-color:white;
-font-family: HaveHearttwo;
-box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.292);
-flex-basis: auto;
-border-radius: 30px;
-text-shadow: 0px 0px 5px rgb(34, 34, 34);
-position: relative;
-bottom: 90px;
-padding:2px;
-margin: 0%;
-margin-left: 50%;
-right: 25%;
-background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 50%, #30D2BE 100% );
-}
-
-.figcaption2 {
-text-align: center;
-color: white;
-font-family: lemonMilk;
-box-shadow: 1px 1px 13px 6px rgba(0, 0, 0, 0.292);
-flex-basis: auto;
-border-radius: 5%;
-text-shadow: 1px 1px 1px black;
-}
 
 figure {
 margin-bottom: 10px;
@@ -168,6 +141,7 @@ text-align: center;
 display:flex;
 justify-items: center;
 flex-direction: column;
+text-decoration: none;
 }
 
 nav {
@@ -199,20 +173,7 @@ position: relative;
 top: 20px;
 }
 
-.search-container {
-position: absolute;
-top: 15%;
-left: 50%;
-transform: translateX(-50%);
-border-radius: 25px;
-}
 
-.search-box {
-width: 400px;
-padding: 12px;
-border-radius: 25px;
-outline: none;
-}
 
 .navimg {
 width:30%;
@@ -240,6 +201,8 @@ left: 15%;
 align-content: center;
 justify-content: center;
 border-color: #000000;
+
+
 }
 
 .btn-grade:hover {
@@ -249,4 +212,16 @@ color: white;
 
 figcaption {
 text-decoration: none;
+}
+
+a button {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
 }
