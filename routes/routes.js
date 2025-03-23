@@ -2,7 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const router = express.Router();
-const {addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing} = require('../controllers/controller');
+const {addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing, handlePayment} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
 res.render('index');
@@ -140,7 +140,8 @@ req.session.userEmail = emailAddress;
 res.redirect('/details');
 }
 else {
-res.status(400).render('/update', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});
+console.log('Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password);
+res.status(400).render('AccountDetails', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});
 }
 }
 catch (error) {
@@ -204,10 +205,8 @@ if (!req.session.cart) {
 req.session.cart = [];
 }
 let subtotal = 0;
-req.session.cart.forEach(item => {
-subtotal += item.price * item.quantity;
-});
-const shipping = 5;
+req.session.cart.forEach(item => {subtotal += item.price * item.quantity;});
+const shipping = 3;
 const tax = subtotal * 0.1;
 const total = subtotal + shipping + tax;
 res.render('Cart', {cart: req.session.cart, subtotal: subtotal, shipping: shipping, tax: tax, total: total});
@@ -232,8 +231,40 @@ res.redirect('/Cart');
 });
 
 router.get("/Checkout", (req, res) => {
-res.render('Checkout');
+if (!req.session.userEmail) {
+console.log('Please Log In to Checkout Items');
+return res.status(400).render('SignIn', {errorMessage: 'Please Log In to Checkout Items'});
+}
+if (!req.session.cart || req.session.cart.length === 0) {
+return res.redirect("/Cart");
+}
+let subtotal = 0;
+req.session.cart.forEach(item => {subtotal += item.price * item.quantity;});
+const shipping = 3;
+const tax = subtotal * 0.1;
+const total = subtotal + shipping + tax;
+res.render('Checkout', {subtotal: subtotal, shipping: shipping, tax: tax, total: total});
 });
+
+router.post("/payment", async (req, res) => {
+const {cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount} = req.body;
+const buyerID = req.session.userID;
+try {
+const paymentResult = await handlePayment(buyerID, cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount);
+if (paymentResult.success) {
+console.log('Payment Successful');
+res.render('Purchase');
+} 
+else {
+console.log('Payment Failed');
+res.status(400).render('Checkout', {errorMessage: 'An error occurred while processing payment.',});
+}
+}
+catch (error) {
+console.error('Error:', error);
+res.status(500).send('Error');
+}
+});  
 
 router.post("/create", async (req, res) => {
 const {fName, emailAddress, birthday, phoneNumber, password} = req.body;

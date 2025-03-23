@@ -5,47 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../Styles/cart.css"/>
   <title>Cart</title>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-    let cartTotal = 0;
-    
-    // Loop through each item in the cart to calculate the total
-    document.querySelectorAll('.cart-item').forEach(item => {
-    const price = parseFloat(item.querySelector('.item-details p strong').textContent.replace('$', ''));
-    const quantity = parseInt(item.querySelector('.quantity').value);
-    cartTotal += price * quantity;
-    });
-    
-    // Store the total amount in localStorage
-    localStorage.setItem("cartTotal", cartTotal.toFixed(2));
-    
-    // Optionally, you can display the total in the cart page as well
-    document.getElementById("cart-total").textContent = `$${cartTotal.toFixed(2)}`;
-    });
-  </script>
 </head>
 
 <body class="bg">
-    <header>
-      <nav class="navbar">
-        <div class="logo">
-            <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
-        </div>
-        <div class="nav-items">
-             <div class="dropdown">
-                <a href="#" class="account"> Account </a>
-                <div class="dropdown-menu">
-                    <a href="/details" class="account">Account Details</a>
-                    <a href="/Pastorders" class="account">Past Orders</a>
-                    <a href="/Likeditem" class="account">Liked Items</a>
-                    <a href="/logoff" class="account">Log Out</a>
-                </div>
-            </div>
-            <a href="/Cart"><img src="/Icons/Cart.png" alt="Cart"></a>
-            <a href="/account"><img src="/Icons/Profile.png" alt="Profile"></a>
-        </div>
-    </nav>
-    </header>
+  <header>
+        
+    <div class="navdiv"> 
+             <a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
+         <nav >
+             <div class="navdiv">
+                     <div >
+                         <a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
+                     </div>
+
+                     <div>
+                         <a href="/account">
+                             <img src="../Icons/Profile.png" class="divimg" alt="Profile">
+                         </a>                      
+                     </div>
+             </div>
+         </nav>
+     </div>
+
+ </header>
 
 <main>
   <h1>Shopping Cart</h1>

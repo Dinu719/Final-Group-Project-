@@ -222,6 +222,29 @@ async function getTShirts() {
   }
 }
 
+async function processPayment(bID, cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount) {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const orderQuery = `INSERT INTO orders (bID, oDate) VALUES (?, CURDATE())`;
+    await connection.query(orderQuery, [bID]);
+    const [rows] = await connection.query('SELECT LAST_INSERT_ID() AS oID');
+    const oID = rows[0].oID;
+    const paymentQuery = `
+      INSERT INTO payment (oID, totalAmount, paDate, nameOnCard, cardNumber, expDate, securityNumber, address, city, state, zipcode)
+      VALUES (?, ?, CURDATE(), ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    await connection.query(paymentQuery, [oID, totalAmount, cardName, cardNumber, expDate, cvv,address, city, state, zip]);
+    return {success: true, message: 'Payment Processed Successfully!'};
+  } catch (error) {
+    return {success: false, message: 'Error'};
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+}
+
 const getTables = async () => {
  try {
    const [tables] = await pool.query('SHOW TABLES');  // Run the 'SHOW TABLES' query
@@ -232,4 +255,4 @@ const getTables = async () => {
  }
 };
 
-module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, getTables};  // Export query function for use in other files
+module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, processPayment, getTables};  // Export query function for use in other files
