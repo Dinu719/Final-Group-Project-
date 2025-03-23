@@ -2,7 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const router = express.Router();
-const {addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing} = require('../controllers/controller');
+const {addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing, handlePayment, insertOrdersProducts, getPastOrders} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
 res.render('index');
@@ -12,7 +12,7 @@ router.get("/account", (req, res) => {
 const email = req.session.userEmail;
 if (email) {
 return res.redirect('/Profile');
-} 
+}
 else {
 return res.redirect('/signin');
 }
@@ -50,13 +50,13 @@ const mailOptions = {
 from: process.env.EMAIL_USER,
 to: email,
 subject: 'A Password Reset Request',
-text: `Click the following link to reset your password: 
+text: `Click the following link to reset your password:
 http://localhost:5001/password2/${token}`,
 };
 await transporter.sendMail(mailOptions);
 console.log('Password Reset Email Sent.');
 res.send('A link has been sent to your email.');
-} 
+}
 catch (error) {
 console.error('Error:', error);
 return res.status(500).send('Error');
@@ -68,7 +68,7 @@ const {token} = req.params;
 const {resetToken} = req.session;
 if (token === resetToken) {
 res.render('ForgotPassword2', {token});
-} 
+}
 else {
 res.status(400).send('Invalid or Expired Token.');
 }
@@ -85,18 +85,18 @@ const result = await updatePasswordByEmail(resetEmail, newPassword);
 if (result) {
 console.log('Your password has been reset successfully.');
 res.redirect('/signin');
-} 
+}
 else {
 res.status(400).send('Failed to Reset Password.');
 }
-} 
+}
 catch (error) {
 console.error('Error:', error);
 return res.status(500).send('Error');
 }
 req.session.resetToken = null;
 req.session.resetEmail = null;
-});  
+});
 
 router.get("/purchase", (req, res) => {
 res.render('purchase');
@@ -120,14 +120,14 @@ DOB: dob,
 phoneNumber: buyer[0].phoneN,
 password: buyer[0].password,
 });
-} 
+}
 catch (error) {
 console.error('Error:', error);
 return res.status(500).send('Error');
 }
 });
 
-router.post("/update", async (req, res) => {  
+router.post("/update", async (req, res) => {
 const {fullName, emailAddress, DOB, phoneNumber, password} = req.body;
 const bID = req.session.userID;
 try {
@@ -140,7 +140,8 @@ req.session.userEmail = emailAddress;
 res.redirect('/details');
 }
 else {
-res.status(400).render('/update', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});
+console.log('Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password);
+res.status(400).render('AccountDetails', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});
 }
 }
 catch (error) {
@@ -153,8 +154,19 @@ router.get("/Profile", (req, res) => {
 res.render('Profile');
 });
 
-router.get("/PastOrders", (req, res) => {
-res.render('Order');
+router.get("/PastOrders", async (req, res) => {
+const bID = req.session.userID;
+if (!bID) {
+return res.status(401).send('User Not Found');
+}
+try {
+const orders = await getPastOrders(bID);
+res.render('Order', {orders});
+} 
+catch (error) {
+console.error('Error:', error);
+res.status(500).send('Error');
+}
 });
 
 router.get("/CS", (req, res) => {
@@ -164,40 +176,120 @@ res.render('CustomerService');
 router.get("/clothing", async (req, res) => {
 try {
 const {hoodies, tShirts, hoodieLogos, tShirtLogos} = await getClothing();
-res.render("Clothing", { hoodies, tShirts, hoodieLogos, tShirtLogos });
-} 
+res.render("Clothing", {hoodies, tShirts, hoodieLogos, tShirtLogos});
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
 }
 });
-
 
 router.get("/tech", async (req, res) => {
 try {
 const {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos} = await getTech();
 res.render("Tech", {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos});
-} 
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
 }
-});    
+});
+
+router.post("/cart/add", (req, res) => {
+const {productID, productName, price, quantity, category, logo, model, size} = req.body;
+if (!req.session.cart) {
+req.session.cart = [];
+}
+const existingIndex = req.session.cart.findIndex(item => item.productID === productID);
+if (existingIndex !== -1) {
+req.session.cart[existingIndex].quantity += parseInt(quantity);
+}
+else {
+req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size});
+}
+console.log('Added to Cart:', req.session.cart);
+res.redirect("/Cart");
+});
 
 router.get("/Cart", (req, res) => {
-res.render('Cart');
+if (!req.session.cart) {
+req.session.cart = [];
+}
+let subtotal = 0;
+req.session.cart.forEach(item => {subtotal += item.price * item.quantity;});
+const shipping = 3;
+const tax = subtotal * 0.1;
+const total = subtotal + shipping + tax;
+res.render('Cart', {cart: req.session.cart, subtotal: subtotal, shipping: shipping, tax: tax, total: total});
+});
+
+router.post("/cart/update", (req, res) => {
+const {index, quantity} = req.body;
+if (req.session.cart && req.session.cart[index]) {
+req.session.cart[index].quantity = parseInt(quantity);
+}
+console.log('Item Updated');
+res.redirect('/Cart');
+});
+
+router.post("/cart/remove", (req, res) => {
+const {index} = req.body;
+if (req.session.cart && req.session.cart[index]) {
+req.session.cart.splice(index, 1);
+}
+console.log('Item Removed');
+res.redirect('/Cart');
 });
 
 router.get("/Checkout", (req, res) => {
-res.render('Checkout');
+if (!req.session.userEmail) {
+console.log('Please Log In to Checkout Items');
+return res.status(400).render('SignIn', {errorMessage: 'Please Log In to Checkout Items'});
+}
+if (!req.session.cart || req.session.cart.length === 0) {
+return res.redirect("/Cart");
+}
+let subtotal = 0;
+req.session.cart.forEach(item => {subtotal += item.price * item.quantity;});
+const shipping = 3;
+const tax = subtotal * 0.1;
+const total = subtotal + shipping + tax;
+res.render('Checkout', {subtotal: subtotal.toFixed(2), shipping: shipping.toFixed(2), tax: tax.toFixed(2), total: total.toFixed(2)});
 });
+
+router.post("/payment", async (req, res) => {
+const {cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount} = req.body;
+const buyerID = req.session.userID;
+try {
+const paymentResult = await handlePayment(buyerID, cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount);
+if (paymentResult.success) {
+const oID = paymentResult.oID;
+for (const item of req.session.cart) {
+const {productID, logo} = item;
+const loID = logo;
+await insertOrdersProducts(oID, productID, loID);
+}
+console.log('Payment Successful');
+req.session.cart = [];
+res.render('Purchase');
+} 
+else {
+console.log('Payment Failed');
+res.status(400).render('Checkout', {errorMessage: 'An error occurred while processing payment.',});
+}
+}
+catch (error) {
+console.error('Error:', error);
+res.status(500).send('Error');
+}
+});  
 
 router.post("/create", async (req, res) => {
 const {fName, emailAddress, birthday, phoneNumber, password} = req.body;
 try {
 await addBuyer(fName, emailAddress, birthday, phoneNumber, password);
 res.redirect("/signin");
-} 
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
@@ -221,16 +313,16 @@ req.session.userEmail = user[0].email;
 req.session.userID = user[0].bID;
 console.log('Logged In:', req.session.userEmail, req.session.userID);
 return res.redirect('/');
-} 
+}
 else {
 console.log('Password is Incorrect');
 return res.status(401).send('Invalid Email or Password');
 }
-} 
+}
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
-}  
+}
 });
 
 router.get("/logoff", (req, res) => {
@@ -245,7 +337,5 @@ console.log('Logged Off');
 res.redirect('/');
 });
 });
-
-
 
 module.exports = router;

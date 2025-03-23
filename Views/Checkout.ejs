@@ -6,8 +6,6 @@
     <title>Craftify</title>
     <meta name = "viewport" content="width=device-width", initial-scale="1">
     <link rel="stylesheet" href="../Styles/checkout.css"/>
-
-    
 </head>
 
 
@@ -15,38 +13,38 @@
     
     <header>
         
-       <div class="navdiv"> 
+        <div class="navdiv"> 
         <a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
-        <nav>
+            <nav>
                 <div class="navdiv">
-
-                    
                         <div >
                             <a href="/Cart"> <img src="../Icons/Cart.png" class="divimg"></a>
                         </div>
 
                         <div>
-                            <a href="/Checkout"><img src="../Icons/Profile.png" class="divimg"></a>
+                            <a href="/Profile"><img src="../Icons/Profile.png" class="divimg"></a>
                         </div>
                 </div>
 
             </nav>
-    </div>
+        </div>
 
     </header>
        
     <main>
+
+        <form action="/payment" method="POST" id="payment">
         
             <div class="checkout-section">
                 <h2>Payment Method</h2>
-                <label for="card-name">Name on Card</label>
-                <input type="text" id="card-name" name="card-name" required>
+                <label for="cardName">Name on Card</label>
+                <input type="text" id="cardName" name="cardName" required>
                 
-                <label for="card-number">Card Number</label>
-                <input type="text" id="card-number" name="card-number" required>
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" required>
                 
-                <label for="exp-date">Expiration Date</label>
-                <input type="text" id="exp-date" name="exp-date" placeholder="MM/YY" required>
+                <label for="expDate">Expiration Date</label>
+                <input type="text" id="expDate" name="expDate" placeholder="MM/YY" required>
                 
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" required>
@@ -54,11 +52,8 @@
             
             <div class="checkout-section">
                 <h2>Address Information</h2>
-                <label for="address-line1">Address Line 1</label>
-                <input type="text" id="address-line1" name="address-line1" required>
-                
-                <label for="address-line2">Address Line 2</label>
-                <input type="text" id="address-line2" name="address-line2">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
                 
                 <label for="city">City</label>
                 <input type="text" id="city" name="city" required>
@@ -121,15 +116,24 @@
                 <label for="zip">Zip Code</label>
                 <input type="text" id="zip" name="zip" required>
             </div>
-        
+
+            <div class="checkout-section2">
+                <h2>Order Summary</h2>
+                <p>Subtotal: <span id="checkout-subtotal"><%= subtotal %></span></p>
+                <p>Shipping: <span id="checkout-shipping"><%= shipping %></span></p>
+                <p>Tax: <span id="checkout-tax"><%= tax %></span></p>
+                <p><strong>Total: <span id="checkout-total"><%= total %></span></strong></p>
+            </div>
+
+            <input type="hidden" name="totalAmount" value="<%= total %>">
+
+            <div class="checkout-section1">
+                <button type="submit" class="confirm-btn">Confirm Purchase</button>
+            </div>
+
+        </form>
 
     </main>
-
-    <div class="checkout-section1">
-        <a href="/purchase">
-            <button class="confirm-btn">Confirm Purchase</button>
-        </a>
-    </div>
 
 
     <footer>
@@ -139,7 +143,8 @@
             </div>  
         
     </footer>
-
+    
+    
 </body>
 
 </html>

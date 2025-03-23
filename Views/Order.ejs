@@ -1,116 +1,82 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Past Orders</title>
-
-<link rel="stylesheet" href="../Styles/PastOrders.css"/>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Orders</title>
+    <link rel="stylesheet" href="../Styles/PastOrders.css" />
 </head>
 
 <header>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="/"><img src="/Icons/Craftify.png" alt="Logo"></a>
-        </div>
+    <div class="navdiv">
+        <a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
+        <nav>
+            <div class="navdiv">
+                <div>
+                    <a href="/Cart"><img src="../Icons/Cart.png" class="divimg"></a>
+                </div>
 
-        <div class="nav-items">
-
-            <div class="dropdown">
-                <a href="#"> Account </a>
-                <div class="dropdown-menu">
-                    <a href="/details">Account Details</a>
-                    <a href="/Pastorders">Past Orders</a>
-                    <a href="/Likeditem">Liked Items</a>
-                    <a href="#">Log Out</a>
+                <div>
+                    <a href="/Profile"><img src="../Icons/Profile.png" class="divimg"></a>
                 </div>
             </div>
-
-            <img src="/Icons/Cart.png" alt="Cart">
-            <img src="/Icons/Profile.png" alt="Profile">
-        </div>
-    </nav>
-
+        </nav>
+    </div>
 </header>
 
 <body>
 
-<main>
+    <main>
+        <h1>Past Orders</h1>
 
-<h1 >Past Orders</h1>
+        <div class="container">
 
-<p>🡠 <a href="/profile">Profile</a></p>
+            <div class="date-picker">
+                <label>Date Ordered</label>
+                <input type="date">
+            </div>
 
-<div class="container">
+            <div class="orders">
 
-<div class="date-picker">
+                <% if (orders && orders.length > 0) { %>
+                    <% orders.forEach(order => { %>
+                        <div class="order-item">
+                            <p><%= order.orderDate %></p>
+                            <img class="images" src="<%= order.productImage %>" alt="<%= order.productName %>">
+                            <p><%= order.productName %></p>
+                            <p>Price: $<%= order.price %></p>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No Past Orders Available</p>
+                <% } %>
 
-<label>Date Ordered</label>
+            </div>
 
-<input type="date">
-
-</div>
-
-<div class="orders">
-
-<div class="order-item">
-
-<p>5/20/2024</p>
-
-<img class="images" src="../Icons/CleariPhone16Case.jpg" alt="Clear iPhone 16 Case">
-
-<p>Clear iPhone 16 Case</p>
-
-<p>Price: $5</p>
-
-</div>
-
-<div class="order-item">
-
-<p>3/20/2024</p>
-
-<img class="images" src="../Icons/LaptopCase.webp" alt="15-16 in Black Laptop Case">
-
-<p>15-16 in. Black Laptop Case</p>
-
-<p>Price: $15</p>
-
-</div>
-
-<div class="order-item">
-
-<p>1/20/2024</p>
-
-<img class="images" src="../Icons/RedHoodie.webp" alt="Red Hoodie">
-
-<p>Red Hoodie</p>
-
-<p>Price: $20</p>
-
-</div>
-
-</div>
-
-</div>
-
-</main>
-
-<footer>
-    <div class="fdiv">
-        <div >
-            <p class="divfooter"> Copyright © 2025 Craftify </p>
         </div>
+<<<<<<< HEAD
         <div>
             <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
         </div>  
     </div>
 </footer>
+=======
+
+    </main>
+
+    <footer>
+        <div class="fdiv">
+            <div>
+                <p class="divfooter">Copyright © 2025 Craftify</p>
+            </div>
+
+            <div>
+                <a href="/CS"><img src="../Icons/CustomerService.png" alt="CustomerService" class="customer"></a>
+            </div>
+        </div>
+    </footer>
+>>>>>>> 5d697a19581cff1ce6ff1dbd2cb761c6755f8327
 
 </body>
 
