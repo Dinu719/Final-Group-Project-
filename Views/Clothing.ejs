@@ -35,75 +35,73 @@
     <h1>Clothing</h1>
 
     <div class="container">
-      <div class="products">
+
+      <div class="product-category">
         <h2>Hoodies</h2>
-        <% hoodies.forEach(product => { %>
-          <div class="product-item">
-            <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
-            <p>Price: $<%= product.Price %></p>
-            <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
-
-            <p>Size: 
-              <select id="size">
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-                <option>X-Large</option>
-              </select>
-            </p>
-
-            <p>Color: <%= product.color %></p>
-
-            <p>Logo: 
-              <select id="logo">
-                <% hoodieLogos.forEach(logo => { %>
-                  <option value="<%= logo.loID %>"><%= logo.loName %></option>
-                <% }); %>
-              </select>
-            </p>
-
-            <div class="buttons">
-              <button id="cart">Add to Cart</button>
+        <div class="products">
+          <% hoodies.forEach(product => { %>
+            <div class="product-item">
+              <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
+              <p>Price: $<%= product.Price %></p>
+              <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
+              <p>Size: 
+                <select>
+                  <option>Small</option>
+                  <option>Medium</option>
+                  <option>Large</option>
+                  <option>X-Large</option>
+                </select>
+              </p>
+              <p>Color: <%= product.color %></p>
+              <p>Logo: 
+                <select>
+                  <% hoodieLogos.forEach(logo => { %>
+                    <option value="<%= logo.loID %>"><%= logo.loName %></option>
+                  <% }); %>
+                </select>
+              </p>
+              <div class="buttons">
+                <button>Add to Cart</button>
+              </div>
             </div>
-          </div>
-        <% }); %>
+          <% }); %>
+        </div>
       </div>
-
-      <div class="products">
+    
+      <div class="product-category">
         <h2>T-Shirts</h2>
-        <% tShirts.forEach(product => { %>
-          <div class="product-item">
-            <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
-            <p>Price: $<%= product.Price %></p>
-            <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
-
-            <p>Size: 
-              <select id="size1">
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-                <option>X-Large</option>
-              </select>
-            </p>
-
-            <p>Color: <%= product.color %></p>
-
-            <p>Logo: 
-              <select id="logo1">
-                <% tShirtLogos.forEach(logo => { %>
-                  <option value="<%= logo.loID %>"><%= logo.loName %></option>
-                <% }); %>
-              </select>
-            </p>
-
-            <div class="buttons">
-              <button id="cart1">Add to Cart</button>
+        <div class="products">
+          <% tShirts.forEach(product => { %>
+            <div class="product-item">
+              <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
+              <p>Price: $<%= product.Price %></p>
+              <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
+              <p>Size: 
+                <select>
+                  <option>Small</option>
+                  <option>Medium</option>
+                  <option>Large</option>
+                  <option>X-Large</option>
+                </select>
+              </p>
+              <p>Color: <%= product.color %></p>
+              <p>Logo: 
+                <select>
+                  <% tShirtLogos.forEach(logo => { %>
+                    <option value="<%= logo.loID %>"><%= logo.loName %></option>
+                  <% }); %>
+                </select>
+              </p>
+              <div class="buttons">
+                <button>Add to Cart</button>
+              </div>
             </div>
-          </div>
-        <% }); %>
+          <% }); %>
+        </div>
       </div>
-
+    
     </div>
+    
 
   </main>
 
