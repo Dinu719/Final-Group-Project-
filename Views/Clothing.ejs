@@ -58,7 +58,7 @@
               <p>Logo: 
                 <select name="logo">
                   <% hoodieLogos.forEach(logo => { %>
-                    <option value="<%= logo.loID %>"><%= logo.loName %></option>
+                    <option value="<%= logo.loID %>. <%= logo.loName %>"><%= logo.loID %>. <%= logo.loName %></option>
                   <% }); %>
                 </select>
               </p>
@@ -99,7 +99,7 @@
               <p>Logo: 
                 <select name="logo">
                   <% tShirtLogos.forEach(logo => { %>
-                    <option value="<%= logo.loID %>"><%= logo.loName %></option>
+                    <option value="<%= logo.loID %>. <%= logo.loName %>"><%= logo.loID %>. <%= logo.loName %></option>
                   <% }); %>
                 </select>
               </p>

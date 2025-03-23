@@ -164,7 +164,7 @@ res.render('CustomerService');
 router.get("/clothing", async (req, res) => {
 try {
 const {hoodies, tShirts, hoodieLogos, tShirtLogos} = await getClothing();
-res.render("Clothing", { hoodies, tShirts, hoodieLogos, tShirtLogos });
+res.render("Clothing", {hoodies, tShirts, hoodieLogos, tShirtLogos});
 } 
 catch (error) {
 console.error('Error:', error);
@@ -195,10 +195,9 @@ req.session.cart[existingIndex].quantity += parseInt(quantity);
 else {
 req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size});
 }
-console.log('Cart:', req.session.cart);
-console.log('Added to Cart Successfully');
+console.log('Added to Cart:', req.session.cart);
 res.redirect("/Cart");
-});  
+});
 
 router.get("/Cart", (req, res) => {
 if (!req.session.cart) {
@@ -219,6 +218,7 @@ const {index, quantity} = req.body;
 if (req.session.cart && req.session.cart[index]) {
 req.session.cart[index].quantity = parseInt(quantity);
 }
+console.log('Item Updated');
 res.redirect('/Cart');
 });  
 
@@ -227,6 +227,7 @@ const {index} = req.body;
 if (req.session.cart && req.session.cart[index]) {
 req.session.cart.splice(index, 1);
 }
+console.log('Item Removed');
 res.redirect('/Cart');
 });  
 
