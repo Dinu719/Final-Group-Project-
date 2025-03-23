@@ -172,7 +172,6 @@ res.status(500).send('Error');
 }
 });
 
-
 router.get("/tech", async (req, res) => {
 try {
 const {laptopCases, iPhoneCases, laptopLogos, iPhoneLogos} = await getTech();
@@ -182,11 +181,54 @@ catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
 }
-});    
+});
+
+router.post("/cart/add", (req, res) => {
+const {productID, productName, price, quantity, category, logo, model, size} = req.body;
+if (!req.session.cart) {
+req.session.cart = [];
+}
+const existingIndex = req.session.cart.findIndex(item => item.productID === productID);
+if (existingIndex !== -1) {
+req.session.cart[existingIndex].quantity += parseInt(quantity);
+} 
+else {
+req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size});
+}
+console.log('Cart:', req.session.cart);
+console.log('Added to Cart Successfully');
+res.redirect("/Cart");
+});  
 
 router.get("/Cart", (req, res) => {
-res.render('Cart');
+if (!req.session.cart) {
+req.session.cart = [];
+}
+let subtotal = 0;
+req.session.cart.forEach(item => {
+subtotal += item.price * item.quantity;
 });
+const shipping = 5;
+const tax = subtotal * 0.1;
+const total = subtotal + shipping + tax;
+res.render('Cart', {cart: req.session.cart, subtotal: subtotal, shipping: shipping, tax: tax, total: total});
+});
+
+router.post("/cart/update", (req, res) => {
+const {index, quantity} = req.body;
+if (req.session.cart && req.session.cart[index]) {
+req.session.cart[index].quantity = parseInt(quantity);
+}
+res.redirect('/Cart');
+});  
+
+router.post("/cart/remove", (req, res) => {
+const {index} = req.body;
+if (req.session.cart && req.session.cart[index]) {
+req.session.cart.splice(index, 1);
+}
+res.redirect('/Cart');
+});  
 
 router.get("/Checkout", (req, res) => {
 res.render('Checkout');
@@ -245,7 +287,5 @@ console.log('Logged Off');
 res.redirect('/');
 });
 });
-
-
 
 module.exports = router;
