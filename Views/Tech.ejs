@@ -36,6 +36,7 @@
 
       <div class="product-category">
         <h2>Laptop Cases</h2>
+        <div class="products">
         <% laptopCases.forEach(product => { %>
           <div class="product-item">
             <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
@@ -76,8 +77,12 @@
         <% }); %>
       </div>
 
+</div>
+
+
       <div class="product-category">
         <h2>iPhone Cases</h2>
+        <div class="products">
         <% iPhoneCases.forEach(product => { %>
           <div class="product-item">
             <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
@@ -119,6 +124,7 @@
       </div>
 
     </div>
+  </div>
   </main>
 
   <footer>

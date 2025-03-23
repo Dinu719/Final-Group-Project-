@@ -35,19 +35,6 @@
     <h1>Clothing</h1>
 
     <div class="container">
-<<<<<<< HEAD
-
-      <div class="product-category">
-        <h2>Hoodies</h2>
-        <div class="products">
-          <% hoodies.forEach(product => { %>
-            <div class="product-item">
-              <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
-              <p>Price: $<%= product.Price %></p>
-              <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
-              <p>Size: 
-                <select>
-=======
       <div class="products">
         <h2>Hoodies</h2>
         <% hoodies.forEach(product => { %>
@@ -59,7 +46,6 @@
 
               <p>Size: 
                 <select name="size">
->>>>>>> 338920fc12b366e1049633d68256162cfd99c9c9
                   <option>Small</option>
                   <option>Medium</option>
                   <option>Large</option>
