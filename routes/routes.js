@@ -243,7 +243,7 @@ req.session.cart.forEach(item => {subtotal += item.price * item.quantity;});
 const shipping = 3;
 const tax = subtotal * 0.1;
 const total = subtotal + shipping + tax;
-res.render('Checkout', {subtotal: subtotal, shipping: shipping, tax: tax, total: total});
+res.render('Checkout', {subtotal: subtotal.toFixed(2), shipping: shipping.toFixed(2), tax: tax.toFixed(2), total: total.toFixed(2)});
 });
 
 router.post("/payment", async (req, res) => {
@@ -253,6 +253,7 @@ try {
 const paymentResult = await handlePayment(buyerID, cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount);
 if (paymentResult.success) {
 console.log('Payment Successful');
+req.session.cart = [];
 res.render('Purchase');
 } 
 else {
