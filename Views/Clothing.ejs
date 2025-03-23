@@ -35,91 +35,73 @@
     <h1>Clothing</h1>
 
     <div class="container">
-      <div class="products">
+
+      <div class="product-category">
         <h2>Hoodies</h2>
-        <% hoodies.forEach(product => { %>
-          <form action="/cart/add" method="POST">
+        <div class="products">
+          <% hoodies.forEach(product => { %>
             <div class="product-item">
               <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
               <p>Price: $<%= product.Price %></p>
-              <p>Quantity: <input type="number" name="quantity" min="1" max="<%= product.Stock %>" value="1" /></p>
-
+              <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
               <p>Size: 
-                <select name="size">
+                <select>
                   <option>Small</option>
                   <option>Medium</option>
                   <option>Large</option>
                   <option>X-Large</option>
                 </select>
               </p>
-
               <p>Color: <%= product.color %></p>
-
               <p>Logo: 
-                <select name="logo">
+                <select>
                   <% hoodieLogos.forEach(logo => { %>
                     <option value="<%= logo.loID %>"><%= logo.loName %></option>
                   <% }); %>
                 </select>
               </p>
-
-              <input type="hidden" name="productID" value="<%= product.prID %>" />
-              <input type="hidden" name="productName" value="<%= product.prDescription %>" />
-              <input type="hidden" name="price" value="<%= product.Price %>" />
-              <input type="hidden" name="category" value="Clothing" />
-
               <div class="buttons">
-                <button type="submit">Add to Cart</button>
+                <button>Add to Cart</button>
               </div>
             </div>
-          </form>
-        <% }); %>
+          <% }); %>
+        </div>
       </div>
     
       <div class="product-category">
         <h2>T-Shirts</h2>
-        <% tShirts.forEach(product => { %>
-          <form action="/cart/add" method="POST">
+        <div class="products">
+          <% tShirts.forEach(product => { %>
             <div class="product-item">
               <img class="images" src="../Icons/<%= product.prDescription %>.webp" alt="<%= product.prDescription %>">
               <p>Price: $<%= product.Price %></p>
-              <p>Quantity: <input type="number" name="quantity" min="1" max="<%= product.Stock %>" value="1" /></p>
-
+              <p>Quantity: <input type="number" name="num" min="1" max="<%= product.Stock %>" value="1" /></p>
               <p>Size: 
-                <select name="size">
+                <select>
                   <option>Small</option>
                   <option>Medium</option>
                   <option>Large</option>
                   <option>X-Large</option>
                 </select>
               </p>
-
               <p>Color: <%= product.color %></p>
-
               <p>Logo: 
-                <select name="logo">
+                <select>
                   <% tShirtLogos.forEach(logo => { %>
                     <option value="<%= logo.loID %>"><%= logo.loName %></option>
                   <% }); %>
                 </select>
               </p>
-
-              <input type="hidden" name="productID" value="<%= product.prID %>" />
-              <input type="hidden" name="productName" value="<%= product.prDescription %>" />
-              <input type="hidden" name="price" value="<%= product.Price %>" />
-              <input type="hidden" name="category" value="Clothing" />
-
               <div class="buttons">
-                <button type="submit">Add to Cart</button>
+                <button>Add to Cart</button>
               </div>
             </div>
-          </form>
-        <% }); %>
+          <% }); %>
+        </div>
       </div>
     
     </div>
     
-
   </main>
 
   <footer>
