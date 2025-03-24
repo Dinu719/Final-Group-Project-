@@ -201,7 +201,7 @@ font-size: 0.95rem;
 .chat-input span {
 align-self: flex-end;
 color: red; /* Purple */
-cursor: pointer;
+border: none;
 height: 55px;
 display: flex;
 align-items: center;
