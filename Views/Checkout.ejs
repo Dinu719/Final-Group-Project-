@@ -33,6 +33,8 @@
        
     <main>
 
+        <div>
+
         <form action="/payment" method="POST" id="payment">
         
             <div class="checkout-section">
@@ -48,7 +50,7 @@
                 
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" required>
-            </div>
+                </div>
             
             <div class="checkout-section">
                 <h2>Address Information</h2>
@@ -115,7 +117,7 @@
                 
                 <label for="zip">Zip Code</label>
                 <input type="text" id="zip" name="zip" required>
-            </div>
+                </div>
 
             <div class="checkout-section2">
                 <h2>Order Summary</h2>
@@ -123,18 +125,20 @@
                 <p>Shipping: <span id="checkout-shipping"><%= shipping %></span></p>
                 <p>Tax: <span id="checkout-tax"><%= tax %></span></p>
                 <p><strong>Total: <span id="checkout-total"><%= total %></span></strong></p>
-            </div>
+                </div>
 
-            <input type="hidden" name="totalAmount" value="<%= total %>">
-
-            <div class="checkout-section1">
-                <button type="submit" class="confirm-btn">Confirm Purchase</button>
-            </div>
-
+                <input type="hidden" name="totalAmount" value="<%= total %>">
+                <div class="checkout-section1">
+                    <button type="submit" class="confirm-btn">Confirm Purchase</button>
+                    </div>
+        
+         
         </form>
+       
+
+    </div>
 
     </main>
-
 
     <footer>
             <p class="ftext"> Copyright © 2025 Craftify </p>
