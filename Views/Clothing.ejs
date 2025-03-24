@@ -33,10 +33,11 @@
 <br>
 
 <h1>Clothing</h1>
-
 <div class="container">
-<div class="products">
+
+<div class="product-category">
 <h2>Hoodies</h2>
+<div class="products">
 <% hoodies.forEach(product => { %>
 <form action="/cart/add" method="POST">
 <div class="product-item">
@@ -75,8 +76,11 @@
 </form>
 <% }); %>
 </div>
+</div>
 
-<div class="products">
+
+
+<div class="product-category">
 <h2>T-Shirts</h2>
 <% tShirts.forEach(product => { %>
 <form action="/cart/add" method="POST">
@@ -118,6 +122,11 @@
 </div>
 
 </div>
+
+
+
+
+
 </main>
 
 <footer>
