@@ -1,4 +1,4 @@
-const {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, processPayment, getTables} = require("../models/queries");
+const {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, processPayment, insertOP, getPO, getTables} = require("../models/queries");
 
 async function processBD() {
   try {
@@ -81,6 +81,26 @@ const handlePayment = async (buyerID, cardName, cardNumber, expDate, cvv, addres
   }
 };
 
+async function insertOrdersProducts(oID, prID, loID) {
+  try {
+    const result = await insertOP(oID, prID, loID);
+    return result;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+async function getPastOrders(bID) {
+  try {
+    const orders = await getPO(bID);
+    return orders;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
 const showTables = async () => {
  try {
    const tableNames = await getTables();  // Call the query to get tables
@@ -91,4 +111,4 @@ const showTables = async () => {
  }
 };
 
-module.exports = {processBD, addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing, handlePayment, showTables};  // Export the function to use elsewhere if needed
+module.exports = {processBD, addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing, handlePayment, insertOrdersProducts, getPastOrders, showTables};  // Export the function to use elsewhere if needed

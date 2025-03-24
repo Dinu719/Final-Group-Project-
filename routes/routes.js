@@ -2,7 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const router = express.Router();
-const {addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing, handlePayment} = require('../controllers/controller');
+const {addBuyer, getBuyerByEmail, updateDetails, updatePasswordByEmail, getTech, getClothing, handlePayment, insertOrdersProducts, getPastOrders} = require('../controllers/controller');
 
 router.get("/", (req, res) => {
 res.render('index');
@@ -154,9 +154,23 @@ router.get("/Profile", (req, res) => {
 res.render('Profile');
 });
 
-router.get("/PastOrders", (req, res) => {
-res.render('Order');
-});
+router.get("/PastOrders", async (req, res) => {
+const bID = req.session.userID;
+if (!bID) {
+return res.status(401).send('Sign In to View Past Orders');
+}
+try {
+const orders = await getPastOrders(bID);
+if (!orders || orders.length === 0) {
+return res.render('Order', {message: "No Past Orders Found"});
+}
+res.render('Order', {orders});
+} 
+catch (error) {
+console.error('Error:', error);
+res.status(500).send('Error');
+}
+});  
 
 router.get("/CS", (req, res) => {
 res.render('CustomerService');
@@ -252,6 +266,12 @@ const buyerID = req.session.userID;
 try {
 const paymentResult = await handlePayment(buyerID, cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount);
 if (paymentResult.success) {
+const oID = paymentResult.oID;
+for (const item of req.session.cart) {
+const {productID, logo} = item;
+const loID = logo;
+await insertOrdersProducts(oID, productID, loID);
+}
 console.log('Payment Successful');
 req.session.cart = [];
 res.render('Purchase');

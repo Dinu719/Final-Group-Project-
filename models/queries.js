@@ -230,6 +230,7 @@ async function getTShirts() {
   }
 }
 
+// Checkout
 async function processPayment(bID, cardName, cardNumber, expDate, cvv, address, city, state, zip, totalAmount) {
   let connection;
   try {
@@ -243,7 +244,7 @@ async function processPayment(bID, cardName, cardNumber, expDate, cvv, address, 
       VALUES (?, ?, CURDATE(), ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     await connection.query(paymentQuery, [oID, totalAmount, cardName, cardNumber, expDate, cvv,address, city, state, zip]);
-    return {success: true, message: 'Payment Processed Successfully!'};
+    return {success: true, message: 'Payment Processed Successfully!', oID};
   } catch (error) {
     return {success: false, message: 'Error'};
   } finally {
@@ -253,6 +254,55 @@ async function processPayment(bID, cardName, cardNumber, expDate, cvv, address, 
   }
 }
 
+// Insert Into Orders_Products
+async function insertOP(oID, prID, loID) {
+  const connection = await pool.getConnection();
+  try {
+    const ordersProductsQuery = `
+      INSERT INTO orders_products (oID, prID, loID)
+      VALUES (?, ?, ?)
+    `;
+    await connection.query(ordersProductsQuery, [oID, prID, loID]);
+    return true;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+}
+
+// Past Orders
+async function getPO(bID) {
+  let connection;
+  try {
+    connection = await pool.getConnection();  
+    const ordersQuery = `
+      SELECT o.oID, o.oDate, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS productName, lo.loName AS logo
+      FROM orders o
+      JOIN orders_products op ON o.oID = op.oID
+      JOIN products p ON op.prID = p.prID
+      JOIN name n ON p.nID = n.nID
+      JOIN color c ON p.coID = c.coID
+      LEFT JOIN logo lo ON op.loID = lo.loID
+      WHERE o.bID = ?
+      ORDER BY o.oDate DESC;
+    `;
+    const [orders] = await connection.query(ordersQuery, [bID]);
+    return orders;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+}
+
+// View Tables
 const getTables = async () => {
  try {
    const [tables] = await pool.query('SHOW TABLES');  // Run the 'SHOW TABLES' query
@@ -263,4 +313,4 @@ const getTables = async () => {
  }
 };
 
-module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, processPayment, getTables};  // Export query function for use in other files
+module.exports = {buyerData, insertBuyer, getBuyer, updateBuyer, updatePassword, getLaptopCases, getiPhoneCases, getHoodies, getTShirts, processPayment, insertOP, getPO, getTables};  // Export query function for use in other files
