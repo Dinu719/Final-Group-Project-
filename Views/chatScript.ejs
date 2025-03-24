@@ -7,6 +7,7 @@
         chatInput.value = e.target.textContent;
         form.dispatchEvent(new Event('submit'));
     };
+
     const handleChatBotForm = async (e) => {
         e.preventDefault();
         const formData = new FormData(document.querySelector('.chat-input form'));
@@ -45,4 +46,6 @@
         console.log(chatbot);
         document.body.classList.toggle('show-chatbot');
     };
+
+    
 </script> 
