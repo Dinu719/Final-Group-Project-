@@ -1,0 +1,48 @@
+<script>
+    const buttonClick = (e) => {
+        const chatbox = document.querySelector('.chatbox');
+        const chat = document.createElement('li');
+        const form = document.querySelector('.chat-input form');
+        const chatInput = form.querySelector('textarea');
+        chatInput.value = e.target.textContent;
+        form.dispatchEvent(new Event('submit'));
+    };
+    const handleChatBotForm = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(document.querySelector('.chat-input form'));
+        const chatInput = formData.get('message');
+        const chatbox = document.querySelector('.chatbox');
+        const chatInputValue = chatInput.trim();
+        if (!chatInputValue) return;
+        console.log(chatInputValue);
+        const chat = document.createElement('li');
+        chat.classList.add('chat', 'incoming');
+        chat.innerHTML = `<span class="material-symbols-rounded">send</span><p>${chatInputValue}</p>`;
+        chatbox.appendChild(chat);
+        const answer = await fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ message: chatInputValue }),
+        });
+        console.log(answer);
+        const answerText = await answer.text();
+        console.log(answerText);
+        const chatIncoming = document.createElement('li');
+        chatIncoming.classList.add('chat', 'outgoing');
+        chatIncoming.innerHTML = `<span class="material-symbols-outlined">smart_toy</span><p>${answerText}</p>`;
+        chatbox.appendChild(chatIncoming);
+        document.querySelector('.chat-input #message').value = '';
+        document.querySelector('.chat-input #message').value = '';
+
+
+    };
+
+    const toggleChatBot = () => {
+
+        const chatbot = document.querySelector('.chatbot');
+        console.log(chatbot);
+        document.body.classList.toggle('show-chatbot');
+    };
+</script> 
