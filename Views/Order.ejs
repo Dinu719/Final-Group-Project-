@@ -32,20 +32,21 @@
 
         <div class="container">
 
-            <div class="date-picker">
-                <label>Date Ordered</label>
-                <input type="date">
-            </div>
-
             <div class="orders">
 
                 <% if (orders && orders.length > 0) { %>
                     <% orders.forEach(order => { %>
                         <div class="order-item">
-                            <p><%= order.orderDate %></p>
-                            <img class="images" src="<%= order.productImage %>" alt="<%= order.productName %>">
-                            <p><%= order.productName %></p>
-                            <p>Price: $<%= order.price %></p>
+
+                            <p><strong>ID #<%= order.oID %></strong></p>
+                            <p><strong>Date Purchased:</strong> <%= new Date(order.oDate).toLocaleDateString('en-US') %></p>                            
+                            <img class="images" src="../Icons/<%= order.prDescription %>.webp" alt="<%= order.prDescription %>">
+                            <p><strong>Product Name:</strong> <%= order.productName %></p>
+                            <p><strong>Color:</strong> <%= order.color %></p>
+                            <p><strong>Logo:</strong> <%= order.logo %></p>
+                            <img class="images" src="../Logos/<%= order.logo %>.png" alt="<%= order.logo %>">
+                            <p><strong>Price:</strong> $<%= order.Price %></p>
+
                         </div>
                     <% }); %>
                 <% } else { %>
@@ -55,13 +56,6 @@
             </div>
 
         </div>
-<<<<<<< HEAD
-        <div>
-            <a href="/CS"> <img src="../Icons/CustomerService.png" alt ="CustomerService" class="customer"> </a>
-        </div>  
-    </div>
-</footer>
-=======
 
     </main>
 
@@ -76,7 +70,6 @@
             </div>
         </div>
     </footer>
->>>>>>> 5d697a19581cff1ce6ff1dbd2cb761c6755f8327
 
 </body>
 

@@ -271,7 +271,6 @@ async function getPO(bID) {
   let connection;
   try {
     connection = await pool.getConnection();  
-
     const ordersQuery = `
       SELECT o.oID, o.oDate, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS productName, lo.loName AS logo
       FROM orders o
@@ -283,12 +282,10 @@ async function getPO(bID) {
       WHERE o.bID = ?
       ORDER BY o.oDate DESC;
     `;
-    
     const [orders] = await connection.query(ordersQuery, [bID]);
-
     return orders;
   } catch (error) {
-    console.error('Error fetching past orders:', error);
+    console.error('Error:', error);
     throw error;
   } finally {
     if (connection) {
@@ -297,6 +294,7 @@ async function getPO(bID) {
   }
 }
 
+// View Tables
 const getTables = async () => {
  try {
    const [tables] = await pool.query('SHOW TABLES');  // Run the 'SHOW TABLES' query

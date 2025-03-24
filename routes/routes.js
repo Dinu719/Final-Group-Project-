@@ -157,17 +157,20 @@ res.render('Profile');
 router.get("/PastOrders", async (req, res) => {
 const bID = req.session.userID;
 if (!bID) {
-return res.status(401).send('User Not Found');
+return res.status(401).send('Sign In to View Past Orders');
 }
 try {
 const orders = await getPastOrders(bID);
+if (!orders || orders.length === 0) {
+return res.render('Order', {message: "No Past Orders Found"});
+}
 res.render('Order', {orders});
 } 
 catch (error) {
 console.error('Error:', error);
 res.status(500).send('Error');
 }
-});
+});  
 
 router.get("/CS", (req, res) => {
 res.render('CustomerService');
