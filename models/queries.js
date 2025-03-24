@@ -37,6 +37,7 @@ async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password)
   }
 }
 
+
 // Sign In
 async function getBuyer(email) {
   const connection = await pool.getConnection();
@@ -53,6 +54,7 @@ async function getBuyer(email) {
       }
   }
 }
+
 
 // Change Details
 async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, password) {
@@ -98,6 +100,8 @@ async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, passwo
   }
 }
 
+
+
 // Update Password
 const updatePassword = async (email, newPassword) => {
   try {
@@ -113,6 +117,8 @@ const updatePassword = async (email, newPassword) => {
     throw error;
   }
 };
+
+
 
 // Laptop Cases
 async function getLaptopCases() {
@@ -140,6 +146,8 @@ async function getLaptopCases() {
     }
   }
 }
+
+
 
 // iPhone Cases
 async function getiPhoneCases() {
