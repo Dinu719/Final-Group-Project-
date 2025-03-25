@@ -19,7 +19,7 @@ return res.redirect('/signin');
 });
 
 router.get("/signin", (req, res) => {
-res.render('SignIn');
+res.render('SignIn', {errorMessage: undefined});
 });
 
 router.get("/signup", (req, res) => {
@@ -253,7 +253,7 @@ res.redirect('/Cart');
 router.get("/Checkout", (req, res) => {
 if (!req.session.userEmail) {
 console.log('Please Log In to Checkout Items');
-return res.status(400).render('SignIn', {errorMessage: 'Please Log In to Checkout Items'});
+return res.status(401).render('SignIn', {errorMessage: 'Please Log In to Checkout Items'});
 }
 if (!req.session.cart || req.session.cart.length === 0) {
 return res.redirect("/Cart");

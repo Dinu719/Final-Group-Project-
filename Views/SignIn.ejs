@@ -46,4 +46,11 @@
     </div>
 </footer>
 </body>
+
+<% if (errorMessage) { %>
+    <script>
+        alert('<%= errorMessage %>');
+    </script>
+<% } %>
+
 </html>
