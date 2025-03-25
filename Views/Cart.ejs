@@ -9,7 +9,7 @@
 
 <body class="bg">
 
-  <header>
+<header>
         
     <div class="navdiv"> 
         <a href="/"> <img src="../Icons/Craftify.png" class="navimg"> </a>
@@ -29,21 +29,25 @@
 </header>
 
 <main>
+
   <h1>Shopping Cart</h1>
 
   <div id="products" class="cart-container">
+
     <% cart.forEach((item, index) => { %>
       <div class="cart-item">
         <img src="../Icons/<%= item.productName %>.webp" alt="<%= item.productName %>">
         <div class="item-details">
           <h4><%= item.productName %></h4>
+
           <% if (item.model) { %>
             <p><%= item.model %></p>
           <% } else if (item.size) { %>
             <p><%= item.size %></p>
           <% } %>
-          <p>Logo: <%= item.logo %></p>
 
+          <p>Logo: <%= item.logo %></p>
+          
           <p><strong> $<%= item.price %> </strong></p>
           
           <form action="/cart/update" method="POST">
@@ -64,6 +68,7 @@
     <% if (cart.length === 0) { %>
       <p>Empty Cart</p>
     <% } %>
+
   </div>
 
   <div class="summary">

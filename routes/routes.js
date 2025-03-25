@@ -217,7 +217,7 @@ else {
 req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size});
 }
 console.log('Added to Cart:', req.session.cart);
-res.redirect("/Cart");
+res.redirect('back');
 });
 
 router.get("/Cart", (req, res) => {
@@ -284,7 +284,7 @@ res.render('Purchase');
 }
 else {
 console.log('Payment Failed');
-res.status(400).render('Checkout', {errorMessage: 'An error occurred while processing payment.',});
+res.status(400).render('Checkout', {errorMessage: 'An error occurred while processing payment.'});
 }
 }
 catch (error) {
