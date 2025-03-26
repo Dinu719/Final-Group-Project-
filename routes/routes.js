@@ -238,7 +238,7 @@ req.session.cart.forEach(item => {subtotal += item.price * item.quantity;});
 const shipping = 3;
 const tax = subtotal * 0.1;
 const total = subtotal + shipping + tax;
-res.render('Cart', {cart: req.session.cart, subtotal: subtotal, shipping: shipping, tax: tax, total: total});
+res.render('Cart', {cart: req.session.cart, subtotal: subtotal, shipping: shipping, tax: tax, total: total, errorMessage: undefined});
 });
 
 router.post("/cart/update", (req, res) => {
@@ -293,7 +293,14 @@ res.render('Purchase');
 }
 else {
 console.log('Payment Failed');
-res.status(400).render('Checkout', {errorMessage: 'An error occurred while processing payment.'});
+res.render('Cart', { 
+errorMessage: 'An error occurred while processing payment.',
+cart: req.session.cart,
+subtotal: req.session.subtotal,
+shipping: req.session.shipping,
+tax: req.session.tax,
+total: req.session.total
+});
 }
 }
 catch (error) {

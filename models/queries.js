@@ -227,6 +227,7 @@ async function processPayment(bID, cardName, cardNumber, expDate, cvv, address, 
   let connection;
   try {
     connection = await pool.getConnection();
+    await connection.beginTransaction();
     const orderQuery = `INSERT INTO orders (bID, oDate) VALUES (?, CURDATE())`;
     await connection.query(orderQuery, [bID]);
     const [rows] = await connection.query('SELECT LAST_INSERT_ID() AS oID');
@@ -236,9 +237,14 @@ async function processPayment(bID, cardName, cardNumber, expDate, cvv, address, 
       VALUES (?, ?, CURDATE(), ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     await connection.query(paymentQuery, [oID, totalAmount, cardName, cardNumber, expDate, cvv,address, city, state, zip]);
-    return {success: true, message: 'Payment Processed Successfully!', oID};
+    await connection.commit();
+    return {success: true, oID};
   } catch (error) {
-    return {success: false, message: 'Error'};
+    if (connection) {
+      await connection.rollback();
+    }
+    console.log('Error During Payment Process:', error);
+    return {success: false};
   } finally {
     if (connection) {
       connection.release();
