@@ -19,7 +19,7 @@ return res.redirect('/signin');
 });
 
 router.get("/signin", (req, res) => {
-res.render('SignIn');
+res.render('SignIn', {errorMessage: undefined});
 });
 
 router.get("/signup", (req, res) => {
@@ -164,7 +164,7 @@ const orders = await getPastOrders(bID);
 if (!orders || orders.length === 0) {
 return res.render('Order', {message: "No Past Orders Found"});
 }
-res.render('Order', {orders});
+res.render('Order', {orders, message: undefined});
 }
 catch (error) {
 console.error('Error:', error);
@@ -209,15 +209,24 @@ const {productID, productName, price, quantity, category, logo, model, size} = r
 if (!req.session.cart) {
 req.session.cart = [];
 }
-const existingIndex = req.session.cart.findIndex(item => item.productID === productID);
+let detail = "";
+let detailType = "";
+if (model) {
+detail = model;
+detailType = "Model";
+} else if (size) {
+detail = size;
+detailType = "Size";
+}
+const existingIndex = req.session.cart.findIndex(item => item.productID === productID && item.logo === logo && item.model === model && item.size === size);
 if (existingIndex !== -1) {
 req.session.cart[existingIndex].quantity += parseInt(quantity);
 }
 else {
-req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size});
+req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size, detail, detailType});
 }
-console.log('Added to Cart:', req.session.cart);
-res.redirect("/Cart");
+console.log('Added to Cart');
+res.redirect('back');
 });
 
 router.get("/Cart", (req, res) => {
@@ -229,7 +238,7 @@ req.session.cart.forEach(item => {subtotal += item.price * item.quantity;});
 const shipping = 3;
 const tax = subtotal * 0.1;
 const total = subtotal + shipping + tax;
-res.render('Cart', {cart: req.session.cart, subtotal: subtotal, shipping: shipping, tax: tax, total: total});
+res.render('Cart', {cart: req.session.cart, subtotal: subtotal, shipping: shipping, tax: tax, total: total, errorMessage: undefined});
 });
 
 router.post("/cart/update", (req, res) => {
@@ -253,7 +262,7 @@ res.redirect('/Cart');
 router.get("/Checkout", (req, res) => {
 if (!req.session.userEmail) {
 console.log('Please Log In to Checkout Items');
-return res.status(400).render('SignIn', {errorMessage: 'Please Log In to Checkout Items'});
+return res.status(401).render('SignIn', {errorMessage: 'Please Log In to Checkout Items'});
 }
 if (!req.session.cart || req.session.cart.length === 0) {
 return res.redirect("/Cart");
@@ -274,9 +283,9 @@ const paymentResult = await handlePayment(buyerID, cardName, cardNumber, expDate
 if (paymentResult.success) {
 const oID = paymentResult.oID;
 for (const item of req.session.cart) {
-const {productID, logo} = item;
+const {productID, logo, quantity, detail, detailType} = item;
 const loID = logo;
-await insertOrdersProducts(oID, productID, loID);
+await insertOrdersProducts(oID, productID, loID, quantity, detail, detailType);
 }
 console.log('Payment Successful');
 req.session.cart = [];
@@ -284,7 +293,14 @@ res.render('Purchase');
 }
 else {
 console.log('Payment Failed');
-res.status(400).render('Checkout', {errorMessage: 'An error occurred while processing payment.',});
+res.render('Cart', { 
+errorMessage: 'An error occurred while processing payment.',
+cart: req.session.cart,
+subtotal: req.session.subtotal,
+shipping: req.session.shipping,
+tax: req.session.tax,
+total: req.session.total
+});
 }
 }
 catch (error) {
