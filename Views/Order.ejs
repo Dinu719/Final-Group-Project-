@@ -34,23 +34,31 @@
 
             <div class="orders">
 
-                <% if (orders && orders.length > 0) { %>
+                <% if (message) { %>
+                    <p><%= message %></p>
+                <% } else if (orders && orders.length > 0) { %>
                     <% orders.forEach(order => { %>
                         <div class="order-item">
 
-                            <p><strong>ID #<%= order.oID %></strong></p>
-                            <p><strong>Date Purchased:</strong> <%= new Date(order.oDate).toLocaleDateString('en-US') %></p>                            
+                            <p><strong>Purchased:</strong> <%= new Date(order.oDate).toLocaleDateString('en-US') %></p>
                             <img class="images" src="../Icons/<%= order.prDescription %>.webp" alt="<%= order.prDescription %>">
-                            <p><strong>Product Name:</strong> <%= order.productName %></p>
+
+                            <p><strong>Product:</strong> <%= order.productName %></p>
                             <p><strong>Color:</strong> <%= order.color %></p>
-                            <p><strong>Logo:</strong> <%= order.logo %></p>
-                            <img class="images" src="../Logos/<%= order.logo %>.png" alt="<%= order.logo %>">
                             <p><strong>Price:</strong> $<%= order.Price %></p>
+
+                            <% if (order.logo === "Blank") { %>
+                                <p><strong>Logo:</strong> <%= order.logo %></p>
+                            <% } else { %>
+                                <p><strong>Logo:</strong></p>
+                                <img class="images" src="../Logos/<%= order.logo %>.png" alt="<%= order.logo %>">
+                            <% } %>
+
+                            <p><strong>Quantity:</strong> <%= order.quantity %></p>
+                            <p><strong><%= order.detailType %>:</strong> <%= order.detail %></p>
 
                         </div>
                     <% }); %>
-                <% } else { %>
-                    <p>No Past Orders Available</p>
                 <% } %>
 
             </div>
@@ -59,14 +67,12 @@
 
     </main>
 
-    
     <footer>
         <p class="ftext"> Copyright © 2025 Craftify </p>
         <div>
-        <a href="/CS"> <img src="../Icons/CustomerService.png" alt="CustomerService" class="customer"> </a>
+            <a href="/CS"> <img src="../Icons/CustomerService.png" alt="CustomerService" class="customer"> </a>
         </div>
-        </footer>
-        
+    </footer>
 
 </body>
 

@@ -81,9 +81,9 @@ throw error;
 }
 };
 
-async function insertOrdersProducts(oID, prID, loID) {
+async function insertOrdersProducts(oID, prID, loID, quantity, detail, detailType) {
 try {
-const result = await insertOP(oID, prID, loID);
+const result = await insertOP(oID, prID, loID, quantity, detail, detailType);
 return result;
 } catch (error) {
 console.error('Error:', error);

@@ -37,7 +37,6 @@ async function insertBuyer(fName, emailAddress, birthday, phoneNumber, password)
   }
 }
 
-
 // Sign In
 async function getBuyer(email) {
   const connection = await pool.getConnection();
@@ -54,7 +53,6 @@ async function getBuyer(email) {
       }
   }
 }
-
 
 // Change Details
 async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, password) {
@@ -100,8 +98,6 @@ async function updateBuyer(bID, fullName, emailAddress, DOB, phoneNumber, passwo
   }
 }
 
-
-
 // Update Password
 const updatePassword = async (email, newPassword) => {
   try {
@@ -117,8 +113,6 @@ const updatePassword = async (email, newPassword) => {
     throw error;
   }
 };
-
-
 
 // Laptop Cases
 async function getLaptopCases() {
@@ -146,8 +140,6 @@ async function getLaptopCases() {
     }
   }
 }
-
-
 
 // iPhone Cases
 async function getiPhoneCases() {
@@ -255,17 +247,35 @@ async function processPayment(bID, cardName, cardNumber, expDate, cvv, address, 
 }
 
 // Insert Into Orders_Products
-async function insertOP(oID, prID, loID) {
+async function insertOP(oID, prID, loID, quantity, detail, detailType) {
   const connection = await pool.getConnection();
   try {
-    const ordersProductsQuery = `
-      INSERT INTO orders_products (oID, prID, loID)
-      VALUES (?, ?, ?)
+    await connection.beginTransaction();
+    const checkQuery = `
+      SELECT COUNT(*) AS count 
+      FROM orders_products 
+      WHERE oID = ? AND prID = ? AND loID = ? AND detail = ? AND detailType = ?
     `;
-    await connection.query(ordersProductsQuery, [oID, prID, loID]);
+    const [rows] = await connection.query(checkQuery, [oID, prID, loID, detail, detailType]);
+    if (rows[0].count > 0) {
+      const updateQuery = `
+        UPDATE orders_products 
+        SET quantity = quantity + ? 
+        WHERE oID = ? AND prID = ? AND loID = ? AND detail = ? AND detailType = ?
+      `;
+      await connection.query(updateQuery, [quantity, oID, prID, loID, detail, detailType]);
+    } else {
+      const ordersProductsQuery = `
+        INSERT INTO orders_products (oID, prID, loID, quantity, detail, detailType)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `;
+      await connection.query(ordersProductsQuery, [oID, prID, loID, quantity, detail, detailType]);
+    }
+    await connection.commit();
     return true;
   } catch (error) {
     console.error('Error:', error);
+    await connection.rollback();
     throw error;
   } finally {
     if (connection) {
@@ -280,7 +290,7 @@ async function getPO(bID) {
   try {
     connection = await pool.getConnection();  
     const ordersQuery = `
-      SELECT o.oID, o.oDate, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS productName, lo.loName AS logo
+      SELECT o.oID, o.oDate, p.prDescription, p.Price, p.Stock, c.coName AS color, n.prName AS productName, lo.loName AS logo, op.opID, op.quantity, op.detail, op.detailType
       FROM orders o
       JOIN orders_products op ON o.oID = op.oID
       JOIN products p ON op.prID = p.prID

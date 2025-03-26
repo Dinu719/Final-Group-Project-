@@ -164,7 +164,7 @@ const orders = await getPastOrders(bID);
 if (!orders || orders.length === 0) {
 return res.render('Order', {message: "No Past Orders Found"});
 }
-res.render('Order', {orders});
+res.render('Order', {orders, message: undefined});
 }
 catch (error) {
 console.error('Error:', error);
@@ -209,14 +209,23 @@ const {productID, productName, price, quantity, category, logo, model, size} = r
 if (!req.session.cart) {
 req.session.cart = [];
 }
-const existingIndex = req.session.cart.findIndex(item => item.productID === productID);
+let detail = "";
+let detailType = "";
+if (model) {
+detail = model;
+detailType = "Model";
+} else if (size) {
+detail = size;
+detailType = "Size";
+}
+const existingIndex = req.session.cart.findIndex(item => item.productID === productID && item.logo === logo && item.model === model && item.size === size);
 if (existingIndex !== -1) {
 req.session.cart[existingIndex].quantity += parseInt(quantity);
 }
 else {
-req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size});
+req.session.cart.push({productID, productName, price, quantity: parseInt(quantity), category, logo, model, size, detail, detailType});
 }
-console.log('Added to Cart:', req.session.cart);
+console.log('Added to Cart');
 res.redirect('back');
 });
 
@@ -274,9 +283,9 @@ const paymentResult = await handlePayment(buyerID, cardName, cardNumber, expDate
 if (paymentResult.success) {
 const oID = paymentResult.oID;
 for (const item of req.session.cart) {
-const {productID, logo} = item;
+const {productID, logo, quantity, detail, detailType} = item;
 const loID = logo;
-await insertOrdersProducts(oID, productID, loID);
+await insertOrdersProducts(oID, productID, loID, quantity, detail, detailType);
 }
 console.log('Payment Successful');
 req.session.cart = [];
