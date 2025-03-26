@@ -119,6 +119,7 @@ emailAddress: buyer[0].email,
 DOB: dob,
 phoneNumber: buyer[0].phoneN,
 password: buyer[0].password,
+errorMessage: undefined
 });
 }
 catch (error) {
@@ -140,13 +141,20 @@ req.session.userEmail = emailAddress;
 res.redirect('/details');
 }
 else {
-console.log('Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password);
-res.status(400).render('AccountDetails', {errorMessage: 'Failed to Update Details, Try Again', fullName, emailAddress, DOB, phoneNumber, password});
+console.log('Failed to Update Details, Try Again:', fullName, emailAddress, DOB, phoneNumber, password);
+return res.render('AccountDetails', {errorMessage: 'Failed to update details. Try again.', fullName, emailAddress, DOB, phoneNumber, password});
 }
 }
 catch (error) {
 console.error('Error:', error);
-res.status(500).send('Error');
+return res.render('AccountDetails', {
+errorMessage: 'Failed to update details. Try again.',
+fullName,
+emailAddress,
+DOB,
+phoneNumber,
+password
+});
 }
 });
 

@@ -33,6 +33,11 @@
 
 <h1>Account Details</h1>
 
+<% if (errorMessage) { %>
+    <script>
+      alert("<%= errorMessage %>");
+    </script>
+<% } %>
 
 <section class="container">
 <form action="/update" method="post">
@@ -49,7 +54,6 @@
 <button type="submit" class="btn">Save Changes</button>
 </form>
 </section>
-
 
 </main>
 
